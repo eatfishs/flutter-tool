@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_module/app/pages/color_page.dart';
+
+
+
 void main() => runApp(const MyApp());
 // 声明 MethodChannel
 const platform = MethodChannel('flutter_postData');
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -21,9 +23,6 @@ class MyApp extends StatelessWidget {
   }
 }
 
-
-
-
 class MyHomePage extends StatelessWidget {
   const MyHomePage({super.key});
 
@@ -32,22 +31,55 @@ class MyHomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text("Flutter"),),
       body: Container(
-        child: Column(
-          children: <Widget>[
-            SizedBox(height: 30,),
-            ElevatedButton(onPressed: () async{
-              List result;
-              try{
-                result = await platform.invokeMethod('flutter_postData',{"flutter":"flutter value"});
-              }catch(e){
-                result = [];
-              }
-              print(result.toString());
-            },
-              child: const Text('获取APP的设备信息'),)
-          ],
+        child: BaseWidget()
+      ),
+    );
+  }
+}
+
+
+class BaseWidget extends StatefulWidget {
+  @override
+  _BaseWidgetState createState() => _BaseWidgetState();
+}
+
+class _BaseWidgetState extends State<BaseWidget> {
+  List<Widget> _list = [
+    ColorPage()
+  ];
+
+  List<String> getData() {
+    List<String> _data = [
+      "颜色"
+    ];
+    return _data;
+  }
+  Widget _itemBuilder(BuildContext context, int index) {
+    return GestureDetector(
+      onTap: () async {
+        Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+          return _list[index];
+        }));
+      },
+      child: Container(
+        child: Card(
+          color: Colors.white,
+          child: Center(
+            child: Text(getData()[index],
+                style: TextStyle(color: Colors.black, fontSize: 18)),
+          ),
         ),
       ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: ListView.builder(
+          itemExtent: 50.0, //强制高度为50.0
+          itemCount: getData().length,
+          itemBuilder: _itemBuilder),
     );
   }
 }

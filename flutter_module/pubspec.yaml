@@ -16,6 +16,7 @@ dependencies:
   provider: ^6.1.2 # 状态管理: 建议单个页面单个Provider，多个页面合用一个provider容易出现数据未清除问题
   json_annotation: ^4.9.0 # json解析
   shared_preferences: ^2.3.3 # 本地存储
+  sqflite: ^2.4.1 # 数据库
   go_router: ^14.6.2 # 路由导航
   rxdart: ^0.28.0
 

@@ -1,0 +1,33 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_module/core/utils/color_utils.dart';
+import 'package:flutter_module/core/widgets/custom_appBar_widget.dart';
+
+class ColorPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: CustomAppBar(
+        title: '颜色',
+        actions: [
+          IconButton(
+            icon: Icon(Icons.settings),
+            onPressed: () {
+              // Handle settings button press
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(content: Text('Settings pressed')),
+              );
+            },
+          ),
+        ],
+        onBackPressed: () {
+          // Handle back button press, if needed
+          Navigator.pop(context);
+        },
+      ),
+      body: Center(
+        child: Text('Welcome to the Home Screen!',
+          style: TextStyle(color: ColorUtils.hexAColor(0x3caafa))),
+      ),
+    );
+  }
+}
