@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_module/core/utils/color_utils.dart';
 import 'package:flutter_module/core/widgets/custom_appBar_widget.dart';
-
 class ColorPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -26,8 +25,32 @@ class ColorPage extends StatelessWidget {
       ),
       body: Center(
         child: Text('Welcome to the Home Screen!',
-          style: TextStyle(color: ColorUtils.hexAColor(0x3caafa))),
+          style: TextStyle(color: JHColorUtils.hexAColor(0x3caafa))),
       ),
     );
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

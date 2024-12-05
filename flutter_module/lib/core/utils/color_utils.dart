@@ -2,7 +2,7 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 
-class ColorUtils {
+class JHColorUtils {
   /// 十六进制颜色设置
   /// hex, 十六进制值，例如：0xffffff,
   /// alpha, 透明度 [0.0,1.0]

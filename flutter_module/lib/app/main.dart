@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_module/app/pages/color_page.dart';
+import 'package:flutter_module/app/pages/date_page.dart';
 
 
 
@@ -45,12 +46,14 @@ class BaseWidget extends StatefulWidget {
 
 class _BaseWidgetState extends State<BaseWidget> {
   List<Widget> _list = [
-    ColorPage()
+    ColorPage(),
+    DatePage()
   ];
 
   List<String> getData() {
     List<String> _data = [
-      "颜色"
+      "颜色",
+      "日期"
     ];
     return _data;
   }

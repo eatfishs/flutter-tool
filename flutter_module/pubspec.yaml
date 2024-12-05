@@ -19,8 +19,18 @@ dependencies:
   sqflite: ^2.4.1 # 数据库
   go_router: ^14.6.2 # 路由导航
   rxdart: ^0.28.0
+  # 时间格式转换 https://pub.flutter-io.cn/packages/date_format
+  date_format: ^2.0.9
+
 
   # ----- UI 库 -----------
+  # 图片缓存 https://pub.flutter-io.cn/packages/cached_network_image
+  cached_network_image: ^3.4.1
+  # 骨架屏 https://pub.flutter-io.cn/packages/shimmer
+  shimmer: ^3.0.0
+  # 处理键盘事件 https://pub.flutter-io.cn/packages/keyboard_actions
+  keyboard_actions: ^4.2.0
+
 
 
 dev_dependencies:
