@@ -6,7 +6,6 @@ import 'dart:convert';
 import 'object_utils.dart';
 
 extension ExtensionMap on Map {
-
   /// Transform map to json
   /// 将map转化为json字符串
   String toJsonString() {
@@ -20,7 +19,4 @@ extension ExtensionMap on Map {
   /// Checks if data is null or Blank (Empty or only contains whitespace).
   /// 检查数据是否为空或空
   bool isNullOrBlank() => ObjectUtils.isNullOrBlank(this);
-
-
-
 }

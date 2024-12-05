@@ -14,7 +14,7 @@ class JsonUtils {
 
   /// 转换JSON字符串到对象
   /// Converts JSON string [source] to object.
-  static T? getObj<T>(String source, T f(Map v)) {
+  static T? getObj<T>(String? source, T f(Map v)) {
     if (source == null || source.isEmpty) return null;
     try {
       Map map = json.decode(source);
@@ -45,7 +45,7 @@ class JsonUtils {
 
   /// 转换JSON字符串列表[源]到对象列表
   /// Converts JSON string list [source] to object list.
-  static List<T>? getObjList<T>(String source, T f(Map v)) {
+  static List<T>? getObjList<T>(String? source, T f(Map v)) {
     if (source == null || source.isEmpty) return null;
     try {
       List list = json.decode(source);
@@ -85,7 +85,7 @@ class JsonUtils {
   }
 
   /// get List
-  static List<T>? getList<T>(dynamic source) {
+  static List<T>? getList<T>(dynamic? source) {
     List list;
     if (source is String) {
       list = json.decode(source);
