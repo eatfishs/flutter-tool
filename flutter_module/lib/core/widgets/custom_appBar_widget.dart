@@ -18,10 +18,10 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       title: Text(title),
       leading: onBackPressed != null
           ? IconButton(
-        icon: Icon(Icons.arrow_back),
-        onPressed: onBackPressed,
-        tooltip: MaterialLocalizations.of(context).backButtonTooltip,
-      )
+              icon: Icon(Icons.arrow_back),
+              onPressed: onBackPressed,
+              tooltip: MaterialLocalizations.of(context).backButtonTooltip,
+            )
           : null,
       actions: actions,
     );

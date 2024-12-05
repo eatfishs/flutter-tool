@@ -76,8 +76,6 @@ class JHDateUtils {
     return week.toString();
   }
 
-
-
   /// 将某个格式时间转化为多久前
   static String formatTimeAgo(time) {
     DateTime dateTime = DateTime.parse(_handleTime(time));
