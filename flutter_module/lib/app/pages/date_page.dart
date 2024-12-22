@@ -11,14 +11,14 @@ import '../../core/widgets/custom_appBar_widget.dart';
 class DatePage extends StatelessWidget {
 
   void printDate() {
-      int timeStamp = JHDateUtils.getTimeStamp();
+      int timeStamp = JHDateTimeUtil.getTimeStamp();
       print("打印当前时间戳:${timeStamp}");
 
-      String currentTime = JHDateUtils.getCurrentTime();
+      String currentTime = JHDateTimeUtil.getCurrentTime();
       print("打印当前时间戳字符串:${currentTime}");
 
 
-      int timeStamp1 = JHDateUtils.timeToTimeStamp("2024-12-05 11:43:00");
+      int timeStamp1 = JHDateTimeUtil.timeToTimeStamp("2024-12-05 11:43:00");
       print(" 将某个格式时间转化成时间戳:${timeStamp1}");
 
   }

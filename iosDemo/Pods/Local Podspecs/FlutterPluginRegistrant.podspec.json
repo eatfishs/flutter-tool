@@ -28,6 +28,15 @@
   "dependencies": {
     "Flutter": [
 
+    ],
+    "path_provider_foundation": [
+
+    ],
+    "shared_preferences_foundation": [
+
+    ],
+    "sqflite_darwin": [
+
     ]
   }
 }

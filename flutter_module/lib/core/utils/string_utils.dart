@@ -2,8 +2,20 @@
  * @author: jiangjunhui
  * @date: 2024/12/5
  */
+import 'dart:convert';
+
 /// 文本工具类
 class JHStingUtils {
+  /// Base64 编码
+  static String base64Encode(String input) {
+    return base64.encode(input.codeUnits);
+  }
+
+  /// Base64 解码
+  static String base64Decode(String input) {
+    List<int> codeUnits = base64.decode(input);
+    return String.fromCharCodes(codeUnits);
+  }
   /// 判断文本内容是否为空
   static bool isEmpty(String? text) {
     return text == null || text.isEmpty;
@@ -129,24 +141,5 @@ class JHStingUtils {
     return sb.toString();
   }
 
-  String currencyFormat(int money) {
-    String moneyStr = money.toString();
-    String finalStr = "";
-    int groupSize = 3;
-    int oddNumberLength =
-        moneyStr.length - (moneyStr.length ~/ groupSize) * groupSize;
-    if (oddNumberLength > 0) {
-      finalStr += moneyStr.substring(0, oddNumberLength);
-      if (moneyStr.length > groupSize) {
-        finalStr += ",";
-      }
-    }
-    for (int i = oddNumberLength; i < moneyStr.length; i += groupSize) {
-      finalStr += moneyStr.substring(i, i + groupSize);
-      if (i + groupSize < moneyStr.length - 1) {
-        finalStr += ",";
-      }
-    }
-    return finalStr;
-  }
+
 }
