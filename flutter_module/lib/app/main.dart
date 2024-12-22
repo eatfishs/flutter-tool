@@ -1,19 +1,24 @@
+import 'dart:ffi';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_module/app/pages/color_page.dart';
 import 'package:flutter_module/app/pages/date_page.dart';
 import 'package:flutter_module/app/pages/db_page.dart';
+import '../core/data/db/sp.dart';
 
 
 
-void main() => runApp(const MyApp());
+void main() => runApp(MyApp());
 // 声明 MethodChannel
 const platform = MethodChannel('flutter_postData');
-
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance?.addPostFrameCallback((_) async {
+
+    });
+
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
@@ -24,6 +29,8 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+
 
 class MyHomePage extends StatelessWidget {
   const MyHomePage({super.key});
