@@ -3,7 +3,7 @@
  * @date: 2024/12/25
  */
 import 'package:flutter/material.dart';
-import 'package:flutter_module/app/pageRouter/pages_constant.dart';
+import 'package:flutter_module/app/pageRouter/pages_url_constant.dart';
 import 'package:flutter_module/app/pageRouter/router_page.dart';
 import 'package:go_router/go_router.dart';
 
@@ -35,14 +35,16 @@ class _BaseWidgetState extends State<BaseWidget> {
   List<RouterURL> _pathList = [
     PagesURL.colorUrl,
     PagesURL.daterUrl,
-    PagesURL.dbUrl
+    PagesURL.dbUrl,
+    PagesURL.testRouterUrl
   ];
 
   List<String> getData() {
     List<String> _data = [
       "颜色",
       "日期",
-      "数据库"
+      "数据库",
+      "测试路由"
     ];
     return _data;
   }

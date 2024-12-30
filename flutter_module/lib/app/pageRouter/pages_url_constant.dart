@@ -10,6 +10,9 @@ import '../../core/router/router_url.dart';
 const String COLOR_PAGE_URL = "ColorPage";
 const String DATE_PAGE_URL = "datePage";
 const String DB_PAGE_URL = "DBPage";
+const String TestRouterPage = "TestRouterPage";
+const String TestRouterPage1 = "TestRouterPage_one";
+const String TestRouterPage2 = "TestRouterPage_two";
 
 
 const String ROOT_PAGE_URL = "rootPage";
@@ -28,6 +31,10 @@ class PagesURL {
   static RouterURL daterUrl = const RouterURL(name: DATE_PAGE_URL, path: DATE_PAGE_URL);
   /// 数据库
   static RouterURL dbUrl = const RouterURL(name: DB_PAGE_URL, path: DB_PAGE_URL);
+  /// 测试路由
+  static RouterURL testRouterUrl = const RouterURL(name: TestRouterPage, path: TestRouterPage);
+  static RouterURL testRouterUrl1 = const RouterURL(name: TestRouterPage1, path: TestRouterPage1);
+  static RouterURL testRouterUrl2 = const RouterURL(name: TestRouterPage2, path: TestRouterPage2);
 
 
 }

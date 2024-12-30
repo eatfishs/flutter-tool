@@ -4,13 +4,15 @@
  */
 import 'package:flutter/material.dart';
 import 'dart:async';
-import 'package:flutter_module/app/pageRouter/pages_constant.dart';
+import 'package:flutter_module/app/pageRouter/pages_url_constant.dart';
 import 'package:flutter_module/app/pages/login/login_page.dart';
 import 'package:flutter_module/app/pages/test/color_page.dart';
 import 'package:flutter_module/app/pages/test/date_page.dart';
 import 'package:flutter_module/app/pages/test/db_page.dart';
+import 'package:flutter_module/app/pages/test/test_router_page.dart';
 import 'package:go_router/go_router.dart';
 import '../../core/widgets/Unknown_widget.dart';
+import '../pages/test/test1_router_page.dart';
 import '../root_pages.dart';
 
 class RouterPages {
@@ -41,6 +43,31 @@ class RouterPages {
       name: PagesURL.dbUrl.name,
       path: PagesURL.dbUrl.path,
       builder: (context, state) => dbPage());
+
+  // 测试路由
+  static RouteBase testPageRouter = GoRoute(
+    name: PagesURL.testRouterUrl.name,
+    path: PagesURL.testRouterUrl.path,
+    builder: (context, state) {
+      return kkTestRouterPage();
+    }
+  );
+
+  static RouteBase testPageRouterOne = GoRoute(
+      name: PagesURL.testRouterUrl1.name,
+      path: PagesURL.testRouterUrl1.path,
+      builder: (context, state) {
+        final Map<String, dynamic>? queryParam = state.uri.queryParameters;
+        return kkTest1RouterPage(queryParam: queryParam);
+      }
+  );
+
+
+
+
+
+
+
 
   /// 登录
   static RouteBase loginRouter = GoRoute(
@@ -75,10 +102,10 @@ final router = GoRouter(
           routes: [
             RouterPages.homeRouter,
             RouterPages.loginRouter,
-
             RouterPages.ColorRouter,
             RouterPages.dateRouter,
-            RouterPages.dbRouter
+            RouterPages.dbRouter,
+            RouterPages.testPageRouter,
+            RouterPages.testPageRouterOne
           ])
-
     ]);
