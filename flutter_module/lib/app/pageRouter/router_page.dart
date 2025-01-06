@@ -13,6 +13,8 @@ import 'package:flutter_module/app/pages/test/test_router_page.dart';
 import 'package:go_router/go_router.dart';
 import '../../core/widgets/Unknown_widget.dart';
 import '../pages/test/test1_router_page.dart';
+import '../pages/test/test2_router_page.dart';
+import '../pages/test/test3_touter_page.dart';
 import '../root_pages.dart';
 
 class RouterPages {
@@ -46,12 +48,11 @@ class RouterPages {
 
   // 测试路由
   static RouteBase testPageRouter = GoRoute(
-    name: PagesURL.testRouterUrl.name,
-    path: PagesURL.testRouterUrl.path,
-    builder: (context, state) {
-      return kkTestRouterPage();
-    }
-  );
+      name: PagesURL.testRouterUrl.name,
+      path: PagesURL.testRouterUrl.path,
+      builder: (context, state) {
+        return kkTestRouterPage();
+      });
 
   static RouteBase testPageRouterOne = GoRoute(
       name: PagesURL.testRouterUrl1.name,
@@ -59,14 +60,39 @@ class RouterPages {
       builder: (context, state) {
         final Map<String, dynamic>? queryParam = state.uri.queryParameters;
         return kkTest1RouterPage(queryParam: queryParam);
-      }
-  );
+      });
+
+  static RouteBase testPageRouterTwo = GoRoute(
+      name: PagesURL.testRouterUrl2.name,
+      path: PagesURL.testRouterUrl2.path,
+      pageBuilder: (context, state) {
+        final Map<String, dynamic>? queryParam = state.uri.queryParameters;
+        return CustomTransitionPage(
+            child: kkTest2RouterPage(queryParam: queryParam),
+            transitionsBuilder: (BuildContext context,
+                Animation<double> animation,
+                Animation<double> secondaryAnimation,
+                Widget child) {
+              return SlideTransition(
+                position: Tween<Offset>(
+                  begin: Offset(0, 1), // 从底部开始
+                  end: Offset.zero,
+                ).animate(animation),
+                child: child,
+              );
+            });
+      });
 
 
 
-
-
-
+  /// 测试重定向
+  static RouteBase testPageRouterThree = GoRoute(
+      name: PagesURL.testRouterUrl_redirect.name,
+      path: PagesURL.testRouterUrl_redirect.path,
+      builder: (context, state) {
+        return Test3TouterPagePage();
+      },
+      redirect: redirectUrl);
 
 
   /// 登录
@@ -106,6 +132,8 @@ final router = GoRouter(
             RouterPages.dateRouter,
             RouterPages.dbRouter,
             RouterPages.testPageRouter,
-            RouterPages.testPageRouterOne
+            RouterPages.testPageRouterOne,
+            RouterPages.testPageRouterTwo,
+            RouterPages.testPageRouterThree
           ])
     ]);

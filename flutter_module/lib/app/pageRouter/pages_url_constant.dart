@@ -12,6 +12,7 @@ const String DATE_PAGE_URL = "datePage";
 const String DB_PAGE_URL = "DBPage";
 const String TestRouterPage = "TestRouterPage";
 const String TestRouterPage1 = "TestRouterPage_one";
+const String TestRouterPage_redirect = "TestRouterPage_one_redirect";
 const String TestRouterPage2 = "TestRouterPage_two";
 
 
@@ -35,6 +36,7 @@ class PagesURL {
   static RouterURL testRouterUrl = const RouterURL(name: TestRouterPage, path: TestRouterPage);
   static RouterURL testRouterUrl1 = const RouterURL(name: TestRouterPage1, path: TestRouterPage1);
   static RouterURL testRouterUrl2 = const RouterURL(name: TestRouterPage2, path: TestRouterPage2);
+  static RouterURL testRouterUrl_redirect = const RouterURL(name: TestRouterPage_redirect, path: TestRouterPage_redirect);
 
 
 }

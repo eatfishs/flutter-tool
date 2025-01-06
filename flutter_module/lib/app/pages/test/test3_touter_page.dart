@@ -1,18 +1,19 @@
 /**
  * @author: jiangjunhui
- * @date: 2024/12/25
+ * @date: 2024/12/31
  */
 import 'package:flutter/material.dart';
 
 import '../../../core/widgets/custom_appBar_widget.dart';
-class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+
+class Test3TouterPagePage extends StatelessWidget {
+  const Test3TouterPagePage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
           appBar: CustomAppBar(
-            title: '登陆',
+            title: '测试3',
             actions: [
             ],
             onBackPressed: () {
@@ -26,4 +27,3 @@ class LoginPage extends StatelessWidget {
         );;
   }
 }
-
