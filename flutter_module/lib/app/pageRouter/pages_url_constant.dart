@@ -14,7 +14,7 @@ const String TestRouterPage = "TestRouterPage";
 const String TestRouterPage1 = "TestRouterPage_one";
 const String TestRouterPage_redirect = "TestRouterPage_one_redirect";
 const String TestRouterPage2 = "TestRouterPage_two";
-
+const String TestRouterPage4 = "TestRouterPage_Four";
 
 const String ROOT_PAGE_URL = "rootPage";
 const String LOGIN_PAGE_URL = "loginPage";
@@ -36,6 +36,7 @@ class PagesURL {
   static RouterURL testRouterUrl = const RouterURL(name: TestRouterPage, path: TestRouterPage);
   static RouterURL testRouterUrl1 = const RouterURL(name: TestRouterPage1, path: TestRouterPage1);
   static RouterURL testRouterUrl2 = const RouterURL(name: TestRouterPage2, path: TestRouterPage2);
+  static RouterURL testRouterUrl4= const RouterURL(name: TestRouterPage4, path: TestRouterPage4);
   static RouterURL testRouterUrl_redirect = const RouterURL(name: TestRouterPage_redirect, path: TestRouterPage_redirect);
 
 

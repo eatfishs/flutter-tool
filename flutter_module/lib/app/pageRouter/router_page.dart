@@ -15,6 +15,7 @@ import '../../core/widgets/Unknown_widget.dart';
 import '../pages/test/test1_router_page.dart';
 import '../pages/test/test2_router_page.dart';
 import '../pages/test/test3_touter_page.dart';
+import '../pages/test/test4_router_page.dart';
 import '../root_pages.dart';
 
 class RouterPages {
@@ -82,8 +83,12 @@ class RouterPages {
               );
             });
       });
-
-
+  static RouteBase testPageRouterFour = GoRoute(
+      name: PagesURL.testRouterUrl4.name,
+      path: PagesURL.testRouterUrl4.path,
+      builder: (context, state) {
+        return Test4RouterPage();
+      });
 
   /// 测试重定向
   static RouteBase testPageRouterThree = GoRoute(
@@ -93,7 +98,6 @@ class RouterPages {
         return Test3TouterPagePage();
       },
       redirect: redirectUrl);
-
 
   /// 登录
   static RouteBase loginRouter = GoRoute(
@@ -134,6 +138,7 @@ final router = GoRouter(
             RouterPages.testPageRouter,
             RouterPages.testPageRouterOne,
             RouterPages.testPageRouterTwo,
-            RouterPages.testPageRouterThree
+            RouterPages.testPageRouterThree,
+            RouterPages.testPageRouterFour,
           ])
     ]);

@@ -4,7 +4,9 @@
  */
 import 'package:flutter/material.dart';
 
+import '../../../core/router/router_util.dart';
 import '../../../core/widgets/custom_appBar_widget.dart';
+import '../../pageRouter/pages_url_constant.dart';
 
 class kkTest1RouterPage extends StatefulWidget {
   final Map<String, dynamic>? queryParam;
@@ -26,6 +28,10 @@ class _kkTest1RouterPageState extends State<kkTest1RouterPage> {
     });
   }
 
+  void _push() {
+    MyRouter.router(routerURL: PagesURL.testRouterUrl4, context: context);
+  }
+
   @override
   void initState() {
     super.initState();
@@ -41,14 +47,24 @@ class _kkTest1RouterPageState extends State<kkTest1RouterPage> {
         title: '第一个页面',
         actions: [],
         onBackPressed: () {
-          // Handle back button press, if needed
-          Navigator.pop(context,"我是第一个页面返回的字符串");
+          MyRouter.pop(context,"我是第一个页面返回的字符串");
         },
       ),
-      body: Container(
-        height: 100,
-        child: Text('$_queryParam'),
-      ),
+      body: Column(
+        children: [
+          Container(
+            height: 100,
+            child: Text('$_queryParam'),
+          ),
+          SizedBox(height: 50),
+          Container(
+              height: 50,
+              width: 200,
+              color: Colors.red,
+              child:
+              TextButton(onPressed: _push, child: Text("pusht动画跳转"))),
+        ],
+      )
     );
   }
 }

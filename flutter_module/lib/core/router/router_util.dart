@@ -8,16 +8,60 @@ class MyRouter {
   /// 功能描述 路由跳转
   static Future<T?> router<T extends Object?>(
       {required RouterURL routerURL,
-      Map<String, dynamic>? param,
       required BuildContext context,
+      Map<String, dynamic>? param,
       MyRouterEnum routerType = MyRouterEnum.push}) {
     final name = routerURL.name;
     Map<String, dynamic> queryParameters = param ?? Map<String, dynamic>();
-    return context.pushNamed(name, queryParameters: queryParameters);
+    if (routerType == MyRouterEnum.push) {
+      return context.pushNamed(name, queryParameters: queryParameters);
+    } else {
+      context.goNamed(name, queryParameters: queryParameters);
+      return Future.value();
+    }
+  }
+
+  /// pop 返回
+  static void pop<T extends Object?>(BuildContext context, [T? result]) {
+    context.pop(result);
+  }
+
+  /// 返回到指定界面
+  static void popUntil({required BuildContext context, required RouterURL routerURL}) {
+    final name = routerURL.name;
+    Navigator.popUntil(context, ModalRoute.withName(name));
   }
 
 
 
 
+  
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
