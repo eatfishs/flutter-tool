@@ -8,8 +8,7 @@ load File.join(flutter_application_path, '.ios', 'Flutter', 'podhelper.rb')
 
 target 'iosDemo' do
   use_frameworks!
-    pod 'Alamofire'
-    pod 'MBProgressHUD'
+    
     install_all_flutter_pods(flutter_application_path)
 
 end

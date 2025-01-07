@@ -23,7 +23,11 @@ class MyRouter {
 
   /// pop 返回
   static void pop<T extends Object?>(BuildContext context, [T? result]) {
-    context.pop(result);
+    if (context.canPop()) {
+      context.pop(result);
+    } else {
+      assert(false, '不能pop');
+    }
   }
 
   /// 返回到指定界面
@@ -32,36 +36,9 @@ class MyRouter {
     Navigator.popUntil(context, ModalRoute.withName(name));
   }
 
-
-
-
-  
+  /// 到根
+  static void backToRoot({required BuildContext context}) {
+    Navigator.of(context).popUntil((route) => route.isFirst);
+  }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

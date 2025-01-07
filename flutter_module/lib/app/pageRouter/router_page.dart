@@ -115,6 +115,51 @@ FutureOr<String?> redirectUrl(BuildContext context, GoRouterState state) {
   return null;
 }
 
+
+
+
+GoRouter routerTest(String pageString) {
+  final routes = [
+    RouterPages.loginRouter,
+    RouterPages.homeRouter,
+
+    RouterPages.ColorRouter,
+    RouterPages.dateRouter,
+    RouterPages.dbRouter,
+    RouterPages.testPageRouter,
+    RouterPages.testPageRouterOne,
+    RouterPages.testPageRouterTwo,
+    RouterPages.testPageRouterThree,
+    RouterPages.testPageRouterFour,
+  ];
+
+
+  Widget root = RootPages();
+  if (pageString == "TestRouterPage") {
+    root = kkTestRouterPage();
+  }
+
+
+  return GoRouter(
+      initialLocation: '/',
+      errorBuilder: (context, GoRouterState state) {
+        return UnknownPage();
+      },
+      debugLogDiagnostics: true,
+      observers: [
+        RouteObserver()
+      ],
+      routes: [
+        GoRoute(
+            path: "/",
+            name: "home",
+            builder: (_, state) => root,
+            routes: routes)
+      ]);
+
+}
+
+
 final router = GoRouter(
     initialLocation: '/',
     errorBuilder: (context, GoRouterState state) {

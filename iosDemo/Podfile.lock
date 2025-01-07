@@ -1,12 +1,10 @@
 PODS:
-  - Alamofire (5.10.2)
   - Flutter (1.0.0)
   - FlutterPluginRegistrant (0.0.1):
     - Flutter
     - path_provider_foundation
     - shared_preferences_foundation
     - sqflite_darwin
-  - MBProgressHUD (1.2.0)
   - path_provider_foundation (0.0.1):
     - Flutter
     - FlutterMacOS
@@ -18,18 +16,11 @@ PODS:
     - FlutterMacOS
 
 DEPENDENCIES:
-  - Alamofire
   - Flutter (from `../flutter_module/.ios/Flutter`)
   - FlutterPluginRegistrant (from `../flutter_module/.ios/Flutter/FlutterPluginRegistrant`)
-  - MBProgressHUD
   - path_provider_foundation (from `../flutter_module/.ios/.symlinks/plugins/path_provider_foundation/darwin`)
   - shared_preferences_foundation (from `../flutter_module/.ios/.symlinks/plugins/shared_preferences_foundation/darwin`)
   - sqflite_darwin (from `../flutter_module/.ios/.symlinks/plugins/sqflite_darwin/darwin`)
-
-SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
-    - Alamofire
-    - MBProgressHUD
 
 EXTERNAL SOURCES:
   Flutter:
@@ -44,14 +35,12 @@ EXTERNAL SOURCES:
     :path: "../flutter_module/.ios/.symlinks/plugins/sqflite_darwin/darwin"
 
 SPEC CHECKSUMS:
-  Alamofire: 7193b3b92c74a07f85569e1a6c4f4237291e7496
   Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
   FlutterPluginRegistrant: 9cd68249035fd97e05c9d6bef51b5831c6b41781
-  MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
   path_provider_foundation: 2b6b4c569c0fb62ec74538f866245ac84301af46
   shared_preferences_foundation: fcdcbc04712aee1108ac7fda236f363274528f78
   sqflite_darwin: 5a7236e3b501866c1c9befc6771dfd73ffb8702d
 
-PODFILE CHECKSUM: 7d69576300e3adaccc1d669f695f5773f5a7ed0b
+PODFILE CHECKSUM: 6b13732350ccf686941ffe494083a06251ad8b7d
 
 COCOAPODS: 1.16.2

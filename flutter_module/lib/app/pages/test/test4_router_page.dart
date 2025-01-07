@@ -20,7 +20,7 @@ class Test4RouterPage extends StatelessWidget {
         ],
         onBackPressed: () {
           // Handle back button press, if needed
-          MyRouter.popUntil(context: context, routerURL: PagesURL.testRouterUrl);
+          MyRouter.backToRoot(context: context);
         },
       ),
       body: Container(

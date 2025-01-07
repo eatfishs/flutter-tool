@@ -9,22 +9,31 @@ import 'package:go_router/go_router.dart';
 
 import '../core/router/router_url.dart';
 import '../core/router/router_util.dart';
+import '../global/channel/app_channel.dart';
 
 
-class RootPages extends StatelessWidget {
+class RootPages extends StatefulWidget {
   const RootPages({super.key});
+
+  @override
+  State<RootPages> createState() => _RootPagesState();
+}
+
+class _RootPagesState extends State<RootPages> {
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("Flutter"),),
       body: Container(
-          child: BaseWidget()
+         child: BaseWidget()
       ),
     );
   }
 }
 
+
+ 
 
 class BaseWidget extends StatefulWidget {
   @override
