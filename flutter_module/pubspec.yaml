@@ -26,6 +26,8 @@ dependencies:
   # ----- UI 库 -----------
   # 图片缓存 https://pub.flutter-io.cn/packages/cached_network_image
   cached_network_image: ^3.4.1
+  # 缓存管理
+  flutter_cache_manager: ^3.4.1
   # 骨架屏 https://pub.flutter-io.cn/packages/shimmer
   shimmer: ^3.0.0
   # 处理键盘事件 https://pub.flutter-io.cn/packages/keyboard_actions

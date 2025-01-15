@@ -15,6 +15,9 @@ const String TestRouterPage1 = "TestRouterPage_one";
 const String TestRouterPage_redirect = "TestRouterPage_one_redirect";
 const String TestRouterPage2 = "TestRouterPage_two";
 const String TestRouterPage4 = "TestRouterPage_Four";
+const String Cache_Image_Page_URL = "CacheImagePage_URL";
+
+
 
 const String ROOT_PAGE_URL = "rootPage";
 const String LOGIN_PAGE_URL = "loginPage";
@@ -32,6 +35,8 @@ class PagesURL {
   static RouterURL daterUrl = const RouterURL(name: DATE_PAGE_URL, path: DATE_PAGE_URL);
   /// 数据库
   static RouterURL dbUrl = const RouterURL(name: DB_PAGE_URL, path: DB_PAGE_URL);
+  /// 图片缓存
+  static RouterURL cacheImageUrl = const RouterURL(name: Cache_Image_Page_URL, path: Cache_Image_Page_URL);
   /// 测试路由
   static RouterURL testRouterUrl = const RouterURL(name: TestRouterPage, path: TestRouterPage);
   static RouterURL testRouterUrl1 = const RouterURL(name: TestRouterPage1, path: TestRouterPage1);

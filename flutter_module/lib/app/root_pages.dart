@@ -45,6 +45,7 @@ class _BaseWidgetState extends State<BaseWidget> {
     PagesURL.colorUrl,
     PagesURL.daterUrl,
     PagesURL.dbUrl,
+    PagesURL.cacheImageUrl,
     PagesURL.testRouterUrl
   ];
 
@@ -53,6 +54,7 @@ class _BaseWidgetState extends State<BaseWidget> {
       "颜色",
       "日期",
       "数据库",
+      "图片缓存",
       "测试路由"
     ];
     return _data;

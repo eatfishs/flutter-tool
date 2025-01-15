@@ -12,6 +12,7 @@ import 'package:flutter_module/app/pages/test/db_page.dart';
 import 'package:flutter_module/app/pages/test/test_router_page.dart';
 import 'package:go_router/go_router.dart';
 import '../../core/widgets/Unknown_widget.dart';
+import '../pages/test/cache_image_page.dart';
 import '../pages/test/test1_router_page.dart';
 import '../pages/test/test2_router_page.dart';
 import '../pages/test/test3_touter_page.dart';
@@ -41,6 +42,10 @@ class RouterPages {
       name: PagesURL.daterUrl.name,
       path: PagesURL.daterUrl.path,
       builder: (context, state) => DatePage());
+  static RouteBase cacheImageRouter = GoRoute(
+      name: PagesURL.cacheImageUrl.name,
+      path: PagesURL.cacheImageUrl.path,
+      builder: (context, state) => CacheImagePage());
 
   static RouteBase dbRouter = GoRoute(
       name: PagesURL.dbUrl.name,
@@ -119,19 +124,7 @@ FutureOr<String?> redirectUrl(BuildContext context, GoRouterState state) {
 
 
 GoRouter routerTest(String pageString) {
-  final routes = [
-    RouterPages.loginRouter,
-    RouterPages.homeRouter,
 
-    RouterPages.ColorRouter,
-    RouterPages.dateRouter,
-    RouterPages.dbRouter,
-    RouterPages.testPageRouter,
-    RouterPages.testPageRouterOne,
-    RouterPages.testPageRouterTwo,
-    RouterPages.testPageRouterThree,
-    RouterPages.testPageRouterFour,
-  ];
 
 
   Widget root = RootPages();
@@ -169,21 +162,20 @@ final router = GoRouter(
     observers: [
       RouteObserver()
     ],
-    routes: [
-      GoRoute(
-          path: "/",
-          name: "home",
-          builder: (_, state) => RootPages(),
-          routes: [
-            RouterPages.homeRouter,
-            RouterPages.loginRouter,
-            RouterPages.ColorRouter,
-            RouterPages.dateRouter,
-            RouterPages.dbRouter,
-            RouterPages.testPageRouter,
-            RouterPages.testPageRouterOne,
-            RouterPages.testPageRouterTwo,
-            RouterPages.testPageRouterThree,
-            RouterPages.testPageRouterFour,
-          ])
-    ]);
+    routes: routes);
+
+
+final routes = [
+  RouterPages.loginRouter,
+  RouterPages.homeRouter,
+
+  RouterPages.ColorRouter,
+  RouterPages.dateRouter,
+  RouterPages.dbRouter,
+  RouterPages.cacheImageRouter,
+  RouterPages.testPageRouter,
+  RouterPages.testPageRouterOne,
+  RouterPages.testPageRouterTwo,
+  RouterPages.testPageRouterThree,
+  RouterPages.testPageRouterFour,
+];

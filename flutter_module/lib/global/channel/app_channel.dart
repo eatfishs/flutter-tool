@@ -4,6 +4,8 @@
  */
 import 'package:flutter/services.dart';
 
+import '../../core/utils/string_utils.dart';
+
 // 声明 MethodChannel
 const platform = MethodChannel('flutter_postData');
 // 定义具体的函数名
@@ -35,16 +37,18 @@ class APPChannelModel {
 }
 
 class MyAppChannelUtil {
-  /// 仅仅处理外界传入的函数名
+  /// 函数名如果为空，返回所有函数
   /// 监听原生向flutter发送消息
   static void setMethodCallHandler(
-      String method, Future<dynamic> Function(APPChannelModel model)? handler) {
+      String? method, Future<dynamic> Function(APPChannelModel model)? handler) {
     platform.setMethodCallHandler((callback) async {
       // 仅仅处理外界传入的函数名
-      if ((handler != null)) {
-        Map<String, dynamic> result = callback.arguments as Map<String, dynamic>;
-        APPChannelModel _model = APPChannelModel.fromJson(result);
-        handler(_model);
+      if (handler != null) {
+        if ((JHStingUtils.isEmpty(method) == true) || (method == callback.method)) {
+          Map<String, dynamic> result = callback.arguments as Map<String, dynamic>;
+          APPChannelModel _model = APPChannelModel.fromJson(result);
+          handler(_model);
+        }
       }
     });
   }

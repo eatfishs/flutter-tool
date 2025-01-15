@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'core/thirdlib/cacheImage/cache_manager.dart';
 import 'global/channel/app_channel.dart';
 import 'app/pageRouter/router_page.dart';
 
