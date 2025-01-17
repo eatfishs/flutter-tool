@@ -61,8 +61,8 @@ class MyAppMethodChannelHandler {
           } on PlatformException catch (e) {
             print("监听原生向flutter发送消息类型解析失败:${e.message}");
           }
+          // 类型转换 Map<Object?, Object?> 转换为 Map<String, dynamic>
           Map<String, dynamic> resultMap = MyAppMethodChannelHandler._data;
-
           resultMap = Map.fromEntries(
             targetMap.entries.where((entry) => entry.key is String).map(
                 (entry) => MapEntry(entry.key as String, entry.value ?? "")),
@@ -79,17 +79,34 @@ class MyAppMethodChannelHandler {
   }
 
   // 调用原生方法的封装函数
-  static Future<APPChannelModel?> callNativeMethod(
+  static Future<APPChannelModel> callNativeMethod(
       {required String method, required APPChannelModel model}) async {
     try {
-      // 调用原生方法，等待结果
-      Map<String, dynamic> result = await platform.invokeMapMethod(method, {
-            "code": model.code,
-            "message": model.message,
-            "data": model.data
-          }) ??
-          _data;
-      APPChannelModel _model = APPChannelModel.fromJson(result);
+      dynamic arguments = await platform.invokeMapMethod(method, {
+        "code": model.code,
+        "message": model.message,
+        "data": model.data
+      });
+      Map<Object?, Object?> targetMap = {};
+      try {
+        if (arguments is String) {
+          targetMap = jsonDecode(arguments) as Map<Object?, Object?>;
+        } else if (arguments is Map<Object?, Object?>) {
+          targetMap = arguments;
+        }
+      } on PlatformException catch (e) {
+        print("类型解析失败:${e.message}");
+      }
+
+      // 类型转换 Map<Object?, Object?> 转换为 Map<String, dynamic>
+      Map<String, dynamic> resultMap = MyAppMethodChannelHandler._data;
+      resultMap = Map.fromEntries(
+        targetMap.entries.where((entry) => entry.key is String).map(
+                (entry) => MapEntry(entry.key as String, entry.value ?? "")),
+      );
+
+      // 生成返回结果model
+      APPChannelModel _model = APPChannelModel.fromJson(resultMap);
       return Future.value(_model);
     } on PlatformException catch (e) {
       // 处理平台异常
@@ -98,3 +115,22 @@ class MyAppMethodChannelHandler {
     }
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

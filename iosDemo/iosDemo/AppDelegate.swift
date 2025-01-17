@@ -23,6 +23,23 @@ class AppDelegate: FlutterAppDelegate { // More on the FlutterAppDelegate.
         GeneratedPluginRegistrant.register(with: self.flutterEngine);
         // 创建命名方法通道
         methodChannel = FlutterMethodChannel.init(name: "flutter_postData", binaryMessenger: flutterEngine.binaryMessenger)
+         
+        // 往方法通道注册方法调用处理回调
+        methodChannel?.setMethodCallHandler { (call, result) in
+            if("post_data" == call.method){
+                //打印flutter传来的值
+                print("=====打印flutter传来的值=======")
+                print(call.arguments ?? {})
+                //向flutter传递值
+                DispatchQueue.main.async {
+                    
+                    result(["code":"0",
+                            "message":"向flutter传递值-methodChannel",
+                            "data":["page":"home"]]);
+                }
+            }
+        }
+
         
   
         return super.application(application, didFinishLaunchingWithOptions: launchOptions);

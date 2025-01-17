@@ -46,7 +46,8 @@ class _BaseWidgetState extends State<BaseWidget> {
     PagesURL.daterUrl,
     PagesURL.dbUrl,
     PagesURL.cacheImageUrl,
-    PagesURL.testRouterUrl
+    PagesURL.testRouterUrl,
+    PagesURL.flutterCallNaviveURL
   ];
 
   List<String> getData() {
@@ -55,7 +56,8 @@ class _BaseWidgetState extends State<BaseWidget> {
       "日期",
       "数据库",
       "图片缓存",
-      "测试路由"
+      "测试路由",
+      "flutter向原生传值"
     ];
     return _data;
   }

@@ -9,6 +9,7 @@ import 'package:flutter_module/app/pages/login/login_page.dart';
 import 'package:flutter_module/app/pages/test/color_page.dart';
 import 'package:flutter_module/app/pages/test/date_page.dart';
 import 'package:flutter_module/app/pages/test/db_page.dart';
+import 'package:flutter_module/app/pages/test/flutter_call_native.dart';
 import 'package:flutter_module/app/pages/test/test_router_page.dart';
 import 'package:go_router/go_router.dart';
 import '../../core/widgets/Unknown_widget.dart';
@@ -51,6 +52,12 @@ class RouterPages {
       name: PagesURL.dbUrl.name,
       path: PagesURL.dbUrl.path,
       builder: (context, state) => dbPage());
+
+
+  static RouteBase flutterCallNaviveRouter = GoRoute(
+      name: PagesURL.flutterCallNaviveURL.name,
+      path: PagesURL.flutterCallNaviveURL.path,
+      builder: (context, state) => FlutterCallNativePage());
 
   // 测试路由
   static RouteBase testPageRouter = GoRoute(
@@ -178,4 +185,5 @@ final routes = [
   RouterPages.testPageRouterTwo,
   RouterPages.testPageRouterThree,
   RouterPages.testPageRouterFour,
+  RouterPages.flutterCallNaviveRouter,
 ];
