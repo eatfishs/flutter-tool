@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'core/thirdlib/cacheImage/cache_manager.dart';
 import 'global/channel/app_channel.dart';
 import 'app/pageRouter/router_page.dart';
 
@@ -14,34 +13,18 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
 
-  String _pageString = "home";
   @override
   void initState() {
     super.initState();
-
-    // platform.setMethodCallHandler((call) async {
-    //   setState(() {
-    //     Object? pageObj = call.arguments;
-    //     String pageString = "home";
-    //     if (pageObj is String) {
-    //       pageString = pageObj;
-    //     }
-    //     AlertDialog(
-    //       title: Text(pageString),
-    //     );
-    //   });
-    // });
-
-    MyAppChannelUtil.setMethodCallHandler(Router_Page_Method, (model) async {
-      Object? pageObj = model.data["page"];
-      String pageString = "home";
-      if (pageObj is String) {
-         pageString = pageObj;
-      }
-      setState(() {
-        _pageString = pageString;
-      });
+    //
+    MyAppMethodChannelHandler.setMethodCallHandler(Router_Page_Method, (model, method) async {
+      print("=================app-MyAppChannelUtil跟flutter交互====================");
+      print(model.toString());
+      print(method);
+      print("==================app-MyAppChannelUtil跟flutter交互===================");
     });
+
+
   }
 
   @override
@@ -52,7 +35,7 @@ class _MyAppState extends State<MyApp> {
         primarySwatch: Colors.blue,
         textTheme: const TextTheme(bodyMedium: TextStyle(fontSize: 30)),
       ),
-      routerConfig: routerTest(_pageString),
+      routerConfig: routerTest("home"),
     );
   }
 }

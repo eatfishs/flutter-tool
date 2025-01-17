@@ -4,6 +4,7 @@
  */
 import 'package:flutter/material.dart';
 import 'package:flutter_module/core/router/router_util.dart';
+import 'package:go_router/go_router.dart';
 import '../../../core/widgets/custom_appBar_widget.dart';
 import '../../pageRouter/pages_url_constant.dart';
 
@@ -57,6 +58,10 @@ class _kkTestRouterPageState extends State<kkTestRouterPage> {
 
   @override
   Widget build(BuildContext context) {
+    final routeParams = GoRouter.of(context).routeInformationProvider.value;
+    print('路由信息：$routeParams');
+
+
     return Scaffold(
       appBar: CustomAppBar(
         title: '测试路由',
