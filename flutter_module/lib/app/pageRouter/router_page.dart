@@ -4,7 +4,7 @@
  */
 import 'package:flutter/material.dart';
 import 'dart:async';
-import 'package:flutter_module/app/pageRouter/pages_url_constant.dart';
+import 'package:flutter_module/app/pageRouter/router_path.dart';
 import 'package:flutter_module/app/pages/login/login_page.dart';
 import 'package:flutter_module/app/pages/test/color_page.dart';
 import 'package:flutter_module/app/pages/test/date_page.dart';

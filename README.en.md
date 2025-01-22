@@ -2,5 +2,10 @@
 - 1、路由跳转堆栈记录
 - 2、原生跳转flutter，flutter跳转原生，连续多级跳转
 - 3、图片清理工具好像清理不了图片
-- 4、postchannel
-
+    - 1、iOS跟flutter写入同一目录，图片文件加密规则iOS跟flutter同步
+- 4、userDefault iOS跟flutter是否写入同一个地方
+- 5、路由源码解析
+- 6、dio源码解析
+- 7、图片加载库源码解析
+- 8、下拉加载上拉刷新库
+- 9、go_router是单引擎还是多引擎

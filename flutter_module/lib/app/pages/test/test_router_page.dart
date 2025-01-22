@@ -3,10 +3,10 @@
  * @date: 2024/12/30
  */
 import 'package:flutter/material.dart';
-import 'package:flutter_module/core/router/router_util.dart';
+import 'package:flutter_module/core/router/my_router.dart';
 import 'package:go_router/go_router.dart';
 import '../../../core/widgets/custom_appBar_widget.dart';
-import '../../pageRouter/pages_url_constant.dart';
+import '../../pageRouter/router_path.dart';
 
 class kkTestRouterPage extends StatefulWidget {
   const kkTestRouterPage({super.key});

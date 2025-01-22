@@ -3,12 +3,12 @@
  * @date: 2024/12/25
  */
 import 'package:flutter/material.dart';
-import 'package:flutter_module/app/pageRouter/pages_url_constant.dart';
+import 'package:flutter_module/app/pageRouter/router_path.dart';
 import 'package:flutter_module/app/pageRouter/router_page.dart';
 import 'package:go_router/go_router.dart';
 
 import '../core/router/router_url.dart';
-import '../core/router/router_util.dart';
+import '../core/router/my_router.dart';
 import '../global/channel/app_channel.dart';
 
 

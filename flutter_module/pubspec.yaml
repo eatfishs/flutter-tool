@@ -21,6 +21,8 @@ dependencies:
   rxdart: ^0.28.0
   # 时间格式转换 https://pub.flutter-io.cn/packages/date_format
   date_format: ^2.0.9
+  # 加密
+  crypto: ^3.0.1
 
 
   # ----- UI 库 -----------
@@ -39,6 +41,8 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^4.0.0
+  build_runner: ^2.3.3
+  json_serializable: ^6.6.1
 
 flutter:
   uses-material-design: true

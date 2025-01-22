@@ -3,10 +3,10 @@
  * @date: 2025/1/6
  */
 import 'package:flutter/material.dart';
-import 'package:flutter_module/core/router/router_util.dart';
+import 'package:flutter_module/core/router/my_router.dart';
 
 import '../../../core/widgets/custom_appBar_widget.dart';
-import '../../pageRouter/pages_url_constant.dart';
+import '../../pageRouter/router_path.dart';
 
 class Test4RouterPage extends StatelessWidget {
   const Test4RouterPage({super.key});

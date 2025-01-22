@@ -3,14 +3,20 @@
  * @date: 2024/12/5
  */
 import 'dart:convert';
-
+import 'package:crypto/crypto.dart';
 /// 文本工具类
 class JHStingUtils {
   /// Base64 编码
   static String base64Encode(String input) {
     return base64.encode(input.codeUnits);
   }
-
+  static String MD5(String input) {
+    // 创建一个 MD5 实例
+    var bytes = utf8.encode(input);
+    var digest = md5.convert(bytes);
+    // 将字节数组转换为十六进制字符串
+    return digest.toString();
+  }
   /// Base64 解码
   static String base64Decode(String input) {
     List<int> codeUnits = base64.decode(input);
