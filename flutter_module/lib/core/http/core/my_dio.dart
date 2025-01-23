@@ -1,10 +1,11 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_module/core/http/interceptors/cache_Interceptor.dart';
 import 'package:flutter_module/core/http/interceptors/data_transform_Interceptor.dart';
 import 'package:flutter_module/core/http/interceptors/error_handle_Interceptor.dart';
+import 'package:flutter_module/core/http/interceptors/loading_interceptor.dart';
 import 'package:flutter_module/core/http/interceptors/refresh_token_interceptors.dart';
 import 'package:flutter_module/core/utils/extension_string.dart';
 import '../interceptors/logging_interceptor.dart';
-import 'my_dio_configure.dart';
 import 'my_request_options.dart';
 
 /// FileName my_dio.dart
@@ -37,8 +38,13 @@ class NetworkService {
     _dio.interceptors.add(RefreshTokenInterceptor());
     // 数据转换拦截器
     _dio.interceptors.add(DataTransformInterceptor());
+    // 缓存拦截器
+    _dio.interceptors.add(CacheInterceptor(cachePolicy: MyCachePolicy.firstCache));
     // 添加错误处理拦截器
     _dio.interceptors.add(ErrorHandleInterceptor());
+    // 弹窗
+    _dio.interceptors.add(LoadingInterceptor(isShowLoading: true, showErrorLoading: true));
+
   }
 
 // 工厂构造函数，返回单例实例
