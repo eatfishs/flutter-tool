@@ -23,6 +23,8 @@ dependencies:
   date_format: ^2.0.9
   # 加密
   crypto: ^3.0.1
+  # 文件操作
+  path_provider: ^2.0.11
 
 
   # ----- UI 库 -----------

@@ -3,6 +3,7 @@
  * @date: 2024/12/6
  */
 import 'package:flutter/material.dart';
+import '../../../core/data/file/file_utils.dart';
 import '../../../core/data/sp/sp.dart';
 import '../../../core/widgets/custom_appBar_widget.dart';
 
@@ -27,6 +28,13 @@ class _dbPageState extends State<dbPage> {
     return text;
   }
 
+  void _writeFile() async{
+    // 获取 FileUtils 单例实例
+    final fileUtils = FileUtils();
+    // 写入文件
+    await fileUtils.writeFile('test.txt', 'Hello, World!');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,9 +49,27 @@ class _dbPageState extends State<dbPage> {
         alignment: Alignment.center,
         child: Column(
           children: <Widget>[
-            TextButton(onPressed: _setString, child: Text("存储")),
+            SizedBox(height: 50),
+            Container(
+                height: 50,
+                width: 200,
+                color: Colors.red,
+                child:
+                TextButton(onPressed: _setString, child: Text("存储"))),
             SizedBox(height: 30),
-            TextButton(onPressed: _getString, child: Text(this._string))
+            Container(
+                height: 50,
+                width: 375,
+                child:
+                TextButton(onPressed: _getString, child: Text(this._string))),
+            SizedBox(height: 30),
+            Container(
+                height: 50,
+                width: 200,
+                color: Colors.red,
+                child:
+                TextButton(onPressed: _writeFile, child: Text("写入文件"))),
+
           ],
         ),
       ),
