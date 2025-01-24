@@ -8,7 +8,7 @@ import 'package:flutter_module/core/http/interceptors/loading_interceptor.dart';
 import 'package:flutter_module/core/http/interceptors/refresh_token_interceptors.dart';
 
 import '../interceptors/logging_interceptor.dart';
-import 'my_cache_manager.dart';
+import 'my_cache_newwork_manager.dart';
 import 'my_request_options.dart';
 
 class NetworkService {

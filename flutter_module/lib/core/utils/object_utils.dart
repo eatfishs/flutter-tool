@@ -25,12 +25,6 @@ class ObjectUtils {
     }
   }
 
-  /// Returns true if the string is null or 0-length.
-  /// 判断字符串是否为空
-  static bool isEmptyString(String? str) {
-    return str == null || str.isEmpty;
-  }
-
   /// Returns true if the list is null or 0-length.
   /// 判断集合是否为空
   static bool isEmptyList(Iterable? list) {

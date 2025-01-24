@@ -5,7 +5,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_module/core/thirdlib/cacheImage/cache_image.dart';
 
-import '../../../core/thirdlib/cacheImage/cache_manager.dart';
+import '../../../core/thirdlib/cacheImage/cache_image_manager.dart';
 import '../../../core/widgets/custom_appBar_widget.dart';
 String _iconUrl = "http://devimg.dongfangfuli.com/bfd/2020-07-23/dbf9ac6b2fe06aae4a50dd0a6f7f4865.png";
 String _iconUrl1 = "http://devimg.dongfangfuli.com/bfd/2020-07-22/0efdabce138677a862a9c05fc71bca7a.png";
@@ -23,8 +23,8 @@ class _CacheImagePageState extends State<CacheImagePage> {
   String _cacheSize = "图片缓存大小：";
 
   void _getCacheSize() async {
-    MyCacheManager.getFilePath(_imageUrl);
-    String _size = await MyCacheManager.getCacheSize();
+    MyCacheImageManager.getFilePath(_imageUrl);
+    String _size = await MyCacheImageManager.getCacheSize();
     setState(() {
       _cacheSize = "图片缓存大小：${_size}";
     });
@@ -32,7 +32,7 @@ class _CacheImagePageState extends State<CacheImagePage> {
 
 
   void _clearAll() {
-    MyCacheManager.clearAllCache();
+    MyCacheImageManager.clearAllCache();
   }
 
   @override

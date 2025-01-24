@@ -6,7 +6,7 @@ import 'dart:io';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 
 
-class MyCacheManager {
+class MyCacheImageManager {
   /// 获取图片本地路径
   static Future<String> getFilePath(String imageUrl) async {
     CacheManager manager = MyCustomCacheManager.instance;

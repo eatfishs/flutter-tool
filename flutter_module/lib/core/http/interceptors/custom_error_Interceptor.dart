@@ -5,7 +5,7 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
-import '../core/my_cache_manager.dart';
+import '../core/my_cache_newwork_manager.dart';
 
 class CustomErrorInterceptor extends Interceptor {
   // 缓存管理类
