@@ -25,7 +25,7 @@ dependencies:
   crypto: ^3.0.1
   # 文件操作
   path_provider: ^2.0.11
-
+  synchronized: ^3.0.0
 
   # ----- UI 库 -----------
   # 图片缓存 https://pub.flutter-io.cn/packages/cached_network_image

@@ -14,6 +14,7 @@ import 'package:flutter_module/app/pages/test/test_router_page.dart';
 import 'package:go_router/go_router.dart';
 import '../../core/widgets/Unknown_widget.dart';
 import '../pages/test/cache_image_page.dart';
+import '../pages/test/network_service_page.dart';
 import '../pages/test/test1_router_page.dart';
 import '../pages/test/test2_router_page.dart';
 import '../pages/test/test3_touter_page.dart';
@@ -53,6 +54,10 @@ class RouterPages {
       path: PagesURL.dbUrl.path,
       builder: (context, state) => dbPage());
 
+  static RouteBase NetworkServiceRouter = GoRoute(
+      name: PagesURL.NetworkServiceURL.name,
+      path: PagesURL.NetworkServiceURL.path,
+      builder: (context, state) => NetworkServicePage());
 
   static RouteBase flutterCallNaviveRouter = GoRoute(
       name: PagesURL.flutterCallNaviveURL.name,
@@ -182,6 +187,7 @@ final routes = [
   RouterPages.cacheImageRouter,
   RouterPages.testPageRouter,
   RouterPages.testPageRouterOne,
+  RouterPages.NetworkServiceRouter,
   RouterPages.testPageRouterTwo,
   RouterPages.testPageRouterThree,
   RouterPages.testPageRouterFour,

@@ -4,22 +4,22 @@
  */
 import 'package:flutter/material.dart';
 import 'package:flutter_module/app/pageRouter/router_path.dart';
-import 'package:flutter_module/app/pageRouter/router_page.dart';
-import 'package:go_router/go_router.dart';
-
 import '../core/router/router_url.dart';
 import '../core/router/my_router.dart';
-import '../global/channel/app_channel.dart';
+
 
 
 class RootPages extends StatefulWidget {
   const RootPages({super.key});
-
   @override
   State<RootPages> createState() => _RootPagesState();
 }
 
 class _RootPagesState extends State<RootPages> {
+
+
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +47,8 @@ class _BaseWidgetState extends State<BaseWidget> {
     PagesURL.dbUrl,
     PagesURL.cacheImageUrl,
     PagesURL.testRouterUrl,
-    PagesURL.flutterCallNaviveURL
+    PagesURL.flutterCallNaviveURL,
+    PagesURL.NetworkServiceURL
   ];
 
   List<String> getData() {
@@ -57,7 +58,8 @@ class _BaseWidgetState extends State<BaseWidget> {
       "数据库",
       "图片缓存",
       "测试路由",
-      "flutter向原生传值"
+      "flutter向原生传值",
+      "网络请求"
     ];
     return _data;
   }

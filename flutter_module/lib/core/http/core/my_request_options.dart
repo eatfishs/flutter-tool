@@ -10,6 +10,7 @@ import 'package:dio/dio.dart';
 /// 请求方式
 enum MyRequestMethod { get, post }
 
+
 class MyRequestOptions {
   /// 基础url
   String baseUrl = "https://www.google.com/";
@@ -39,6 +40,14 @@ class MyRequestOptions {
 
   MyRequestOptions() {
 
+  }
+
+
+  String getMethod() {
+    if (method == MyRequestMethod.get) {
+      return "";
+    }
+    return "";
   }
 
 
