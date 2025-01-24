@@ -5,12 +5,12 @@
 import 'dart:convert';
 import 'package:crypto/crypto.dart';
 
-extension StringExtension on String {
-  /// 判断字符串是否为空
-  static bool isEmptyString(String? str) {
-    return str == null || str.isEmpty;
-  }
+/// 判断字符串是否为空
+bool isEmptyString(String? str) {
+  return str == null || str.isEmpty;
+}
 
+extension StringExtension on String {
   String md5Hash() {
     // 将字符串转换为字节数组
     var content = utf8.encode(this);

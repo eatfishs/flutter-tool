@@ -5,7 +5,7 @@
 
 import 'package:dio/dio.dart';
 import 'package:flutter_module/core/utils/extension_string.dart';
-import 'my_request_options.dart';
+import '../core/my_request_options.dart';
 import 'package:synchronized/synchronized.dart';
 
 class MyDioManager {

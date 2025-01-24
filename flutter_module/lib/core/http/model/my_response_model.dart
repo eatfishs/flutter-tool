@@ -1,6 +1,7 @@
-import 'dart:ffi';
-import 'my_error.dart';
-import 'my_request_options.dart';
+
+import '../core/my_request_options.dart';
+import 'my_base_list_model.dart';
+import 'my_base_model.dart';
 
 /// FileName my_response.dart
 ///
@@ -9,7 +10,7 @@ import 'my_request_options.dart';
 ///
 /// @Description TODO
 
-class MyResopnse {
+class MyResopnseModel {
   /// 响应对应的请求配置。
   MyRequestOptions requestOptions;
 
@@ -19,12 +20,34 @@ class MyResopnse {
   /// 响应对应状态码的详情信息。
   String? statusMessage;
 
-  /// 返回值
-  dynamic data;
+  /// 响应头
+  Map<String, dynamic> responseHeaders = Map<String, dynamic>();
 
-  /// 错误信息
-  MyDioException? error;
+  /// 原始数据值
+  String data;
 
-  MyResopnse(
+
+  MyResopnseModel(
       this.requestOptions, this.statusCode, this.statusMessage, this.data);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

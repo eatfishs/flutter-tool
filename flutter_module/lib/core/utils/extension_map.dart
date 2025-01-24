@@ -3,20 +3,18 @@
  * @date: 2024/12/5
  */
 import 'dart:convert';
-import 'object_utils.dart';
+
+/// 判断字典是否为空
+bool isEmptyMap(Map? map) {
+  return map == null || map.isEmpty;
+}
 
 extension ExtensionMap<K, V> on Map<K, V> {
-  /// 判断字典是否为空
-  static bool isEmptyMap(Map? map) {
-    return map == null || map.isEmpty;
-  }
   /// Transform map to json
   /// 将map转化为json字符串
   String toJsonString() {
     return jsonEncode(this);
   }
-
-
 
   /*
   * Map<String, int> map1 = {'a': 1, 'b': 2};

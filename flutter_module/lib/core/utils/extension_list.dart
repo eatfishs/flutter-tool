@@ -5,12 +5,12 @@
 import 'dart:convert';
 import 'object_utils.dart';
 
-extension ExtensionList<E> on List<E> {
-  /// 判断集合是否为空
-  static bool isEmptyList(Iterable? list) {
-    return list == null || list.isEmpty;
-  }
+/// 判断集合是否为空
+bool isEmptyList(Iterable? list) {
+  return list == null || list.isEmpty;
+}
 
+extension ExtensionList<E> on List<E> {
   /// Transform list to json
   /// 将list转化为json字符串
   String toJsonString() {

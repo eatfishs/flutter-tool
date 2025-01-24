@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import 'my_request_options.dart';
- 
+import '../core/my_request_options.dart';
+
 
 /// FileName my_error.dart
 ///
@@ -25,9 +25,10 @@ Map<String, String> _errorCodeMessage = {
   "-1000": "解析不到数据"
 };
 
-class MyDioException {
+class MyDioExceptionModel {
   /// 响应对应的请求配置。
-  MyRequestOptions? requestOptions;
+  MyRequestOptions? _requestOptions;
+  DioError? e;
 
   /// 错误的请求对应的响应内容。如果请求未完成，响应内容可能为空。
   Response? response;
@@ -40,4 +41,26 @@ class MyDioException {
 
   /// 错误信息。
   String? message;
+
+  MyDioExceptionModel({required MyRequestOptions options, DioError? e});
+
+
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
