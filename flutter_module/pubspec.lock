@@ -301,6 +301,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  fluttertoast:
+    dependency: "direct main"
+    description:
+      name: fluttertoast
+      sha256: "8971efe7e59585e9149052e33718d84bca51e806f063d1467622b3dcb2878b6c"
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "8.2.11"
   frontend_server_client:
     dependency: transitive
     description:
@@ -605,6 +613,14 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.4.0"
+  pull_to_refresh_flutter3:
+    dependency: "direct main"
+    description:
+      name: pull_to_refresh_flutter3
+      sha256: "37a88d901cca9a46dbdd46523de8e7b35a3e58634a0e775b1a5904981f69b353"
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "2.0.2"
   rxdart:
     dependency: "direct main"
     description:
@@ -858,6 +874,14 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.1.4"
+  visibility_detector:
+    dependency: "direct main"
+    description:
+      name: visibility_detector
+      sha256: dd5cc11e13494f432d15939c3aa8ae76844c42b723398643ce9addb88a5ed420
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.4.0+2"
   vm_service:
     dependency: transitive
     description:

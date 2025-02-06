@@ -15,16 +15,17 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: Text(title),
-      leading: onBackPressed != null
-          ? IconButton(
-              icon: Icon(Icons.arrow_back),
-              onPressed: onBackPressed,
-              tooltip: MaterialLocalizations.of(context).backButtonTooltip,
-            )
-          : null,
-      actions: actions,
-    );
+        title: Text(title),
+        leading: onBackPressed != null
+            ? IconButton(
+                icon: Icon(Icons.arrow_back),
+                onPressed: onBackPressed,
+                tooltip: MaterialLocalizations.of(context).backButtonTooltip,
+              )
+            : null,
+        actions: actions,
+        backgroundColor: Colors.white,
+      surfaceTintColor: Colors.transparent,);
   }
 
   @override

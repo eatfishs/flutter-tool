@@ -21,17 +21,6 @@ class LoadingInterceptor extends Interceptor {
 
     super.onRequest(options, handler);
   }
-
-  @override
-  void onResponse(Response response, ResponseInterceptorHandler handler) {
-    // 在请求成功响应后隐藏加载提示
-    if (isShowLoading) {
-      _hideLoading();
-    }
-
-    super.onResponse(response, handler);
-  }
-
   @override
   void onError(DioError err, ErrorInterceptorHandler handler) {
     // 在请求出错时隐藏加载提示
@@ -43,6 +32,17 @@ class LoadingInterceptor extends Interceptor {
       _showErrorLoading();
     }
     super.onError(err, handler);
+  }
+
+
+  @override
+  void onResponse(Response response, ResponseInterceptorHandler handler) {
+    // 在请求成功响应后隐藏加载提示
+    if (isShowLoading) {
+      _hideLoading();
+    }
+
+    super.onResponse(response, handler);
   }
 
   /// 弹窗

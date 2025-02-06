@@ -18,7 +18,7 @@ const String TestRouterPage4 = "TestRouterPage_Four";
 const String Cache_Image_Page_URL = "CacheImagePage_URL";
 const String Flutter_Call_Navive_Page_URL = "Flutter_Call_Navive_Page_URL";
 const String Network_Service_Page_URL = "Network_Service_Page_URL";
-
+const String Custom_Refresh_Widget_URL = "Custom_Refresh_Widget_URL";
 const String ROOT_PAGE_URL = "rootPage";
 const String LOGIN_PAGE_URL = "loginPage";
 
@@ -41,8 +41,8 @@ class PagesURL {
   static RouterURL flutterCallNaviveURL = const RouterURL(name: Flutter_Call_Navive_Page_URL, path: Flutter_Call_Navive_Page_URL);
   /// 网络请求
   static RouterURL NetworkServiceURL = const RouterURL(name: Network_Service_Page_URL, path: Network_Service_Page_URL);
-
-
+  /// 刷新组件
+  static RouterURL CustomRefreshWidgetURL = const RouterURL(name: Custom_Refresh_Widget_URL, path: Custom_Refresh_Widget_URL);
 
   /// 测试路由
   static RouterURL testRouterUrl = const RouterURL(name: TestRouterPage, path: TestRouterPage);

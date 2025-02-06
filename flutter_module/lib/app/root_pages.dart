@@ -48,7 +48,8 @@ class _BaseWidgetState extends State<BaseWidget> {
     PagesURL.cacheImageUrl,
     PagesURL.testRouterUrl,
     PagesURL.flutterCallNaviveURL,
-    PagesURL.NetworkServiceURL
+    PagesURL.NetworkServiceURL,
+    PagesURL.CustomRefreshWidgetURL
   ];
 
   List<String> getData() {
@@ -59,7 +60,8 @@ class _BaseWidgetState extends State<BaseWidget> {
       "图片缓存",
       "测试路由",
       "flutter向原生传值",
-      "网络请求"
+      "网络请求",
+      "刷新"
     ];
     return _data;
   }

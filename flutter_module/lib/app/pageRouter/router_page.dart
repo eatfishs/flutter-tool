@@ -10,6 +10,7 @@ import 'package:flutter_module/app/pages/test/color_page.dart';
 import 'package:flutter_module/app/pages/test/date_page.dart';
 import 'package:flutter_module/app/pages/test/db_page.dart';
 import 'package:flutter_module/app/pages/test/flutter_call_native.dart';
+import 'package:flutter_module/app/pages/test/refresh_widget_page.dart';
 import 'package:flutter_module/app/pages/test/test_router_page.dart';
 import 'package:go_router/go_router.dart';
 import '../../core/widgets/Unknown_widget.dart';
@@ -63,6 +64,14 @@ class RouterPages {
       name: PagesURL.flutterCallNaviveURL.name,
       path: PagesURL.flutterCallNaviveURL.path,
       builder: (context, state) => FlutterCallNativePage());
+
+
+  // '刷新'
+  static RouteBase RefreshWidgetRouter = GoRoute(
+      name: PagesURL.CustomRefreshWidgetURL.name,
+      path: PagesURL.CustomRefreshWidgetURL.path,
+      builder: (context, state) => RefreshWidgetPage());
+
 
   // 测试路由
   static RouteBase testPageRouter = GoRoute(
@@ -192,4 +201,5 @@ final routes = [
   RouterPages.testPageRouterThree,
   RouterPages.testPageRouterFour,
   RouterPages.flutterCallNaviveRouter,
+  RouterPages.RefreshWidgetRouter
 ];

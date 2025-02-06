@@ -25,6 +25,7 @@ dependencies:
   crypto: ^3.0.1
   # 文件操作
   path_provider: ^2.0.11
+  # 枷锁
   synchronized: ^3.0.0
 
   # ----- UI 库 -----------
@@ -36,6 +37,12 @@ dependencies:
   shimmer: ^3.0.0
   # 处理键盘事件 https://pub.flutter-io.cn/packages/keyboard_actions
   keyboard_actions: ^4.2.0
+  # 下拉刷新  https://pub-web.flutter-io.cn/packages/pull_to_refresh/install
+  pull_to_refresh_flutter3: ^2.0.2
+  # Widget可见行监听 https://pub-web.flutter-io.cn/packages/visibility_detector/install
+  visibility_detector: ^0.4.0+2
+  # toast https://pub-web.flutter-io.cn/packages/fluttertoast
+  fluttertoast: ^8.2.10
 
 
 
