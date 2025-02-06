@@ -4,7 +4,7 @@
  */
 import 'package:dio/dio.dart';
 
-class LoggingInterceptor extends Interceptor {
+class CustomLogInterceptor extends Interceptor {
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
     // 记录请求日志

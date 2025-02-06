@@ -1,6 +1,8 @@
+import 'dart:nativewrappers/_internal/vm/lib/ffi_allocation_patch.dart';
+
 import 'package:dio/dio.dart';
 import '../core/my_request_options.dart';
-
+import 'my_response_model.dart';
 
 /// FileName my_error.dart
 ///
@@ -27,40 +29,14 @@ Map<String, String> _errorCodeMessage = {
 
 class MyDioExceptionModel {
   /// 响应对应的请求配置。
-  MyRequestOptions? _requestOptions;
-  DioError? e;
+  MyResopnseModel? resopnse;
 
-  /// 错误的请求对应的响应内容。如果请求未完成，响应内容可能为空。
-  Response? response;
+  /// 异常错误
+  DioError? _error;
 
-  /// 实际错误的内容。
-  Object? error;
-
-  /// 实际错误的堆栈。
-  StackTrace? stackTrace;
-
-  /// 错误信息。
-  String? message;
-
-  MyDioExceptionModel({required MyRequestOptions options, DioError? e});
-
-
-
+  MyDioExceptionModel({MyResopnseModel? resopnse, DioError? e}) {
+    resopnse = resopnse;
+    _error = e;
+  }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

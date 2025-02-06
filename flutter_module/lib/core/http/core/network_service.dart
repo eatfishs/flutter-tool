@@ -1,16 +1,15 @@
 import 'dart:async';
-import 'dart:convert';
-
 import 'package:dio/dio.dart';
-import 'package:flutter_module/core/http/manager/my_dio_manager.dart';
-import 'package:flutter_module/core/http/interceptors/data_transform_Interceptor.dart';
-import 'package:flutter_module/core/http/interceptors/error_handle_Interceptor.dart';
-import 'package:flutter_module/core/http/interceptors/loading_interceptor.dart';
-import 'package:flutter_module/core/http/interceptors/refresh_token_interceptors.dart';
-import '../interceptors/logging_interceptor.dart';
+import '../manager/my_dio_manager.dart';
+import '../interceptors/data_transform_Interceptor.dart';
+import '../interceptors/error_handle_Interceptor.dart';
+import '../interceptors/loading_interceptor.dart';
+import '../interceptors/refresh_token_interceptors.dart';
+import '../interceptors/custom_log_interceptor.dart';
 import '../model/my_base_list_model.dart';
 import '../model/my_base_model.dart';
 import '../model/my_error.dart';
+import '../model/my_response_model.dart';
 import 'my_request_options.dart';
 
 class NetworkService<T> {
@@ -31,7 +30,7 @@ class NetworkService<T> {
 
     // 拦截器
     List<Interceptor> interceptorList = _interceptors ?? [];
-    if (interceptorList.length > 0) {
+    if (interceptorList.isNotEmpty) {
       for (Interceptor _interceptors in interceptorList) {
         _dio.interceptors.add(_interceptors);
       }
@@ -43,7 +42,7 @@ class NetworkService<T> {
   /// 添加拦截器
   void _addInterceptors() {
     // 添加日志打印拦截器
-    _dio.interceptors.add(LoggingInterceptor());
+    _dio.interceptors.add(CustomLogInterceptor());
     // 刷新token
     _dio.interceptors.add(RefreshTokenInterceptor());
     // 数据转换拦截器
@@ -58,51 +57,45 @@ class NetworkService<T> {
   // GET 请求方法
   Future<MyBaseModel<T>> get<T>(
       MyRequestOptions options, T Function(Object? json) fromJsonT) async {
-    CancelToken cancelToken =
-        MyDioManager.instance.getCancelToken(options: options);
     // 发起请求
-    Response response = await _request(options);
-    if (response.statusCode == 200) {
+    MyResopnseModel response = await _request(options);
+    if (response.isHttpSucess() == true) {
       return MyBaseModel.fromJson(
         response.data,
         fromJsonT,
       );
     } else {
-      throw _handleError(options);
+      throw _handleError(resopnse: response);
     }
   }
 
   // GET 请求方法
   Future<MyBaseListModel<T>> getList<T>(
       MyRequestOptions options, T Function(Object? json) fromJsonT) async {
-    CancelToken cancelToken =
-        MyDioManager.instance.getCancelToken(options: options);
     // 发起请求
-    Response response = await _request(options);
-    if (response.statusCode == 200) {
+    MyResopnseModel response = await _request(options);
+    if (response.isHttpSucess() == true) {
       return MyBaseListModel.fromJson(
         response.data,
         fromJsonT,
       );
     } else {
-      throw _handleError(options);
+      throw _handleError(resopnse:response);
     }
   }
 
   //  POST 请求方法
   Future<MyBaseModel<T>> post<T>(
       MyRequestOptions options, T Function(Object? json) fromJsonT) async {
-    CancelToken cancelToken =
-        MyDioManager.instance.getCancelToken(options: _options);
     // 发起请求
-    Response response = await _request(options);
-    if (response.statusCode == 200) {
+    MyResopnseModel response = await _request(options);
+    if (response.isHttpSucess() == true) {
       return MyBaseModel.fromJson(
         response.data,
         fromJsonT,
       );
     } else {
-      throw _handleError(options);
+      throw _handleError(resopnse:response);
     }
   }
 
@@ -110,42 +103,50 @@ class NetworkService<T> {
   Future<MyBaseListModel<T>> postList<T>(
       MyRequestOptions options, T Function(Object? json) fromJsonT) async {
     // 发起请求
-    Response response = await _request(options);
-    if (response.statusCode == 200) {
+    MyResopnseModel response = await _request(options);
+    if (response.isHttpSucess() == true) {
       return MyBaseListModel.fromJson(
         response.data,
         fromJsonT,
       );
     } else {
-      throw _handleError(options);
+      throw _handleError(resopnse:response);
     }
   }
 
   /// 发起请求
-  Future<Response> _request(MyRequestOptions options) async {
+  Future<MyResopnseModel> _request(MyRequestOptions options) async {
     CancelToken cancelToken =
         MyDioManager.instance.getCancelToken(options: _options);
     try {
+      Response? response;
       if (options.method == MyRequestMethod.get) {
-        Response response = await _dio.get(
+        response = await _dio.get(
           _options.urlPath,
           queryParameters: _options.params,
           cancelToken: cancelToken,
         );
-        return response;
       } else if (options.method == MyRequestMethod.post) {
-        Response response = await _dio.post(
+        response = await _dio.post(
           _options.urlPath,
           queryParameters: _options.params,
           cancelToken: cancelToken,
         );
-        return response;
+      }
+      if (response != null) {
+        MyResopnseModel resopnseModel = MyResopnseModel(
+            requestOptions: options,
+            statusCode: response.statusCode,
+            responseHeaders: response.headers.map,
+            statusMessage: response.statusMessage,
+            data: response.data);
+        return resopnseModel;
       }
       throw Exception('没有定义的请求方式');
     } on DioError catch (e) {
       // 请求过程出错
       print(' 请求过程出错: ${e.message}');
-      throw _handleError(options,e: e);
+      throw _handleError(e: e);
     } finally {
       String cancelTokenKey =
           MyDioManager.instance.getCancelTokenKey(options: _options);
@@ -154,8 +155,7 @@ class NetworkService<T> {
   }
 
   /// 请求过程出错
-  MyDioExceptionModel _handleError(MyRequestOptions options, {DioError? e}) {
-    return MyDioExceptionModel(options: options,e: e);
+  MyDioExceptionModel _handleError({MyResopnseModel? resopnse, DioError? e}) {
+    return MyDioExceptionModel(e: e);
   }
-
 }

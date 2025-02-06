@@ -7,11 +7,11 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import '../manager/my_cache_newwork_manager.dart';
 
-class CustomErrorInterceptor extends Interceptor {
+class CustomCacheInterceptor extends Interceptor {
   // 缓存管理类
   final MyNetworkCacheManager cacheManager;
 
-  CustomErrorInterceptor({required this.cacheManager});
+  CustomCacheInterceptor({required this.cacheManager});
 
   @override
   void onRequest(

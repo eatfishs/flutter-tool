@@ -1,7 +1,5 @@
-
+import 'dart:convert';
 import '../core/my_request_options.dart';
-import 'my_base_list_model.dart';
-import 'my_base_model.dart';
 
 /// FileName my_response.dart
 ///
@@ -10,7 +8,7 @@ import 'my_base_model.dart';
 ///
 /// @Description TODO
 
-class MyResopnseModel {
+class MyResopnseModel<T> {
   /// 响应对应的请求配置。
   MyRequestOptions requestOptions;
 
@@ -21,14 +19,30 @@ class MyResopnseModel {
   String? statusMessage;
 
   /// 响应头
-  Map<String, dynamic> responseHeaders = Map<String, dynamic>();
+  Map<String, dynamic>? responseHeaders;
 
   /// 原始数据值
-  String data;
+  T? data;
 
 
   MyResopnseModel(
-      this.requestOptions, this.statusCode, this.statusMessage, this.data);
+  {required this.requestOptions,required this.data, this.statusCode, this.responseHeaders, this.statusMessage});
+
+
+  String getDataString() {
+    if (data is Map) {
+      // Log encoded maps for better readability.
+      return json.encode(data);
+    }
+    return data.toString();
+  }
+  /// 是否成功
+  bool isHttpSucess() {
+    bool result = this.statusCode == 200;
+    return result;
+  }
+
+
 }
 
 
