@@ -3,9 +3,8 @@
  * @date: 2025/1/7
  */
 import 'package:flutter/material.dart';
-import 'package:flutter_module/core/thirdlib/cacheImage/cache_image.dart';
-
-import '../../../core/thirdlib/cacheImage/cache_image_manager.dart';
+import '../../../core/cacheImage/cache_image.dart';
+import '../../../core/cacheImage/cache_image_manager.dart';
 import '../../../core/widgets/custom_appBar_widget.dart';
 String _iconUrl = "http://devimg.dongfangfuli.com/bfd/2020-07-23/dbf9ac6b2fe06aae4a50dd0a6f7f4865.png";
 String _iconUrl1 = "http://devimg.dongfangfuli.com/bfd/2020-07-22/0efdabce138677a862a9c05fc71bca7a.png";

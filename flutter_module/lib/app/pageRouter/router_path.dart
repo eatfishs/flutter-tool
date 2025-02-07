@@ -2,7 +2,6 @@
  * @author: jiangjunhui
  * @date: 2024/12/25
  */
-import 'package:flutter/material.dart';
 
 import '../../core/router/router_url.dart';
 
@@ -21,8 +20,7 @@ const String Network_Service_Page_URL = "Network_Service_Page_URL";
 const String Custom_Refresh_Widget_URL = "Custom_Refresh_Widget_URL";
 const String ROOT_PAGE_URL = "rootPage";
 const String LOGIN_PAGE_URL = "loginPage";
-
-
+const String EVENT_BUS_URL = "EVENT_BUS_URL";
 
 
 class PagesURL {
@@ -43,14 +41,14 @@ class PagesURL {
   static RouterURL NetworkServiceURL = const RouterURL(name: Network_Service_Page_URL, path: Network_Service_Page_URL);
   /// 刷新组件
   static RouterURL CustomRefreshWidgetURL = const RouterURL(name: Custom_Refresh_Widget_URL, path: Custom_Refresh_Widget_URL);
-
+  /// EventBus
+  static RouterURL EventBusURL = const RouterURL(name: EVENT_BUS_URL, path: EVENT_BUS_URL);
   /// 测试路由
   static RouterURL testRouterUrl = const RouterURL(name: TestRouterPage, path: TestRouterPage);
   static RouterURL testRouterUrl1 = const RouterURL(name: TestRouterPage1, path: TestRouterPage1);
   static RouterURL testRouterUrl2 = const RouterURL(name: TestRouterPage2, path: TestRouterPage2);
   static RouterURL testRouterUrl4= const RouterURL(name: TestRouterPage4, path: TestRouterPage4);
   static RouterURL testRouterUrl_redirect = const RouterURL(name: TestRouterPage_redirect, path: TestRouterPage_redirect);
-
 
 }
 

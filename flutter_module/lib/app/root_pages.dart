@@ -49,7 +49,8 @@ class _BaseWidgetState extends State<BaseWidget> {
     PagesURL.testRouterUrl,
     PagesURL.flutterCallNaviveURL,
     PagesURL.NetworkServiceURL,
-    PagesURL.CustomRefreshWidgetURL
+    PagesURL.CustomRefreshWidgetURL,
+    PagesURL.EventBusURL
   ];
 
   List<String> getData() {
@@ -61,7 +62,8 @@ class _BaseWidgetState extends State<BaseWidget> {
       "测试路由",
       "flutter向原生传值",
       "网络请求",
-      "刷新"
+      "刷新",
+      "EventBus"
     ];
     return _data;
   }

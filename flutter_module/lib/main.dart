@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'global/channel/app_channel.dart';
 import 'app/pageRouter/router_page.dart';
+import 'dart:ui';
 
 void main() => runApp(MyApp());
 

@@ -9,6 +9,7 @@ import 'package:flutter_module/app/pages/login/login_page.dart';
 import 'package:flutter_module/app/pages/test/color_page.dart';
 import 'package:flutter_module/app/pages/test/date_page.dart';
 import 'package:flutter_module/app/pages/test/db_page.dart';
+import 'package:flutter_module/app/pages/test/event_bus_page.dart';
 import 'package:flutter_module/app/pages/test/flutter_call_native.dart';
 import 'package:flutter_module/app/pages/test/refresh_widget_page.dart';
 import 'package:flutter_module/app/pages/test/test_router_page.dart';
@@ -59,6 +60,11 @@ class RouterPages {
       name: PagesURL.NetworkServiceURL.name,
       path: PagesURL.NetworkServiceURL.path,
       builder: (context, state) => NetworkServicePage());
+
+  static RouteBase EventBusRouter = GoRoute(
+      name: PagesURL.EventBusURL.name,
+      path: PagesURL.EventBusURL.path,
+      builder: (context, state) => EventBusPage());
 
   static RouteBase flutterCallNaviveRouter = GoRoute(
       name: PagesURL.flutterCallNaviveURL.name,
@@ -198,6 +204,7 @@ final routes = [
   RouterPages.testPageRouterOne,
   RouterPages.NetworkServiceRouter,
   RouterPages.testPageRouterTwo,
+  RouterPages.EventBusRouter,
   RouterPages.testPageRouterThree,
   RouterPages.testPageRouterFour,
   RouterPages.flutterCallNaviveRouter,
