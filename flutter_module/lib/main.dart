@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'core/screenutil/screen_adapter.dart';
 import 'global/channel/app_channel.dart';
 import 'app/pageRouter/router_page.dart';
-import 'dart:ui';
+
 
 void main() => runApp(MyApp());
 
@@ -31,6 +32,9 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
+    // 初始化屏幕适配
+    ScreenAdapter.init(context);
+
     return MaterialApp.router(
       title: "Flutter",
       theme: ThemeData(
