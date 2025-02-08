@@ -17,10 +17,6 @@ class RootPages extends StatefulWidget {
 
 class _RootPagesState extends State<RootPages> {
 
-
-
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,7 +46,8 @@ class _BaseWidgetState extends State<BaseWidget> {
     PagesURL.flutterCallNaviveURL,
     PagesURL.NetworkServiceURL,
     PagesURL.CustomRefreshWidgetURL,
-    PagesURL.EventBusURL
+    PagesURL.EventBusURL,
+    PagesURL.ToastUtilURL
   ];
 
   List<String> getData() {
@@ -63,7 +60,8 @@ class _BaseWidgetState extends State<BaseWidget> {
       "flutter向原生传值",
       "网络请求",
       "刷新",
-      "EventBus"
+      "EventBus",
+      "ToastUtil"
     ];
     return _data;
   }

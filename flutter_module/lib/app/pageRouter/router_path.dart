@@ -21,12 +21,20 @@ const String Custom_Refresh_Widget_URL = "Custom_Refresh_Widget_URL";
 const String ROOT_PAGE_URL = "rootPage";
 const String LOGIN_PAGE_URL = "loginPage";
 const String EVENT_BUS_URL = "EVENT_BUS_URL";
+const String Toast_Util_URL = "Toast_Util_URL";
+
 
 
 class PagesURL {
   ///
   static RouterURL rootrUrl = const RouterURL(name: ROOT_PAGE_URL, path: ROOT_PAGE_URL);
   static RouterURL loginUrl = const RouterURL(name: LOGIN_PAGE_URL, path: LOGIN_PAGE_URL);
+  /// 测试路由
+  static RouterURL testRouterUrl = const RouterURL(name: TestRouterPage, path: TestRouterPage);
+  static RouterURL testRouterUrl1 = const RouterURL(name: TestRouterPage1, path: TestRouterPage1);
+  static RouterURL testRouterUrl2 = const RouterURL(name: TestRouterPage2, path: TestRouterPage2);
+  static RouterURL testRouterUrl4= const RouterURL(name: TestRouterPage4, path: TestRouterPage4);
+  static RouterURL testRouterUrl_redirect = const RouterURL(name: TestRouterPage_redirect, path: TestRouterPage_redirect);
   /// 颜色
   static RouterURL colorUrl = const RouterURL(name: COLOR_PAGE_URL, path: COLOR_PAGE_URL);
   /// 日期
@@ -43,12 +51,8 @@ class PagesURL {
   static RouterURL CustomRefreshWidgetURL = const RouterURL(name: Custom_Refresh_Widget_URL, path: Custom_Refresh_Widget_URL);
   /// EventBus
   static RouterURL EventBusURL = const RouterURL(name: EVENT_BUS_URL, path: EVENT_BUS_URL);
-  /// 测试路由
-  static RouterURL testRouterUrl = const RouterURL(name: TestRouterPage, path: TestRouterPage);
-  static RouterURL testRouterUrl1 = const RouterURL(name: TestRouterPage1, path: TestRouterPage1);
-  static RouterURL testRouterUrl2 = const RouterURL(name: TestRouterPage2, path: TestRouterPage2);
-  static RouterURL testRouterUrl4= const RouterURL(name: TestRouterPage4, path: TestRouterPage4);
-  static RouterURL testRouterUrl_redirect = const RouterURL(name: TestRouterPage_redirect, path: TestRouterPage_redirect);
+ /// 弹窗
+  static RouterURL ToastUtilURL = const RouterURL(name: Toast_Util_URL, path: Toast_Util_URL);
 
 }
 

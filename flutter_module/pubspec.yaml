@@ -41,8 +41,8 @@ dependencies:
   pull_to_refresh_flutter3: ^2.0.2
   # Widget可见行监听 https://pub-web.flutter-io.cn/packages/visibility_detector/install
   visibility_detector: ^0.4.0+2
-  # toast https://pub-web.flutter-io.cn/packages/fluttertoast
-  fluttertoast: ^8.2.10
+  # loading
+  flutter_easyloading: ^3.0.5
 
 
 

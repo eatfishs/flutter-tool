@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'global/channel/app_channel.dart';
 import 'app/pageRouter/router_page.dart';
 import 'dart:ui';
@@ -13,19 +14,19 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-
   @override
   void initState() {
     super.initState();
     //
-    MyAppMethodChannelHandler.setMethodCallHandler(Router_Page_Method, (model, method) async {
-      print("=================app-MyAppChannelUtil跟flutter交互====================");
+    MyAppMethodChannelHandler.setMethodCallHandler(Router_Page_Method,
+        (model, method) async {
+      print(
+          "=================app-MyAppChannelUtil跟flutter交互====================");
       print(model.toString());
       print(method);
-      print("==================app-MyAppChannelUtil跟flutter交互===================");
+      print(
+          "==================app-MyAppChannelUtil跟flutter交互===================");
     });
-
-
   }
 
   @override
@@ -37,6 +38,7 @@ class _MyAppState extends State<MyApp> {
         textTheme: const TextTheme(bodyMedium: TextStyle(fontSize: 30)),
       ),
       routerConfig: routerTest("home"),
+      builder: EasyLoading.init(),
     );
   }
 }

@@ -13,6 +13,7 @@ import 'package:flutter_module/app/pages/test/event_bus_page.dart';
 import 'package:flutter_module/app/pages/test/flutter_call_native.dart';
 import 'package:flutter_module/app/pages/test/refresh_widget_page.dart';
 import 'package:flutter_module/app/pages/test/test_router_page.dart';
+import 'package:flutter_module/app/pages/test/toast_utils_page.dart';
 import 'package:go_router/go_router.dart';
 import '../../core/widgets/Unknown_widget.dart';
 import '../pages/test/cache_image_page.dart';
@@ -77,6 +78,12 @@ class RouterPages {
       name: PagesURL.CustomRefreshWidgetURL.name,
       path: PagesURL.CustomRefreshWidgetURL.path,
       builder: (context, state) => RefreshWidgetPage());
+
+// '刷新'
+  static RouteBase ToastUtilsRouter = GoRoute(
+      name: PagesURL.ToastUtilURL.name,
+      path: PagesURL.ToastUtilURL.path,
+      builder: (context, state) => ToastUtilsPage());
 
 
   // 测试路由
@@ -208,5 +215,6 @@ final routes = [
   RouterPages.testPageRouterThree,
   RouterPages.testPageRouterFour,
   RouterPages.flutterCallNaviveRouter,
-  RouterPages.RefreshWidgetRouter
+  RouterPages.RefreshWidgetRouter,
+  RouterPages.ToastUtilsRouter
 ];

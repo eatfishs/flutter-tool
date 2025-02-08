@@ -18,7 +18,7 @@ class AppEventBus {
   static EventBus get instance => _instance;
 
   /// 发送事件
-  static void fire<T>(T event) {
+  static void sendEvent<T>(T event) {
     if (kDebugMode) {
       print('[EventBus] Firing event: ${event.runtimeType}');
     }

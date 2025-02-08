@@ -61,7 +61,7 @@ class _EventBusPageState extends State<EventBusPage> with EventBusMixin {
                     child:
                     TextButton(onPressed: () {
                       // 发送事件
-                      AppEventBus.fire(UserLoggedInEvent('Alice'));
+                      AppEventBus.sendEvent(UserLoggedInEvent('Alice'));
                     }, child: Text("用户昵称按钮"))),
                 SizedBox(height: 50),
                 Container(
@@ -71,7 +71,7 @@ class _EventBusPageState extends State<EventBusPage> with EventBusMixin {
                     child:
                     TextButton(onPressed: () {
                       // 发送事件
-                      AppEventBus.fire(DataUpdatedEvent("kkkkk"));
+                      AppEventBus.sendEvent(DataUpdatedEvent("kkkkk"));
                     }, child: Text("普通更新按钮"))),
               ],
             ),
