@@ -14,8 +14,8 @@ class RefreshTokenInterceptor extends Interceptor {
   Completer<String>? _refreshTokenCompleter;
 
   Future<String> _fetchToken() async {
-    // 这里模拟请求 Token 的过程，实际应用中可以使用 dio 或其他方式发送请求获取
-    await Future.delayed(Duration(seconds: 1));
+    // // 这里模拟请求 Token 的过程，实际应用中可以使用 dio 或其他方式发送请求获取
+    // await Future.delayed(Duration(seconds: 1));
     return 'your_token_value';
   }
 
@@ -33,7 +33,8 @@ class RefreshTokenInterceptor extends Interceptor {
   }
 
   @override
-  void onRequest(RequestOptions options, RequestInterceptorHandler handler) async {
+  void onRequest(
+      RequestOptions options, RequestInterceptorHandler handler) async {
     if (_token == null) {
       try {
         _token = await _getToken();
@@ -58,16 +59,3 @@ class RefreshTokenInterceptor extends Interceptor {
     handler.next(error);
   }
 }
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 

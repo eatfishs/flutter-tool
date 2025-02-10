@@ -33,9 +33,6 @@ class MyRequestOptions {
   /// `null` 或 `Duration.zero` 即不设置超时。
   Duration receiveTimeout = Duration(seconds: 10);
 
-  /// 编码类型
-  String contentType = "";
-
   /// 请求方式
   MyRequestMethod method = MyRequestMethod.get;
 
@@ -45,7 +42,12 @@ class MyRequestOptions {
   /// 参数
   Map<String, dynamic> params = Map<String, dynamic>();
 
-  MyRequestOptions() {
+  MyRequestOptions({required String url, Map<String, dynamic>? paramsMap}) {
+    urlPath = url;
+    if (paramsMap != null) {
+      params.addAll(paramsMap);
+    }
+
     // 设置默认header
     _addDefaultHeader();
   }
@@ -59,7 +61,7 @@ class MyRequestOptions {
 
   /// 设置默认header
   void _addDefaultHeader() {
-    contentType =  "application/json; charset=utf-8";
+
     Map<String, dynamic> defaultHeader = {
       "Content-Type": "application/json; charset=utf-8",
       "Accept": "application/json"

@@ -4,6 +4,8 @@
  */
 import 'package:dio/dio.dart';
 import 'dart:convert';
+
+
 /*
 数据转换拦截器
 * 将请求或响应的数据在发送或接收时进行转换，例如将 JSON 数据转换为自定义的数据模型，或者对数据进行加密 / 解密。
@@ -12,7 +14,7 @@ import 'dart:convert';
 class DataTransformInterceptor extends Interceptor {
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
-    if (options.data!= null && options.data is Map<String, dynamic>) {
+    if (options.data != null && options.data is Map<String, dynamic>) {
       options.data = jsonEncode(options.data);
     }
     handler.next(options);
@@ -26,16 +28,3 @@ class DataTransformInterceptor extends Interceptor {
     handler.next(response);
   }
 }
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 

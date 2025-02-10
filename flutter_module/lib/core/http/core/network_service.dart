@@ -1,5 +1,8 @@
 import 'dart:async';
 import 'package:dio/dio.dart';
+import '../../utils/date_untils.dart';
+import '../interceptors/custom_cache_Interceptor.dart';
+import '../manager/my_cache_newwork_manager.dart';
 import '../manager/my_dio_manager.dart';
 import '../interceptors/data_transform_Interceptor.dart';
 import '../interceptors/error_handle_Interceptor.dart';
@@ -25,7 +28,6 @@ class NetworkService<T> {
     _dio.options.connectTimeout = _options.connectTimeout;
     _dio.options.receiveTimeout = _options.receiveTimeout;
     _dio.options.headers = _options.headers;
-    _dio.options.contentType = _options.contentType;
 
     // 拦截器
     List<Interceptor> interceptorList = _interceptors ?? [];
@@ -40,38 +42,42 @@ class NetworkService<T> {
 
   /// 添加拦截器
   void _addInterceptors() {
-    // 添加日志打印拦截器
-    _dio.interceptors.add(CustomLogInterceptor());
     // 刷新token
     _dio.interceptors.add(RefreshTokenInterceptor());
+    // 弹窗
+    _dio.interceptors
+        .add(LoadingInterceptor(isShowLoading: true, showErrorLoading: true));
+    // 添加日志打印拦截器
+    _dio.interceptors.add(CustomLogInterceptor());
     // 数据转换拦截器
     _dio.interceptors.add(DataTransformInterceptor());
     // 添加错误处理拦截器
     _dio.interceptors.add(ErrorHandleInterceptor());
-    // 弹窗
-    _dio.interceptors
-        .add(LoadingInterceptor(isShowLoading: true, showErrorLoading: true));
+    // 缓存拦截器
+    MyNetworkCacheManager cacheManager = MyNetworkCacheManager();
+    _dio.interceptors.add(CustomCacheInterceptor(cacheManager: cacheManager));
   }
 
   // GET 请求方法
   Future<MyBaseModel<T>> get<T>(
-      MyRequestOptions options, T Function(Object? json) fromJsonT) async {
-    options.method = MyRequestMethod.get;
+      {required T Function(Object? json) fromJsonT}) async {
+    _options.method = MyRequestMethod.get;
+
     // 发起请求
-    MyResopnseModel response = await _request(options);
+    MyResopnseModel response = await _request(_options);
+
     if (response.isHttpSucess() == true) {
       try {
         return MyBaseModel.fromJson(
           response.data,
           fromJsonT,
         );
-      }catch (e, stackTrace) {
+      } catch (e, stackTrace) {
         print('json转model失败 Stack trace:'
             ' $stackTrace');
         print('json转model失败: $e');
         throw e;
       }
-
     } else {
       throw _handleError(resopnse: response);
     }
@@ -79,49 +85,49 @@ class NetworkService<T> {
 
   // GET 请求方法
   Future<MyBaseListModel<T>> getList<T>(
-      MyRequestOptions options, T Function(Object? json) fromJsonT) async {
-    options.method = MyRequestMethod.get;
+      {required T Function(Object? json) fromJsonT}) async {
+    _options.method = MyRequestMethod.get;
     // 发起请求
-    MyResopnseModel response = await _request(options);
+    MyResopnseModel response = await _request(_options);
     if (response.isHttpSucess() == true) {
       return MyBaseListModel.fromJson(
         response.data,
         fromJsonT,
       );
     } else {
-      throw _handleError(resopnse:response);
+      throw _handleError(resopnse: response);
     }
   }
 
   //  POST 请求方法
   Future<MyBaseModel<T>> post<T>(
-      MyRequestOptions options, T Function(Object? json) fromJsonT) async {
-    options.method = MyRequestMethod.post;
+      {required T Function(Object? json) fromJsonT}) async {
+    _options.method = MyRequestMethod.post;
     // 发起请求
-    MyResopnseModel response = await _request(options);
+    MyResopnseModel response = await _request(_options);
     if (response.isHttpSucess() == true) {
       return MyBaseModel.fromJson(
         response.data,
         fromJsonT,
       );
     } else {
-      throw _handleError(resopnse:response);
+      throw _handleError(resopnse: response);
     }
   }
 
   //  POST 请求方法
   Future<MyBaseListModel<T>> postList<T>(
-      MyRequestOptions options, T Function(Object? json) fromJsonT) async {
-    options.method = MyRequestMethod.post;
+      {required T Function(Object? json) fromJsonT}) async {
+    _options.method = MyRequestMethod.post;
     // 发起请求
-    MyResopnseModel response = await _request(options);
+    MyResopnseModel response = await _request(_options);
     if (response.isHttpSucess() == true) {
       return MyBaseListModel.fromJson(
         response.data,
         fromJsonT,
       );
     } else {
-      throw _handleError(resopnse:response);
+      throw _handleError(resopnse: response);
     }
   }
 
@@ -130,6 +136,7 @@ class NetworkService<T> {
     CancelToken cancelToken =
         MyDioManager.instance.getCancelToken(options: _options);
     try {
+      print("当前时间戳3：${MyDateTimeUtil.getTimeStamp()}");
       Response? response;
       if (options.method == MyRequestMethod.get) {
         response = await _dio.get(
@@ -137,6 +144,7 @@ class NetworkService<T> {
           queryParameters: _options.params,
           cancelToken: cancelToken,
         );
+        print("当前时间戳4：${MyDateTimeUtil.getTimeStamp()}");
       } else if (options.method == MyRequestMethod.post) {
         response = await _dio.post(
           _options.urlPath,
@@ -167,6 +175,6 @@ class NetworkService<T> {
 
   /// 请求过程出错
   String _handleError({MyResopnseModel? resopnse, DioError? e}) {
-     return "";
+    return "";
   }
 }

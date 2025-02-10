@@ -4,11 +4,14 @@
  */
 import 'package:dio/dio.dart';
 
+import '../../utils/date_untils.dart';
+
 class CustomLogInterceptor extends Interceptor {
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
     // 记录请求日志
     _logRequest(options);
+
     handler.next(options);
   }
 
@@ -55,13 +58,3 @@ class CustomLogInterceptor extends Interceptor {
     ''');
   }
 }
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 

@@ -4,13 +4,18 @@
  */
 import 'package:dio/dio.dart';
 
+import '../../toast/toast_util.dart';
+import '../../utils/date_untils.dart';
+
 class LoadingInterceptor extends Interceptor {
   /// 是否显示loading
   final bool isShowLoading;
+
   /// 是否弹出错误信息
   final bool showErrorLoading;
 
-  LoadingInterceptor({required this.isShowLoading, required this.showErrorLoading});
+  LoadingInterceptor(
+      {required this.isShowLoading, required this.showErrorLoading});
 
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
@@ -18,9 +23,9 @@ class LoadingInterceptor extends Interceptor {
     if (isShowLoading) {
       _showLoading();
     }
-
     super.onRequest(options, handler);
   }
+
   @override
   void onError(DioError err, ErrorInterceptorHandler handler) {
     // 在请求出错时隐藏加载提示
@@ -34,7 +39,6 @@ class LoadingInterceptor extends Interceptor {
     super.onError(err, handler);
   }
 
-
   @override
   void onResponse(Response response, ResponseInterceptorHandler handler) {
     // 在请求成功响应后隐藏加载提示
@@ -47,30 +51,14 @@ class LoadingInterceptor extends Interceptor {
 
   /// 弹窗
   void _showLoading() {
-
-
+    ToastUtil.showLoading();
   }
+
   /// 隐藏弹窗
   void _hideLoading() {
-
+    ToastUtil.dismiss();
   }
+
   /// 网络错误弹窗提示
-  void _showErrorLoading() {
-
-  }
-
-
+  void _showErrorLoading() {}
 }
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 

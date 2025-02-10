@@ -19,38 +19,38 @@ class NetworkServicePage extends StatefulWidget {
 
 class _NetworkServicePageState extends State<NetworkServicePage> {
   void _get() async {
-    MyRequestOptions options = MyRequestOptions();
-    options.urlPath = "/userInfo";
+    MyRequestOptions options = MyRequestOptions(url: "/userInfo");
     NetworkService networkService = NetworkService(options: options);
     try {
-      MyBaseModel<UserInfoModel> result = await networkService.get(options,
-          (json) => UserInfoModel.fromJson(json as Map<String, dynamic>));
+      MyBaseModel<UserInfoModel> result = await networkService.get(
+          fromJsonT: (json) =>
+              UserInfoModel.fromJson(json as Map<String, dynamic>));
       if (result.isSucess()) {
         print('User name: ${result.data?.name}');
         print('User age: ${result.data?.age}');
       } else {
-        print('Request failed: ${result.message}');
+        print('NetworkServicePageState Request failed: ${result.message}');
       }
     } catch (e) {
-      print('Error: $e');
+      print('NetworkServicePageState Error: $e');
     }
   }
 
   void _post() async {
-    MyRequestOptions options = MyRequestOptions();
-    options.urlPath = "/login";
+    MyRequestOptions options = MyRequestOptions(url: "/login");
     NetworkService networkService = NetworkService(options: options);
     try {
-      MyBaseModel<LoginModel> result = await networkService.post(options,
-              (json) => LoginModel.fromJson(json as Map<String, dynamic>));
+      MyBaseModel<LoginModel> result = await networkService.post(
+          fromJsonT: (json) =>
+              LoginModel.fromJson(json as Map<String, dynamic>));
       if (result.isSucess()) {
         print('User userId: ${result.data?.userId}');
         print('User token: ${result.data?.token}');
       } else {
-        print('Request failed: ${result.message}');
+        print('NetworkServicePageState Request failed: ${result.message}');
       }
     } catch (e) {
-      print('Error: $e');
+      print('NetworkServicePageState Error: $e');
     }
   }
 

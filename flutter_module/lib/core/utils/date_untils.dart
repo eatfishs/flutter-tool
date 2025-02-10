@@ -11,7 +11,7 @@ const YMDHMSzh = [yyyy, '年', mm, '月', dd, '日 ', HH, ':', nn, ':', ss];
 
 const weekText = ['一', '二', '三', '四', '五', '六', '日'];
 
-class JHDateTimeUtil {
+class MyDateTimeUtil {
   /// 获取当前时间戳（毫秒）
   static int getTimeStamp() {
     DateTime currentTime = DateTime.now();
