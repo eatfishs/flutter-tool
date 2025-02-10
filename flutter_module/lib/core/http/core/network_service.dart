@@ -8,7 +8,6 @@ import '../interceptors/refresh_token_interceptors.dart';
 import '../interceptors/custom_log_interceptor.dart';
 import '../model/my_base_list_model.dart';
 import '../model/my_base_model.dart';
-import '../model/my_error.dart';
 import '../model/my_response_model.dart';
 import 'my_request_options.dart';
 
@@ -57,13 +56,22 @@ class NetworkService<T> {
   // GET 请求方法
   Future<MyBaseModel<T>> get<T>(
       MyRequestOptions options, T Function(Object? json) fromJsonT) async {
+    options.method = MyRequestMethod.get;
     // 发起请求
     MyResopnseModel response = await _request(options);
     if (response.isHttpSucess() == true) {
-      return MyBaseModel.fromJson(
-        response.data,
-        fromJsonT,
-      );
+      try {
+        return MyBaseModel.fromJson(
+          response.data,
+          fromJsonT,
+        );
+      }catch (e, stackTrace) {
+        print('json转model失败 Stack trace:'
+            ' $stackTrace');
+        print('json转model失败: $e');
+        throw e;
+      }
+
     } else {
       throw _handleError(resopnse: response);
     }
@@ -72,6 +80,7 @@ class NetworkService<T> {
   // GET 请求方法
   Future<MyBaseListModel<T>> getList<T>(
       MyRequestOptions options, T Function(Object? json) fromJsonT) async {
+    options.method = MyRequestMethod.get;
     // 发起请求
     MyResopnseModel response = await _request(options);
     if (response.isHttpSucess() == true) {
@@ -87,6 +96,7 @@ class NetworkService<T> {
   //  POST 请求方法
   Future<MyBaseModel<T>> post<T>(
       MyRequestOptions options, T Function(Object? json) fromJsonT) async {
+    options.method = MyRequestMethod.post;
     // 发起请求
     MyResopnseModel response = await _request(options);
     if (response.isHttpSucess() == true) {
@@ -102,6 +112,7 @@ class NetworkService<T> {
   //  POST 请求方法
   Future<MyBaseListModel<T>> postList<T>(
       MyRequestOptions options, T Function(Object? json) fromJsonT) async {
+    options.method = MyRequestMethod.post;
     // 发起请求
     MyResopnseModel response = await _request(options);
     if (response.isHttpSucess() == true) {
@@ -155,7 +166,7 @@ class NetworkService<T> {
   }
 
   /// 请求过程出错
-  MyDioExceptionModel _handleError({MyResopnseModel? resopnse, DioError? e}) {
-    return MyDioExceptionModel(e: e);
+  String _handleError({MyResopnseModel? resopnse, DioError? e}) {
+     return "";
   }
 }

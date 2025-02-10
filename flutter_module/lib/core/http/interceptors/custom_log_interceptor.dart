@@ -29,20 +29,19 @@ class CustomLogInterceptor extends Interceptor {
   // 记录请求日志
   void _logRequest(RequestOptions options) {
     print('''
-    Request:
-      Method: ${options.method}
-      URL: ${options.uri}
-      Headers: ${options.headers}
-      Data: ${options.data}
+
+      请求方式: ${options.method}
+      请求URL: ${options.uri}
+      请求Headers: ${options.headers}
     ''');
   }
 
   // 记录响应日志
   void _logResponse(Response response) {
     print('''
-    Response:
-      Status Code: ${response.statusCode}
-      Data: ${response.data}
+ 
+      响应状态码: ${response.statusCode}
+      响应: ${response.data}
     ''');
   }
 

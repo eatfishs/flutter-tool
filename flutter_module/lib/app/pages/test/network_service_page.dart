@@ -3,8 +3,13 @@
  * @date: 2025/1/23
  */
 import 'package:flutter/material.dart';
-import 'dart:async';
+import '../../../core/http/core/my_request_options.dart';
+import '../../../core/http/core/network_service.dart';
+import '../../../core/http/model/my_base_model.dart';
 import '../../../core/widgets/custom_appBar_widget.dart';
+import 'model/login_model.dart';
+import 'model/userinfo_model.dart';
+
 class NetworkServicePage extends StatefulWidget {
   const NetworkServicePage({super.key});
 
@@ -13,27 +18,40 @@ class NetworkServicePage extends StatefulWidget {
 }
 
 class _NetworkServicePageState extends State<NetworkServicePage> {
-
-
-  Future<String> returnTwice() {
+  void _get() async {
+    MyRequestOptions options = MyRequestOptions();
+    options.urlPath = "/userInfo";
+    NetworkService networkService = NetworkService(options: options);
     try {
-      int num = int.parse('abc');
-      print(num);
-      return Future.value("尝试将非数字字符串转为整数，会抛出 FormatException 异常");
+      MyBaseModel<UserInfoModel> result = await networkService.get(options,
+          (json) => UserInfoModel.fromJson(json as Map<String, dynamic>));
+      if (result.isSucess()) {
+        print('User name: ${result.data?.name}');
+        print('User age: ${result.data?.age}');
+      } else {
+        print('Request failed: ${result.message}');
+      }
     } catch (e) {
-      print("-----catch:${e}");
-      return Future.value("红红火火恍恍惚惚");
+      print('Error: $e');
     }
   }
 
-
-  void _test() async {
-    // 调用函数并获取返回的 Future
-    final resultFuture = returnTwice();
-    // 获取第一次返回的参数
-    final firstResult = await resultFuture;
-    print('结果: $firstResult');
-
+  void _post() async {
+    MyRequestOptions options = MyRequestOptions();
+    options.urlPath = "/login";
+    NetworkService networkService = NetworkService(options: options);
+    try {
+      MyBaseModel<LoginModel> result = await networkService.post(options,
+              (json) => LoginModel.fromJson(json as Map<String, dynamic>));
+      if (result.isSucess()) {
+        print('User userId: ${result.data?.userId}');
+        print('User token: ${result.data?.token}');
+      } else {
+        print('Request failed: ${result.message}');
+      }
+    } catch (e) {
+      print('Error: $e');
+    }
   }
 
   @override
@@ -41,8 +59,7 @@ class _NetworkServicePageState extends State<NetworkServicePage> {
     return Scaffold(
       appBar: CustomAppBar(
         title: '测试网络请求',
-        actions: [
-        ],
+        actions: [],
         onBackPressed: () {
           // Handle back button press, if needed
           Navigator.pop(context);
@@ -57,28 +74,17 @@ class _NetworkServicePageState extends State<NetworkServicePage> {
                 height: 50,
                 width: 200,
                 color: Colors.red,
-                child:
-                TextButton(onPressed: _test, child: Text("存储"))),
+                child: TextButton(onPressed: _get, child: Text("get请求"))),
             SizedBox(height: 30),
-
-
+            SizedBox(height: 50),
+            Container(
+                height: 50,
+                width: 200,
+                color: Colors.red,
+                child: TextButton(onPressed: _post, child: Text("post请求"))),
           ],
         ),
       ),
     );
   }
-
 }
-
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 

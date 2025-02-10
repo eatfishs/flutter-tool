@@ -12,7 +12,8 @@ enum MyRequestMethod { get, post }
 
 class MyRequestOptions {
   /// 基础url
-  String baseUrl = "https://www.google.com/";
+  String baseUrl =
+      "https://mockapi.eolink.com/uvemJdBf6d6fe15694c6ce211778969e0cfaacf4f97f262";
 
   /// HTTP 请求头。
   Map<String, dynamic> headers = Map<String, dynamic>();
@@ -44,12 +45,30 @@ class MyRequestOptions {
   /// 参数
   Map<String, dynamic> params = Map<String, dynamic>();
 
-  MyRequestOptions() {}
+  MyRequestOptions() {
+    // 设置默认header
+    _addDefaultHeader();
+  }
 
   String getMethod() {
     if (method == MyRequestMethod.get) {
       return "get";
     }
     return "post";
+  }
+
+  /// 设置默认header
+  void _addDefaultHeader() {
+    contentType =  "application/json; charset=utf-8";
+    Map<String, dynamic> defaultHeader = {
+      "Content-Type": "application/json; charset=utf-8",
+      "Accept": "application/json"
+    };
+    headers.addAll(defaultHeader);
+  }
+
+  /// 设置header
+  void setHeader({required Map<String, dynamic> headerMap}) {
+    headers.addAll(headerMap);
   }
 }

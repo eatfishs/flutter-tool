@@ -16,13 +16,6 @@ class ErrorHandleInterceptor extends Interceptor {
   }
 
   void _handleError(DioError error) {
-    if (error.response != null) {
-      // 服务器返回错误
-      print('Error status code: ${error.response?.statusCode}');
-      print('Error data: ${error.response?.data}');
-    } else {
-      // 网络错误等其他错误
-      print('Error message: ${error.message}');
-    }
+
   }
 }
