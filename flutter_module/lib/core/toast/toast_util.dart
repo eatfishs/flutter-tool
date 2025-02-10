@@ -28,6 +28,8 @@ class ToastUtil {
   }
 
   static void dismiss() {
-    EasyLoading.dismiss(animation: true);
+    if (EasyLoading.isShow) {
+      EasyLoading.dismiss(animation: true);
+    }
   }
 }

@@ -15,12 +15,11 @@ class DataUpdatedEvent {
 
   DataUpdatedEvent(this.data);
 }
- 
- 
- 
- 
- 
- 
+
+
+
+
+
  
  
  

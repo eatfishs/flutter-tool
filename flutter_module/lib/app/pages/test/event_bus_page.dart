@@ -5,7 +5,7 @@
 import 'package:flutter/material.dart';
 import '../../../core/eventBus/event_bus_util.dart';
 import '../../../core/widgets/custom_appBar_widget.dart';
-import '../../data/eventBus/user_loggedIn_event.dart';
+import '../../../global/eventBus/user_loggedIn_event.dart';
 
 class EventBusPage extends StatefulWidget {
   const EventBusPage({super.key});
@@ -78,7 +78,6 @@ class _EventBusPageState extends State<EventBusPage> with EventBusMixin {
           ),
         );
   }
-
 }
 
  
