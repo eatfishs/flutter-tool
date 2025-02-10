@@ -4,7 +4,8 @@
  */
 import 'package:flutter/services.dart';
 import 'dart:convert';
-import '../../core/utils/string_utils.dart';
+import '../../../core/utils/string_utils.dart';
+
 
 // 声明 MethodChannel
 const platform = MethodChannel('flutter_postData');

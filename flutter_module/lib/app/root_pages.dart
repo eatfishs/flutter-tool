@@ -3,7 +3,7 @@
  * @date: 2024/12/25
  */
 import 'package:flutter/material.dart';
-import 'package:flutter_module/app/pageRouter/router_path.dart';
+import 'package:flutter_module/app/global/pageRouter/router_path.dart';
 import '../core/router/router_url.dart';
 import '../core/router/my_router.dart';
 

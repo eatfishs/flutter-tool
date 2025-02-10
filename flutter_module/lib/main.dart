@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'app/global/channel/app_channel.dart';
 import 'core/screenutil/screen_adapter.dart';
-import 'global/channel/app_channel.dart';
-import 'app/pageRouter/router_page.dart';
+import 'app/global/pageRouter/router_page.dart';
 
 
 void main() => runApp(MyApp());

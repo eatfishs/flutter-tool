@@ -5,7 +5,6 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 import '../../../core/widgets/custom_appBar_widget.dart';
-
 class NetworkServicePage extends StatefulWidget {
   const NetworkServicePage({super.key});
 

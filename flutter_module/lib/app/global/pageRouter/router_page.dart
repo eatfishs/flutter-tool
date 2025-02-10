@@ -4,7 +4,7 @@
  */
 import 'package:flutter/material.dart';
 import 'dart:async';
-import 'package:flutter_module/app/pageRouter/router_path.dart';
+import 'package:flutter_module/app/global/pageRouter/router_path.dart';
 import 'package:flutter_module/app/pages/login/login_page.dart';
 import 'package:flutter_module/app/pages/test/color_page.dart';
 import 'package:flutter_module/app/pages/test/date_page.dart';
@@ -15,14 +15,14 @@ import 'package:flutter_module/app/pages/test/refresh_widget_page.dart';
 import 'package:flutter_module/app/pages/test/test_router_page.dart';
 import 'package:flutter_module/app/pages/test/toast_utils_page.dart';
 import 'package:go_router/go_router.dart';
-import '../../core/widgets/Unknown_widget.dart';
-import '../pages/test/cache_image_page.dart';
-import '../pages/test/network_service_page.dart';
-import '../pages/test/test1_router_page.dart';
-import '../pages/test/test2_router_page.dart';
-import '../pages/test/test3_touter_page.dart';
-import '../pages/test/test4_router_page.dart';
-import '../root_pages.dart';
+import '../../../core/widgets/Unknown_widget.dart';
+import '../../pages/test/cache_image_page.dart';
+import '../../pages/test/network_service_page.dart';
+import '../../pages/test/test1_router_page.dart';
+import '../../pages/test/test2_router_page.dart';
+import '../../pages/test/test3_touter_page.dart';
+import '../../pages/test/test4_router_page.dart';
+import '../../root_pages.dart';
 
 class RouterPages {
   /// 首页

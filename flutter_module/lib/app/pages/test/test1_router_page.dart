@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 
 import '../../../core/router/my_router.dart';
 import '../../../core/widgets/custom_appBar_widget.dart';
-import '../../pageRouter/router_path.dart';
+import '../../global/pageRouter/router_path.dart';
 
 class kkTest1RouterPage extends StatefulWidget {
   final Map<String, dynamic>? queryParam;

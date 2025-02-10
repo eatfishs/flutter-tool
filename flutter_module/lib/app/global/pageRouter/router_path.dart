@@ -3,7 +3,7 @@
  * @date: 2024/12/25
  */
 
-import '../../core/router/router_url.dart';
+import '../../../core/router/router_url.dart';
 
 // 测试工具类
 const String COLOR_PAGE_URL = "ColorPage";

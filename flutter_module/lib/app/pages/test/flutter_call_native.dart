@@ -3,9 +3,8 @@
  * @date: 2025/1/17
  */
 import 'package:flutter/material.dart';
-
 import '../../../core/widgets/custom_appBar_widget.dart';
-import '../../../global/channel/app_channel.dart';
+import '../../global/channel/app_channel.dart';
 class FlutterCallNativePage extends StatelessWidget {
   const FlutterCallNativePage({super.key});
 
