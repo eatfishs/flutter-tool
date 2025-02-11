@@ -18,18 +18,20 @@ class NetworkServicePage extends StatefulWidget {
 }
 
 class _NetworkServicePageState extends State<NetworkServicePage> {
+  NetworkService networkService = NetworkService();
+
   void _get() async {
-    MyRequestOptions options = MyRequestOptions(url: "/userInfo");
-    NetworkService networkService = NetworkService(options: options);
+    MyRequestOptions options = MyRequestOptions(url: "/userInfo/");
     try {
       MyBaseModel<UserInfoModel> result = await networkService.get(
+          options: options,
           fromJsonT: (json) =>
               UserInfoModel.fromJson(json as Map<String, dynamic>));
       if (result.isSucess()) {
         print('User name: ${result.data?.name}');
         print('User age: ${result.data?.age}');
       } else {
-        print('NetworkServicePageState Request failed: ${result.message}');
+        print('请求错误message: ${result.message}===code:${result.code}');
       }
     } catch (e) {
       print('NetworkServicePageState Error: $e');
@@ -38,9 +40,9 @@ class _NetworkServicePageState extends State<NetworkServicePage> {
 
   void _post() async {
     MyRequestOptions options = MyRequestOptions(url: "/login");
-    NetworkService networkService = NetworkService(options: options);
     try {
       MyBaseModel<LoginModel> result = await networkService.post(
+          options: options,
           fromJsonT: (json) =>
               LoginModel.fromJson(json as Map<String, dynamic>));
       if (result.isSucess()) {
