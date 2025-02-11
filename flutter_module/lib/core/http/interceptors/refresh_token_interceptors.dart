@@ -7,9 +7,11 @@ import 'dart:async';
 
 /**
  * 用户权限鉴定、token刷新
+ * 使用 QueuedInterceptorsWrapper 可以确保多个并发请求进入拦截器时，只处理一次 CSRF Token 的获取。
+    当第一个请求进入拦截器时，会触发 CSRF Token 的获取，后续请求会等待第一个请求完成后再继续执行。
  */
 
-class RefreshTokenInterceptor extends Interceptor {
+class RefreshTokenInterceptor extends QueuedInterceptorsWrapper {
   String? _token;
   Completer<String>? _refreshTokenCompleter;
 
@@ -59,3 +61,4 @@ class RefreshTokenInterceptor extends Interceptor {
     handler.next(error);
   }
 }
+

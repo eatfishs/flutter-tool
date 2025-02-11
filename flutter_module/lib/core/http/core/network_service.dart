@@ -16,32 +16,52 @@ import 'my_request_options.dart';
 
 class NetworkService<T> {
   Dio _dio = Dio();
-  final MyRequestOptions _options;
-  final List<Interceptor>? _interceptors;
+  late final MyRequestOptions _options;
+  late final List<Interceptor>? _interceptors;
 
   NetworkService(
       {required MyRequestOptions options, List<Interceptor>? interceptors})
       : _interceptors = interceptors,
         _options = options {
     // 基本配置
-    _dio.options.baseUrl = _options.baseUrl;
-    _dio.options.connectTimeout = _options.connectTimeout;
-    _dio.options.receiveTimeout = _options.receiveTimeout;
-    _dio.options.headers = _options.headers;
+    configureOptions(options);
 
     // 拦截器
     List<Interceptor> interceptorList = _interceptors ?? [];
     if (interceptorList.isNotEmpty) {
-      for (Interceptor _interceptors in interceptorList) {
-        _dio.interceptors.add(_interceptors);
+      for (Interceptor item in interceptorList) {
+        _dio.interceptors.add(item);
+        _interceptors?.add(item);
       }
     } else {
-      _addInterceptors();
+      _addDefaultInterceptors();
     }
   }
 
+  /// 配置options
+  void configureOptions(MyRequestOptions options) {
+    _options = options;
+
+    _dio.options.baseUrl = _options.baseUrl;
+    _dio.options.connectTimeout = _options.connectTimeout;
+    _dio.options.receiveTimeout = _options.receiveTimeout;
+    _dio.options.headers = _options.headers;
+  }
+
+  /// 配置拦截器
+  void configureInterceptors(List<Interceptor> interceptorList) {
+    // 移除所有拦截器
+    _dio.interceptors.clear();
+    // 添加新的拦截器
+    for (Interceptor item in interceptorList) {
+      _dio.interceptors.add(item);
+      _interceptors?.add(item);
+    }
+  }
+
+
   /// 添加拦截器
-  void _addInterceptors() {
+  void _addDefaultInterceptors() {
     // 刷新token
     _dio.interceptors.add(RefreshTokenInterceptor());
     // 弹窗
@@ -62,7 +82,6 @@ class NetworkService<T> {
   Future<MyBaseModel<T>> get<T>(
       {required T Function(Object? json) fromJsonT}) async {
     _options.method = MyRequestMethod.get;
-
     // 发起请求
     MyResopnseModel response = await _request(_options);
 
