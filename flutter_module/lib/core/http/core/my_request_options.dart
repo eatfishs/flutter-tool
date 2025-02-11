@@ -1,5 +1,7 @@
 import 'package:dio/dio.dart';
 
+
+
 /// FileName my_request.dart
 ///
 /// @Author jiangjunhui
@@ -11,9 +13,16 @@ import 'package:dio/dio.dart';
 enum MyRequestMethod { get, post }
 
 class MyRequestOptions {
+  /// 请求方式
+  MyRequestMethod method = MyRequestMethod.get;
   /// 基础url
   String baseUrl =
       "https://mockapi.eolink.com/uvemJdBf6d6fe15694c6ce211778969e0cfaacf4f97f262";
+  /// 请求路径
+  String urlPath = "";
+
+  /// 参数
+  Map<String, dynamic> params = Map<String, dynamic>();
 
   /// HTTP 请求头。
   Map<String, dynamic> headers = Map<String, dynamic>();
@@ -33,14 +42,8 @@ class MyRequestOptions {
   /// `null` 或 `Duration.zero` 即不设置超时。
   Duration receiveTimeout = Duration(seconds: 10);
 
-  /// 请求方式
-  MyRequestMethod method = MyRequestMethod.get;
 
-  /// 请求路径
-  String urlPath = "";
 
-  /// 参数
-  Map<String, dynamic> params = Map<String, dynamic>();
 
   MyRequestOptions({required String url, Map<String, dynamic>? paramsMap}) {
     urlPath = url;

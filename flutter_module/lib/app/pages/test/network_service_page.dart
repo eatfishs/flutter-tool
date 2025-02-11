@@ -21,7 +21,7 @@ class _NetworkServicePageState extends State<NetworkServicePage> {
   NetworkService networkService = NetworkService();
 
   void _get() async {
-    MyRequestOptions options = MyRequestOptions(url: "/userInfo/");
+    MyRequestOptions options = MyRequestOptions(url: "/userInfo");
     try {
       MyBaseModel<UserInfoModel> result = await networkService.get(
           options: options,
