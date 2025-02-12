@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'app/global/channel/app_channel.dart';
+import 'core/log/log.dart';
 import 'core/screenutil/screen_adapter.dart';
 import 'app/global/pageRouter/router_page.dart';
 
 
-void main() => runApp(MyApp());
+void main() {
+  // 初始化日志配置（可选）
+  Log.initialize(options: LogOptions(printTime: true));
+  runApp(MyApp());
+}
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
