@@ -73,9 +73,11 @@ class NetworkService<T> {
   Future<MyBaseModel<T>> get<T>(
       {required MyRequestOptions options,
       required T Function(Object? json) fromJsonT}) async {
+    // 配置options
+    configureOptions(options);
+    _options.method = MyRequestMethod.get;
     // 发起请求
     MyResopnseModel response = await _request(options: options);
-    _options.method = MyRequestMethod.get;
 
     if (response.isHttpSucess() == true) {
       try {
@@ -98,9 +100,12 @@ class NetworkService<T> {
   Future<MyBaseListModel<T>> getList<T>(
       {required MyRequestOptions options,
       required T Function(Object? json) fromJsonT}) async {
-    // 发起请求
-    MyResopnseModel response = await _request(options: options);
+
+    // 配置options
+    configureOptions(options);
     _options.method = MyRequestMethod.get;
+    MyResopnseModel response = await _request(options: options);
+
     if (response.isHttpSucess() == true) {
       try {
         return MyBaseListModel.fromJson(
@@ -122,9 +127,12 @@ class NetworkService<T> {
   Future<MyBaseModel<T>> post<T>(
       {required MyRequestOptions options,
       required T Function(Object? json) fromJsonT}) async {
+    // 配置options
+    configureOptions(options);
+    _options.method = MyRequestMethod.post;
     // 发起请求
     MyResopnseModel response = await _request(options: options);
-    _options.method = MyRequestMethod.post;
+
 
     if (response.isHttpSucess() == true) {
       try {
@@ -147,9 +155,12 @@ class NetworkService<T> {
   Future<MyBaseListModel<T>> postList<T>(
       {required MyRequestOptions options,
       required T Function(Object? json) fromJsonT}) async {
+    // 配置options
+    configureOptions(options);
+    _options.method = MyRequestMethod.post;
     // 发起请求
     MyResopnseModel response = await _request(options: options);
-    _options.method = MyRequestMethod.post;
+
 
     if (response.isHttpSucess() == true) {
       try {
@@ -170,8 +181,6 @@ class NetworkService<T> {
 
   /// 发起请求
   Future<MyResopnseModel> _request({required MyRequestOptions options}) async {
-    // 配置options
-    configureOptions(options);
     CancelToken cancelToken =
         MyDioManager.instance.getCancelToken(options: _options);
     try {

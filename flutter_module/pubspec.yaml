@@ -29,6 +29,8 @@ dependencies:
   synchronized: ^3.0.0
   # 屏幕适配
   flutter_screenutil: ^5.8.0
+  # 日志打印
+  logger: ^2.5.0
 
   # ----- UI 库 -----------
   # 图片缓存 https://pub.flutter-io.cn/packages/cached_network_image
