@@ -72,7 +72,6 @@ class RouterPages {
       path: PagesURL.flutterCallNaviveURL.path,
       builder: (context, state) => FlutterCallNativePage());
 
-
   // '刷新'
   static RouteBase RefreshWidgetRouter = GoRoute(
       name: PagesURL.CustomRefreshWidgetURL.name,
@@ -84,7 +83,6 @@ class RouterPages {
       name: PagesURL.ToastUtilURL.name,
       path: PagesURL.ToastUtilURL.path,
       builder: (context, state) => ToastUtilsPage());
-
 
   // 测试路由
   static RouteBase testPageRouter = GoRoute(
@@ -154,18 +152,11 @@ FutureOr<String?> redirectUrl(BuildContext context, GoRouterState state) {
   return null;
 }
 
-
-
-
 GoRouter routerTest(String pageString) {
-
-
-
   Widget root = RootPages();
   if (pageString == "TestRouterPage") {
     root = kkTestRouterPage();
   }
-
 
   return GoRouter(
       initialLocation: '/',
@@ -183,9 +174,7 @@ GoRouter routerTest(String pageString) {
             builder: (_, state) => root,
             routes: routes)
       ]);
-
 }
-
 
 final router = GoRouter(
     initialLocation: '/',
@@ -193,16 +182,12 @@ final router = GoRouter(
       return UnknownPage();
     },
     debugLogDiagnostics: true,
-    observers: [
-      RouteObserver()
-    ],
+    observers: [RouteObserver()],
     routes: routes);
-
 
 final routes = [
   RouterPages.loginRouter,
   RouterPages.homeRouter,
-
   RouterPages.ColorRouter,
   RouterPages.dateRouter,
   RouterPages.dbRouter,
