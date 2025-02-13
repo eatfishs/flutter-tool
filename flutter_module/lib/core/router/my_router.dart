@@ -41,4 +41,13 @@ class MyRouter {
     Navigator.of(context).popUntil((route) => route.isFirst);
   }
 
+  bool isRouteInStack(BuildContext context, String targetName) {
+    bool exists = false;
+    Navigator.of(context).forEach((route) {
+      if (route.settings.name == targetName) {
+        exists = true;
+      }
+    });
+    return exists;
+  }
 }
