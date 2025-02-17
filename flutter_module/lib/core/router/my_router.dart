@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:flutter_module/core/log/log.dart';
 import 'package:flutter_module/core/router/router_url.dart';
 import 'package:go_router/go_router.dart';
 
@@ -32,8 +33,13 @@ class MyRouter {
 
   /// 返回到指定界面
   static void popUntil({required BuildContext context, required RouterURL routerURL}) {
-    final name = routerURL.name;
-    Navigator.popUntil(context, ModalRoute.withName(name));
+    try {
+      final name = routerURL.name;
+      Navigator.popUntil(context, ModalRoute.withName(name));
+    } catch (e) {
+      Log.error("返回到指定界面错误：${e.toString()}");
+    }
+
   }
 
   /// 到根
@@ -41,13 +47,5 @@ class MyRouter {
     Navigator.of(context).popUntil((route) => route.isFirst);
   }
 
-  bool isRouteInStack(BuildContext context, String targetName) {
-    bool exists = false;
-    Navigator.of(context).forEach((route) {
-      if (route.settings.name == targetName) {
-        exists = true;
-      }
-    });
-    return exists;
-  }
+
 }

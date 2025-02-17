@@ -6,7 +6,9 @@ import 'core/screenutil/screen_adapter.dart';
 import 'app/global/pageRouter/router_page.dart';
 
 
-void main() {
+void main() async {
+  // 确保 WidgetsBinding 被初始化
+  WidgetsFlutterBinding.ensureInitialized();
   // 初始化日志配置（可选）
   Log.initialize(options: LogOptions(printTime: true));
   runApp(MyApp());

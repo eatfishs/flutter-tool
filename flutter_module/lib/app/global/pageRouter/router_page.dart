@@ -3,6 +3,7 @@
  * @date: 2024/12/25
  */
 import 'package:flutter/material.dart';
+import 'package:flutter_module/app/global/pageRouter/router_guard.dart';
 import 'dart:async';
 import 'package:flutter_module/app/global/pageRouter/router_path.dart';
 import 'package:flutter_module/app/pages/login/login_page.dart';
@@ -134,7 +135,7 @@ class RouterPages {
       builder: (context, state) {
         return Test3TouterPagePage();
       },
-      redirect: redirectUrl);
+      redirect: RouteGuard.authGuard);
 
   /// 登录
   static RouteBase loginRouter = GoRoute(
@@ -143,14 +144,6 @@ class RouterPages {
       builder: (context, state) => LoginPage());
 }
 
-FutureOr<String?> redirectUrl(BuildContext context, GoRouterState state) {
-  debugPrint('loginRedirect :${state.name}');
-  final String userId = "";
-  if (userId.isEmpty) {
-    return state.namedLocation(PagesURL.loginUrl.name);
-  }
-  return null;
-}
 
 GoRouter routerTest(String pageString) {
   Widget root = RootPages();

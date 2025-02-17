@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
-
-
+import 'package:flutter/foundation.dart';
 
 /// FileName my_request.dart
 ///
@@ -15,9 +14,11 @@ enum MyRequestMethod { get, post }
 class MyRequestOptions {
   /// 请求方式
   MyRequestMethod method = MyRequestMethod.get;
+
   /// 基础url
   String baseUrl =
       "https://mockapi.eolink.com/uvemJdBf6d6fe15694c6ce211778969e0cfaacf4f97f262";
+
   /// 请求路径
   String urlPath = "";
 
@@ -42,9 +43,6 @@ class MyRequestOptions {
   /// `null` 或 `Duration.zero` 即不设置超时。
   Duration receiveTimeout = Duration(seconds: 10);
 
-
-
-
   MyRequestOptions({required String url, Map<String, dynamic>? paramsMap}) {
     urlPath = url;
     if (paramsMap != null) {
@@ -53,6 +51,13 @@ class MyRequestOptions {
 
     // 设置默认header
     _addDefaultHeader();
+  }
+
+  /// 设置Mockurl
+  void setMockUrl({required String mockUrl}) {
+    if (kDebugMode) {
+      baseUrl = mockUrl;
+    }
   }
 
   String getMethod() {
@@ -64,7 +69,6 @@ class MyRequestOptions {
 
   /// 设置默认header
   void _addDefaultHeader() {
-
     Map<String, dynamic> defaultHeader = {
       "Content-Type": "application/json; charset=utf-8",
       "Accept": "application/json"
