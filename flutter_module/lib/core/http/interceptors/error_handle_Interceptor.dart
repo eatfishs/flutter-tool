@@ -7,6 +7,7 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 
+import '../../jsonConverter/json_type_adapter.dart';
 import '../../toast/toast_util.dart';
 
 Map<String, String> _errorCodeMessage = {
@@ -32,7 +33,6 @@ Map<String, String> _errorCodeMessage = {
 class ErrorHandleInterceptor extends Interceptor {
   /// 是否显示http网络请求错误
   final bool isShowHttpErrorMsg;
-
   /// 响应code不为0异常
   final bool isShowDataErrorMsg;
 
@@ -100,10 +100,9 @@ class ErrorHandleInterceptor extends Interceptor {
     } else if (response.data is String) {
       _data = response.data.toMap();
     }
-
-    final int? code = _data['code'] as int?;
+    final num? code = JsonTypeAdapter.safeParseNumber(_data['code']);
     // 检查 code 是否为 0
-    if (code != null && code != 0) {
+    if (code != null && code.toInt() != 0) {
       final String message = _data['message'] as String? ?? '未知错误';
       ToastUtil.showToast(msg: message);
     }

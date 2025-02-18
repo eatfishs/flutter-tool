@@ -1,10 +1,12 @@
 import 'package:json_annotation/json_annotation.dart';
+
+import '../../jsonConverter/safe_num_converter.dart';
 part 'my_base_list_model.g.dart';
 
-@JsonSerializable(genericArgumentFactories: true)
+@JsonSerializable(genericArgumentFactories: true, converters: [SafeNumConverter()])
 class MyBaseListModel<T> {
   @JsonKey(name: 'code')
-  int? code;
+  num? code;
   @JsonKey(name: 'message')
   String? message;
 

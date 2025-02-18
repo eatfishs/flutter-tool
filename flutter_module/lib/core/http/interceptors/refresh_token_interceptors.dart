@@ -37,18 +37,20 @@ class RefreshTokenInterceptor extends QueuedInterceptorsWrapper {
   @override
   void onRequest(
       RequestOptions options, RequestInterceptorHandler handler) async {
-    if (_token == null) {
-      try {
-        _token = await _getToken();
-        options.headers['Token'] = _token;
-        handler.next(options);
-      } catch (e) {
-        handler.reject(DioError(requestOptions: options, error: e));
-      }
-    } else {
-      options.headers['Token'] = _token;
-      handler.next(options);
-    }
+    // if (_token == null) {
+    //   try {
+    //     _token = await _getToken();
+    //     options.headers['Token'] = _token;
+    //     handler.next(options);
+    //   } catch (e) {
+    //     handler.reject(DioError(requestOptions: options, error: e));
+    //   }
+    // } else {
+    //   options.headers['Token'] = _token;
+    //   handler.next(options);
+    // }
+
+    handler.next(options);
   }
 
   @override

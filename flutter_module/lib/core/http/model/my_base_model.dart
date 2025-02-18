@@ -1,10 +1,12 @@
+import 'package:flutter_module/core/jsonConverter/safe_convert_model.dart';
+import 'package:flutter_module/core/jsonConverter/safe_num_converter.dart';
 import 'package:json_annotation/json_annotation.dart';
 part 'my_base_model.g.dart';
 
-@JsonSerializable(genericArgumentFactories: true)
-class MyBaseModel<T> {
+@JsonSerializable(genericArgumentFactories: true, converters: [SafeNumConverter()])
+class MyBaseModel<T> extends SafeConvertModel {
   @JsonKey(name: 'code')
-  int? code;
+  num? code;
   @JsonKey(name: 'message')
   String? message;
   T? data;
@@ -26,7 +28,7 @@ class MyBaseModel<T> {
 
   /// 是否成功
   bool isSucess() {
-    bool result = this.code == 0;
+    bool result = this.code?.toInt() == 0;
     return result;
   }
 }

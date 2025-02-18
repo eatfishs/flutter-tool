@@ -34,8 +34,6 @@ class CustomLogInterceptor extends Interceptor {
     handler.next(error);
   }
 
-
-
   // 记录响应日志
   void _logResponse(Response response) {
     // 获取请求开始时间
