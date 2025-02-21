@@ -21,7 +21,7 @@ enum MyNetworkCachePolicy {
 
   /// 先用缓存，在请求网络，得到网络数据后覆盖缓存，并且请求数据重新抛出去
   /// 这个策略 需要自己组装两次请求，不然对封装效果不好
-  //firstCacheRequest
+  firstCacheRequest
 }
 
 class MyNetworkCacheManager {

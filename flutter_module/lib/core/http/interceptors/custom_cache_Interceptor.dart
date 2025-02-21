@@ -17,7 +17,10 @@ class CustomCacheInterceptor extends Interceptor {
   @override
   void onRequest(
       RequestOptions options, RequestInterceptorHandler handler) async {
-    if (cacheManager.cachePolicy == MyNetworkCachePolicy.firstCache) {
+    final MyNetworkCachePolicy cachePolicy = cacheManager.cachePolicy;
+
+    if (cachePolicy == MyNetworkCachePolicy.firstCache ||
+        cachePolicy == MyNetworkCachePolicy.firstCacheRequest) {
       final cacheJsonString = await cacheManager.getCacheData(options);
       if (cacheJsonString != null) {
         // 有缓存数据，先返回缓存响应
@@ -27,6 +30,15 @@ class CustomCacheInterceptor extends Interceptor {
           statusCode: 200,
         );
         handler.resolve(response);
+
+        // 对于需要继续请求的情况
+        if (cachePolicy == MyNetworkCachePolicy.firstCacheRequest) {
+          // 继续执行原始请求
+          handler.next(options);
+          return;
+        }
+
+        return;
       }
     }
 
@@ -36,14 +48,13 @@ class CustomCacheInterceptor extends Interceptor {
 
   @override
   void onResponse(Response response, ResponseInterceptorHandler handler) {
-    if (cacheManager.cachePolicy == MyNetworkCachePolicy.firstCache ||
-        cacheManager.cachePolicy == MyNetworkCachePolicy.firstRequest) {
+    // 请求成功响应
+    if (response.statusCode == 200 &&
+        cacheManager.cachePolicy != MyNetworkCachePolicy.none) {
       try {
         String data = json.encode(response.data);
         cacheManager.saveCache(response.requestOptions, data);
-      } catch (e) {
-        handler.next(response);
-      }
+      } catch (e) {}
     }
 
     handler.next(response);
@@ -63,11 +74,11 @@ class CustomCacheInterceptor extends Interceptor {
           statusCode: 200,
         );
         // 返回正确的响应
-        handler.resolve(response);
+        return handler.resolve(response);
       }
-    } else {
-      // 继续传递错误
-      handler.next(err);
     }
+
+    // 继续传递错误
+    handler.next(err);
   }
 }
