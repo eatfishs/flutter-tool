@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:dio/dio.dart';
 import '../interceptors/custom_cache_Interceptor.dart';
+import '../manager/custom_HttpClient_adapter.dart';
 import '../manager/my_cache_newwork_manager.dart';
 import '../manager/my_dio_manager.dart';
 import '../interceptors/data_transform_Interceptor.dart';
@@ -20,6 +21,7 @@ class NetworkService<T> {
 
   NetworkService({List<Interceptor>? interceptors})
       : _interceptors = interceptors {
+    _dio.httpClientAdapter = CustomHttpClientAdapter();
     /// 配置拦截器
     configureInterceptors(_interceptors);
   }
