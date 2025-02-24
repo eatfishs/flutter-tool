@@ -48,8 +48,9 @@ class CustomCacheInterceptor extends Interceptor {
 
   @override
   void onResponse(Response response, ResponseInterceptorHandler handler) {
-    // 请求成功响应
-    if (response.statusCode == 200 &&
+    // 只缓存GET请求成功响应
+    if (response.requestOptions.method == 'GET' &&
+        response.statusCode == 200 &&
         cacheManager.cachePolicy != MyNetworkCachePolicy.none) {
       try {
         String data = json.encode(response.data);

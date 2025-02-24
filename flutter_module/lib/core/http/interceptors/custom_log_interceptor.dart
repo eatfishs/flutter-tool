@@ -65,7 +65,6 @@ class CustomLogInterceptor extends Interceptor {
     // 从 extra 中读取耗时指标
     final timings =
         error.response?.requestOptions.extra as Map<String, dynamic>;
-    Log.error("------>11111:${timings}");
     final options = error.requestOptions;
     Log.error('''
     网络请求错误:
