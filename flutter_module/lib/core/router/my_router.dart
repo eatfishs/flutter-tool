@@ -1,5 +1,8 @@
+import 'dart:ffi';
+
 import 'package:flutter/widgets.dart';
 import 'package:flutter_module/core/log/log.dart';
+import 'package:flutter_module/core/router/router_observer.dart';
 import 'package:flutter_module/core/router/router_url.dart';
 import 'package:go_router/go_router.dart';
 
@@ -32,20 +35,47 @@ class MyRouter {
   }
 
   /// 返回到指定界面
-  static void popUntil({required BuildContext context, required RouterURL routerURL}) {
+  static void popUntil(
+      {required BuildContext context, required RouterURL routerURL}) {
     try {
-      final name = routerURL.name;
-      Navigator.popUntil(context, ModalRoute.withName(name));
+      List<Route<dynamic>> list = getAllRoutes();
+      bool isCanPop = false;
+      for (Route _router in list) {
+        if(_router.settings.name == routerURL.name) {
+          isCanPop = true;
+        }
+      }
+
+      if (isCanPop) {
+        final name = routerURL.name;
+        Navigator.popUntil(context, ModalRoute.withName(name));
+      } else {
+        assert(false, '不能pop');
+      }
+
     } catch (e) {
       Log.error("返回到指定界面错误：${e.toString()}");
     }
-
   }
+
 
   /// 到根
   static void backToRoot({required BuildContext context}) {
     Navigator.of(context).popUntil((route) => route.isFirst);
   }
 
+  /// 是否到最底层路由
+  static bool isEmptyRoute({required BuildContext context}) {
+    Navigator.of(context).popUntil((route) {
+      return true;
+    });
+    return false;
+  }
 
+  /// 获取当前路由栈里面的全部路由
+  static List<Route<dynamic>> getAllRoutes() {
+    final MyRouteObserver routeObserver = MyRouteObserver();
+    List<Route<dynamic>> routes = routeObserver.routeStack;
+    return routes;
+  }
 }

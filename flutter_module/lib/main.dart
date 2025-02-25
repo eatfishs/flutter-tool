@@ -7,7 +7,6 @@ import 'app/global/pageRouter/router_page.dart';
 
 
 void main() async {
-
   // 确保 WidgetsBinding 被初始化
   WidgetsFlutterBinding.ensureInitialized();
   // 初始化日志配置（可选）
@@ -44,12 +43,14 @@ class _MyAppState extends State<MyApp> {
     ScreenAdapter.init(context);
 
     return MaterialApp.router(
+
       title: "Flutter",
       theme: ThemeData(
         primarySwatch: Colors.blue,
         textTheme: const TextTheme(bodyMedium: TextStyle(fontSize: 30)),
       ),
       routerConfig: routerTest("home"),
+
       builder: EasyLoading.init(),
     );
   }

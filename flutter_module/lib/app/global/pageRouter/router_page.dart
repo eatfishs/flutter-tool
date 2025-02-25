@@ -16,6 +16,7 @@ import 'package:flutter_module/app/pages/test/refresh_widget_page.dart';
 import 'package:flutter_module/app/pages/test/test_router_page.dart';
 import 'package:flutter_module/app/pages/test/toast_utils_page.dart';
 import 'package:go_router/go_router.dart';
+import '../../../core/router/router_observer.dart';
 import '../../../core/widgets/Unknown_widget.dart';
 import '../../pages/test/cache_image_page.dart';
 import '../../pages/test/network_service_page.dart';
@@ -158,7 +159,7 @@ GoRouter routerTest(String pageString) {
       },
       debugLogDiagnostics: true,
       observers: [
-        RouteObserver()
+        MyRouteObserver()
       ],
       routes: [
         GoRoute(
