@@ -52,6 +52,7 @@ class CustomLogInterceptor extends Interceptor {
       SSL: ${timings['ssl']}ms 
       首包: ${timings['first_packet']}ms
       响应状态码: ${response.statusCode}
+      响应头：${response.headers}
       响应: ${response.data}
     ''');
   }
