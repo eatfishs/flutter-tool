@@ -20,21 +20,22 @@ enum MyNetworkCachePolicy {
   firstRequest,
 
   /// 先用缓存，在请求网络，得到网络数据后覆盖缓存，并且请求数据重新抛出去
-  /// 这个策略 需要自己组装两次请求，不然对封装效果不好
-  firstCacheRequest
+  /// 因为不能多次抛出结果，我们可以外边写2次
+  //firstCacheRequest
 }
 
 class MyNetworkCacheManager {
+  final String _fileModuleName = "NetworkCacheManager";
   /// 缓存策略
-  final MyNetworkCachePolicy cachePolicy = MyNetworkCachePolicy.none;
+  MyNetworkCachePolicy cachePolicy = MyNetworkCachePolicy.none;
   /// 缓存过期时间（单位：秒）
-  final int cacheExpirationTime = 24 * 60 * 60;
+  int cacheExpirationTime = 24 * 60 * 60;
 
   /// 获取缓存
   Future<String?> getCacheData(RequestOptions options) async {
     final filePath = _getFilePath(options);
     final fileUtils = FileUtils();
-    String? jsonString = await fileUtils.getFile(filePath);
+    String? jsonString = await fileUtils.getFile(fileName: filePath, moduleName: _fileModuleName);
 
     if (jsonString != null) {
       Map<String, dynamic> jsonMap = jsonString.toMap();
@@ -59,14 +60,15 @@ class MyNetworkCacheManager {
       'data': data
     };
     final jsonString = json.encode(cachedData);
-    fileUtils.writeFile(filePath, jsonString);
+    fileUtils.writeFile(fileName: filePath, content: jsonString, moduleName: _fileModuleName);
+
   }
 
 
   Future<void> _remove(RequestOptions options) async{
     final filePath = _getFilePath(options);
     final fileUtils = FileUtils();
-    fileUtils.removeFilePath(filePath);
+    fileUtils.removeFilePath(fileName: filePath,moduleName: _fileModuleName);
   }
 
   /// 获取文件路径

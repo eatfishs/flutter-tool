@@ -18,9 +18,7 @@ class CustomCacheInterceptor extends Interceptor {
   void onRequest(
       RequestOptions options, RequestInterceptorHandler handler) async {
     final MyNetworkCachePolicy cachePolicy = cacheManager.cachePolicy;
-
-    if (cachePolicy == MyNetworkCachePolicy.firstCache ||
-        cachePolicy == MyNetworkCachePolicy.firstCacheRequest) {
+    if (cachePolicy == MyNetworkCachePolicy.firstCache) {
       final cacheJsonString = await cacheManager.getCacheData(options);
       if (cacheJsonString != null) {
         // 有缓存数据，先返回缓存响应
@@ -30,14 +28,6 @@ class CustomCacheInterceptor extends Interceptor {
           statusCode: 200,
         );
         handler.resolve(response);
-
-        // 对于需要继续请求的情况
-        if (cachePolicy == MyNetworkCachePolicy.firstCacheRequest) {
-          // 继续执行原始请求
-          handler.next(options);
-          return;
-        }
-
         return;
       }
     }

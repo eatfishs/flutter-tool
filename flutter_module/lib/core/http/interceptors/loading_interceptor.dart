@@ -8,7 +8,6 @@ import '../../toast/toast_util.dart';
 class LoadingInterceptor extends Interceptor {
   /// 是否显示loading
   final bool isShowLoading;
-
   LoadingInterceptor({required this.isShowLoading});
 
   @override

@@ -33,7 +33,8 @@ class _dbPageState extends State<dbPage> {
     // 获取 FileUtils 单例实例
     final fileUtils = FileUtils();
     // 写入文件
-    await fileUtils.writeFile('test.txt', 'Hello, World!');
+
+    await fileUtils.writeFile(fileName: 'test.txt', content: 'Hello, World!');
   }
 
   void _db() async {

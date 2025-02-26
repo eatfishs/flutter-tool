@@ -22,6 +22,7 @@ class NetworkService<T> {
   NetworkService({List<Interceptor>? interceptors})
       : _interceptors = interceptors {
     _dio.httpClientAdapter = CustomHttpClientAdapter();
+
     /// 配置拦截器
     configureInterceptors(_interceptors);
   }
@@ -59,6 +60,10 @@ class NetworkService<T> {
     _dio.interceptors.add(DataTransformInterceptor());
     // 刷新token
     _dio.interceptors.add(RefreshTokenInterceptor());
+    // 缓存拦截器
+    MyNetworkCacheManager cacheManager = MyNetworkCacheManager();
+    cacheManager.cachePolicy = MyNetworkCachePolicy.firstCache;
+    _dio.interceptors.add(CustomCacheInterceptor(cacheManager: cacheManager));
     // 弹窗
     _dio.interceptors.add(LoadingInterceptor(isShowLoading: true));
     // 添加日志打印拦截器
@@ -66,9 +71,7 @@ class NetworkService<T> {
     // 添加错误处理拦截器
     _dio.interceptors.add(ErrorHandleInterceptor(
         isShowHttpErrorMsg: true, isShowDataErrorMsg: true));
-    // 缓存拦截器
-    MyNetworkCacheManager cacheManager = MyNetworkCacheManager();
-    _dio.interceptors.add(CustomCacheInterceptor(cacheManager: cacheManager));
+
   }
 
 // GET 请求方法
@@ -102,7 +105,6 @@ class NetworkService<T> {
   Future<MyBaseListModel<T>> getList<T>(
       {required MyRequestOptions options,
       required T Function(Object? json) fromJsonT}) async {
-
     // 配置options
     configureOptions(options);
     _options.method = MyRequestMethod.get;
@@ -135,7 +137,6 @@ class NetworkService<T> {
     // 发起请求
     MyResopnseModel response = await _request(options: options);
 
-
     if (response.isHttpSucess() == true) {
       try {
         return MyBaseModel.fromJson(
@@ -162,7 +163,6 @@ class NetworkService<T> {
     _options.method = MyRequestMethod.post;
     // 发起请求
     MyResopnseModel response = await _request(options: options);
-
 
     if (response.isHttpSucess() == true) {
       try {
