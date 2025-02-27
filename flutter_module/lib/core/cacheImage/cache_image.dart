@@ -41,7 +41,7 @@ class CachedImageWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return CachedNetworkImage(
       imageUrl: imageUrl,
-      cacheManager: MyCustomCacheManager.instance,
+      cacheManager:MyCustomCacheManager(),
       placeholder: (context, url) =>
           placeholder ?? Container(color: Colors.grey[300]),
       errorWidget: (context, url, error) {
