@@ -22,8 +22,11 @@ dependencies:
   rxdart: ^0.28.0
   # 时间格式转换 https://pub.flutter-io.cn/packages/date_format
   date_format: ^2.0.9
-  # 加密
+  # 用于哈希算法 (MD5/SHA256)
   crypto: ^3.0.1
+  # 用于 AES 加密
+  encrypt: ^5.0.1
+  pointycastle: ^3.1.1
   # 文件操作
   path_provider: ^2.0.11
   # 枷锁
