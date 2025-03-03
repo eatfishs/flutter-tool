@@ -4,10 +4,11 @@
  */
 import 'package:flutter/material.dart';
 
+import '../../../core/dialog/dialog_queue.dart';
 import '../../../core/toast/toast_util.dart';
 import '../../../core/widgets/custom_appBar_widget.dart';
-import '../../../core/widgets/custom_bottom_sheet_content.dart';
-import '../../../core/widgets/custom_dialog.dart';
+import '../../../core/dialog/custom_bottom_sheet_content.dart';
+import '../../../core/dialog/custom_dialog.dart';
 
 class ToastUtilsPage extends StatefulWidget {
   const ToastUtilsPage({super.key});
@@ -27,6 +28,7 @@ class _ToastUtilsPageState extends State<ToastUtilsPage> {
       },
     );
   }
+
   void _showCustomBottomSheet() {
     showModalBottomSheet(
       context: context,
@@ -42,6 +44,44 @@ class _ToastUtilsPageState extends State<ToastUtilsPage> {
       enableDrag: false,
       builder: (BuildContext context) {
         return const CustomBottomSheetContent();
+      },
+    );
+  }
+
+  void _showQueueDiaLog() {
+    // // 在任意位置添加弹窗
+    DialogQueue().add(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('提示1'),
+        content: const Text('这是第一个弹窗'),
+        actions: [
+          TextButton(
+            child: const Text('关闭'),
+            onPressed: () => Navigator.pop(context),
+          ),
+        ],
+      ),
+      onDismiss: () => print('第一个弹窗关闭'),
+    );
+
+    // 添加底部弹窗
+    DialogQueue().add(
+        context: context,
+        type: DialogType.bottom,
+        builder: (_) => CustomBottomSheetContent(),
+        backgroundColor: Colors.grey[100],
+        shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(top: Radius.circular(30))));
+
+    DialogQueue().add(
+      context: context,
+      builder: (BuildContext context) {
+        return const CustomDialog();
+      },
+      type: DialogType.center,
+      onDismiss: () {
+        print('自定义弹窗已关闭');
       },
     );
   }
@@ -75,12 +115,16 @@ class _ToastUtilsPageState extends State<ToastUtilsPage> {
             ),
             ElevatedButton(
               onPressed: _showCustomDialog,
-              child: const Text('显示自定义对话框'),
+              child: const Text('显示中间样式弹窗'),
             ),
             ElevatedButton(
               onPressed: _showCustomBottomSheet,
               child: const Text('显示自定义底部弹窗'),
             ),
+            ElevatedButton(
+              onPressed: _showQueueDiaLog,
+              child: const Text('弹窗队列'),
+            )
           ],
         ),
       ),
