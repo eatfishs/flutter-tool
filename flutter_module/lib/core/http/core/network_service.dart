@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:dio/dio.dart';
+import 'package:flutter_module/core/log/log.dart';
 import '../interceptors/custom_cache_Interceptor.dart';
 import '../manager/custom_HttpClient_adapter.dart';
 import '../manager/my_cache_newwork_manager.dart';
@@ -18,6 +19,7 @@ class NetworkService<T> {
   late Dio _dio = Dio();
   late MyRequestOptions _options;
   List<Interceptor>? _interceptors;
+  List<String> _cancelTokenKey = [];
 
   NetworkService({List<Interceptor>? interceptors})
       : _interceptors = interceptors {
@@ -29,7 +31,6 @@ class NetworkService<T> {
 
   /// 配置options
   void configureOptions(MyRequestOptions options) {
-    print("_________options:${options.urlPath}");
     _options = options;
     _dio.options.baseUrl = _options.baseUrl;
     _dio.options.connectTimeout = _options.connectTimeout;
@@ -71,7 +72,6 @@ class NetworkService<T> {
     // 添加错误处理拦截器
     _dio.interceptors.add(ErrorHandleInterceptor(
         isShowHttpErrorMsg: true, isShowDataErrorMsg: true));
-
   }
 
 // GET 请求方法
@@ -91,9 +91,8 @@ class NetworkService<T> {
           fromJsonT,
         );
       } catch (e, stackTrace) {
-        print('json转model失败 Stack trace:'
-            ' $stackTrace');
-        print('json转model失败: $e');
+        Log.error('json转model失败 Stack trace:'
+            ' $stackTrace, e:${e}');
         throw e;
       }
     } else {
@@ -117,9 +116,8 @@ class NetworkService<T> {
           fromJsonT,
         );
       } catch (e, stackTrace) {
-        print('json转model失败 Stack trace:'
-            ' $stackTrace');
-        print('json转model失败: $e');
+        Log.error('json转model失败 Stack trace:'
+            ' $stackTrace, e:${e}');
         throw e;
       }
     } else {
@@ -144,9 +142,8 @@ class NetworkService<T> {
           fromJsonT,
         );
       } catch (e, stackTrace) {
-        print('json转model失败 Stack trace:'
-            ' $stackTrace');
-        print('json转model失败: $e');
+        Log.error('json转model失败 Stack trace:'
+            ' $stackTrace, e:${e}');
         throw e;
       }
     } else {
@@ -171,9 +168,8 @@ class NetworkService<T> {
           fromJsonT,
         );
       } catch (e, stackTrace) {
-        print('json转model失败 Stack trace:'
-            ' $stackTrace');
-        print('json转model失败: $e');
+        Log.error('json转model失败 Stack trace:'
+            ' $stackTrace, e:${e}');
         throw e;
       }
     } else {
@@ -183,6 +179,10 @@ class NetworkService<T> {
 
   /// 发起请求
   Future<MyResopnseModel> _request({required MyRequestOptions options}) async {
+    String tokenKey =
+        MyDioManager.instance.getCancelTokenKey(options: _options);
+    _cancelTokenKey.add(tokenKey);
+
     CancelToken cancelToken =
         MyDioManager.instance.getCancelToken(options: _options);
     try {
@@ -212,14 +212,23 @@ class NetworkService<T> {
       throw Exception('没有定义的请求方式');
     } on DioError catch (e, stackTrace) {
       // 请求过程出错
-      print(' 请求过程出错: ${e.toString()}');
-      print('请求过程出错 Stack trace:'
-          ' $stackTrace');
+      Log.error('''
+      请求过程出错 
+      Stack trace:$stackTrace
+      e:${e.toString()}
+      ''');
       throw _handleError(e: e);
     } finally {
       String cancelTokenKey =
           MyDioManager.instance.getCancelTokenKey(options: _options);
       MyDioManager.instance.cancelTokens.remove(cancelTokenKey);
+    }
+  }
+
+  // 取消全部请求
+  void cancelAllRequests() {
+    for (String key in _cancelTokenKey) {
+      MyDioManager.instance.cancelRequest(key);
     }
   }
 
@@ -231,6 +240,5 @@ class NetworkService<T> {
       错误响应：${resopnse.toString()}  
       错误具体信息: ${e.toString()}
     ''';
-    ;
   }
 }

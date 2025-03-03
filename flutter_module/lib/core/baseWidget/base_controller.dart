@@ -5,21 +5,35 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 
+import '../http/core/network_service.dart';
+
 // MVC 基类 Controller
 abstract class BaseController extends ChangeNotifier {
+  NetworkService networkService = NetworkService();
   /// onInit()：Controller 初始化时触发，适合初始化数据
   @mustCallSuper
   void onInit() {}
 
   /// onDispose()：Controller 销毁时触发，用于资源清理
   @mustCallSuper
-  void onDispose() {}
+  void onDispose() {
+    networkService.cancelAllRequests();
+  }
+
+
+  /// 统一请求网络
+  void loadData() {
+
+  }
 
   /// 统一错误处理入口 handleError()
   void handleError(dynamic error) {
     debugPrint('Controller Error: $error');
     // 可扩展统一错误处理逻辑
   }
+
+
+
 
   // 状态标记
   bool _isDisposed = false;
