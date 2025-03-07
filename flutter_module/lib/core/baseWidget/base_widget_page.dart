@@ -4,23 +4,30 @@
  */
 import 'package:flutter/material.dart';
 
+import '../router/route_aware_state.dart';
+
 /// 页面基类（StatefulWidget 版本）
 abstract class BaseWidgetPage extends StatefulWidget {
   const BaseWidgetPage({super.key});
 }
 
 /// 页面基类状态管理
-abstract class BaseWidgetPageState<T extends BaseWidgetPage> extends State<T> {
-
+abstract class BaseWidgetPageState<T extends BaseWidgetPage>
+    extends RouteAwareState<T> with WidgetsBindingObserver {
   /// AppBar 标题
   String get appBarTitle => '默认标题';
+
   /// AppBar 背景色（默认使用主题色）
   Color getAppBarColor(BuildContext context) => Theme.of(context).primaryColor;
+
   /// 是否自动显示返回按钮（默认 true）
   bool get automaticallyImplyLeading => true;
+
   /// AppBar 右侧操作按钮
   List<Widget>? get appBarActions => null;
+
   String get pageID => '当前pageId';
+
   /// 构建页面主体内容（子类必须实现）
   Widget buildBody(BuildContext context);
 
@@ -41,11 +48,18 @@ abstract class BaseWidgetPageState<T extends BaseWidgetPage> extends State<T> {
   void initState() {
     super.initState();
     // 可以在这里添加一些通用的初始化逻辑
+    WidgetsBinding.instance.addObserver(this);
     onPageInit();
   }
 
   @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+  }
+
+  @override
   void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
     // 可以在这里添加一些通用的资源释放逻辑
     onPageDispose();
     super.dispose();
@@ -56,6 +70,25 @@ abstract class BaseWidgetPageState<T extends BaseWidgetPage> extends State<T> {
 
   // 可以被子类重写的资源释放方法
   void onPageDispose() {}
+
+  @override
+  void onPageVisible() {
+    print('页面变为可见');
+  }
+
+  @override
+  void onPageHidden() {
+    print('页面变为隐藏');
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed) {
+      print('应用回到前台，页面可见');
+    } else if (state == AppLifecycleState.paused) {
+      print('应用进入后台，页面隐藏');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {

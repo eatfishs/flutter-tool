@@ -7,11 +7,27 @@ import 'package:flutter_module/core/log/log.dart';
 
 class MyRouteObserver extends NavigatorObserver {
   static final MyRouteObserver _instance = MyRouteObserver._internal();
+
   factory MyRouteObserver() {
     return _instance;
   }
+
   MyRouteObserver._internal();
+
   final List<Route<dynamic>> routeStack = [];
+  final Map<Route<dynamic>, List<RouteAware>> _routeAwareSubscriptions = {};
+
+  /// 订阅路由变化
+  void subscribe(RouteAware routeAware, Route<dynamic> route) {
+    _routeAwareSubscriptions.putIfAbsent(route, () => []).add(routeAware);
+  }
+
+  /// 取消订阅路由变化
+  void unsubscribe(RouteAware routeAware) {
+    for (final route in _routeAwareSubscriptions.keys) {
+      _routeAwareSubscriptions[route]?.remove(routeAware);
+    }
+  }
 
   /// 当一个新的路由被推送到导航栈时，此方法会被调用。
   @override
@@ -20,6 +36,7 @@ class MyRouteObserver extends NavigatorObserver {
     routeStack.add(route);
     Log.debug(
         '新的路由被推送到导航栈: ${route.settings.name} param:${route.settings.arguments}, previousRoute= ${previousRoute?.settings.name}');
+    _handleRouteVisibility(previousRoute, route);
   }
 
   /// 当一个路由从导航栈中弹出时，此方法会被调用。route 参数表示被弹出的路由，previousRoute 参数
@@ -29,6 +46,7 @@ class MyRouteObserver extends NavigatorObserver {
     routeStack.remove(route);
     Log.debug(
         '路由被弹出，当前路由堆栈: ${route.settings.name},param:${route.settings.arguments}, previousRoute= ${previousRoute?.settings.name}');
+    _handleRouteVisibility(route, previousRoute);
   }
 
   /// 当一个路由从导航栈中被移除时，此方法会被调用。移除路由和弹出路由不同，移除操作可以移除导航栈中任意位置的路由，而弹出操作只能移除栈顶的路由。
@@ -40,6 +58,7 @@ class MyRouteObserver extends NavigatorObserver {
 
     Log.debug(
         '路由被移除，当前路由堆栈: ${route.settings.name}, previousRoute= ${previousRoute?.settings.name}');
+    _handleRouteVisibility(route, previousRoute);
   }
 
   @override
@@ -53,6 +72,7 @@ class MyRouteObserver extends NavigatorObserver {
     }
     Log.debug(
         '路由被替换，当前路由堆栈: new= ${newRoute?.settings.name}, old= ${oldRoute?.settings.name}');
+    _handleRouteVisibility(oldRoute, newRoute);
   }
 
   /// 当用户开始进行一个导航手势（如在 iOS 上从屏幕边缘向左滑动返回上一页）时，此方法会被调用。
@@ -68,5 +88,30 @@ class MyRouteObserver extends NavigatorObserver {
   @override
   void didStopUserGesture() {
     Log.debug('手势结束：didStopUserGesture');
+  }
+
+  /// 处理路由可见性变化
+  void _handleRouteVisibility(
+      Route<dynamic>? oldRoute, Route<dynamic>? newRoute) {
+    if (oldRoute != null) {
+      _notifyRouteAware(oldRoute, false);
+    }
+    if (newRoute != null) {
+      _notifyRouteAware(newRoute, true);
+    }
+  }
+
+  /// 通知订阅者路由可见性变化
+  void _notifyRouteAware(Route<dynamic> route, bool isVisible) {
+    final routeAwares = _routeAwareSubscriptions[route];
+    if (routeAwares != null) {
+      for (final routeAware in routeAwares) {
+        if (isVisible) {
+          routeAware.didPush();
+        } else {
+          routeAware.didPopNext();
+        }
+      }
+    }
   }
 }
