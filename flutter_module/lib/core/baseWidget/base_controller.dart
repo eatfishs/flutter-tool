@@ -10,6 +10,7 @@ import '../http/core/network_service.dart';
 // MVC 基类 Controller
 abstract class BaseController extends ChangeNotifier {
   NetworkService networkService = NetworkService();
+
   /// onInit()：Controller 初始化时触发，适合初始化数据
   @mustCallSuper
   void onInit() {}
@@ -20,20 +21,14 @@ abstract class BaseController extends ChangeNotifier {
     networkService.cancelAllRequests();
   }
 
-
   /// 统一请求网络
-  void loadData() {
-
-  }
+  void loadData() {}
 
   /// 统一错误处理入口 handleError()
   void handleError(dynamic error) {
     debugPrint('Controller Error: $error');
     // 可扩展统一错误处理逻辑
   }
-
-
-
 
   // 状态标记
   bool _isDisposed = false;
@@ -96,5 +91,3 @@ class CounterController extends BaseController {
   }
 }
 * */
-
-
