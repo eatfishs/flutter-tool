@@ -7,8 +7,16 @@ import 'package:flutter/foundation.dart';
 
 import '../http/core/network_service.dart';
 
-// MVC 基类 Controller
-abstract class BaseController extends ChangeNotifier {
+// 标准视图状态
+enum ViewState { idle, loading, success, error }
+
+
+abstract class BaseViewModel extends ChangeNotifier {
+  // 状态标记
+  bool _isDisposed = false;
+
+  bool get isDisposed => _isDisposed;
+
   NetworkService networkService = NetworkService();
 
   /// onInit()：Controller 初始化时触发，适合初始化数据
@@ -30,12 +38,7 @@ abstract class BaseController extends ChangeNotifier {
     // 可扩展统一错误处理逻辑
   }
 
-  // 状态标记
-  bool _isDisposed = false;
-
-  bool get isDisposed => _isDisposed;
-
-  BaseController() {
+  BaseViewModel() {
     onInit();
   }
 
@@ -56,37 +59,44 @@ abstract class BaseController extends ChangeNotifier {
   void safeNotify() {
     if (!_isDisposed) notifyListeners();
   }
+
+  // 状态管理扩展
+  ViewState _state = ViewState.idle;
+
+  ViewState get state => _state;
+
+  void setState(ViewState newState) {
+    _state = newState;
+    safeNotify();
+  }
 }
 
 /*
-// 子类 Controller
-class CounterController extends BaseController {
-  final AnalyticsService _analytics; // 依赖注入示例
-  int _count = 0;
+class UserViewModel extends BaseViewModel {
+  final UserRepository _repository;
+  User? _user;
+  String? _errorMessage;
 
-  int get count => _count;
+  User? get user => _user;
+  String? get errorMessage => _errorMessage;
 
-  CounterController(this._analytics);
+  UserViewModel(this._repository); // 依赖注入
 
-  void increment() {
-    _count++;
-    _analytics.trackEvent('counter_increment');
-    safeNotify();
-  }
-
-  Future<void> asyncIncrement() async {
+  Future<void> loadUser() async {
+    setState(ViewState.loading);
     try {
-      await Future.delayed(Duration(seconds: 1));
-      _count += 2;
-      safeNotify();
+      _user = await _repository.fetchUser();
+      setState(ViewState.success);
     } catch (e) {
+      _errorMessage = 'Failed to load user: ${e.toString()}';
+      setState(ViewState.error);
       handleError(e);
     }
   }
 
   @override
   void onDispose() {
-    _analytics.dispose();
+    _user = null;
     super.onDispose();
   }
 }
