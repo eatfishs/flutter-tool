@@ -1,4 +1,4 @@
-![Flutter跟原生混编架构](https://images-blogs.oss-cn-hangzhou.aliyuncs.com/imageFlutter%E8%B7%9F%E5%8E%9F%E7%94%9F%E6%B7%B7%E7%BC%96%E6%9E%B6%E6%9E%84.png)
+![Flutter跟原生混编架构](./Flutter_image.png)
 
 # 业务层
 
