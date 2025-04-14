@@ -56,6 +56,12 @@ class _NetworkServicePageState extends State<NetworkServicePage> {
     }
   }
 
+  void _refreshToken() {
+      _get();
+      _post();
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -84,6 +90,12 @@ class _NetworkServicePageState extends State<NetworkServicePage> {
                 width: 200,
                 color: Colors.red,
                 child: TextButton(onPressed: _post, child: Text("post请求"))),
+            SizedBox(height: 50),
+            Container(
+                height: 50,
+                width: 200,
+                color: Colors.red,
+                child: TextButton(onPressed: _refreshToken, child: Text("token续租"))),
           ],
         ),
       ),

@@ -63,7 +63,7 @@ class NetworkService<T> {
     _dio.interceptors.add(RefreshTokenInterceptor());
     // 缓存拦截器
     MyNetworkCacheManager cacheManager = MyNetworkCacheManager();
-    cacheManager.cachePolicy = MyNetworkCachePolicy.firstCache;
+    cacheManager.cachePolicy = MyNetworkCachePolicy.none;
     _dio.interceptors.add(CustomCacheInterceptor(cacheManager: cacheManager));
     // 弹窗
     _dio.interceptors.add(LoadingInterceptor(isShowLoading: true));
