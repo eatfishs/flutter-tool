@@ -36,6 +36,10 @@ dependencies:
   # 日志打印
   logger: ^2.5.0
   equatable: ^2.0.7 # 可选，用于值比较
+  flutter_boost:
+    git:
+      url: 'https://github.com/alibaba/flutter_boost.git'
+      ref: '4.6.5'
 
   # ----- UI 库 -----------
   # 图片缓存 https://pub.flutter-io.cn/packages/cached_network_image
