@@ -26,17 +26,10 @@
     "DEFINES_MODULE": "YES"
   },
   "dependencies": {
-    "Flutter": [
-
-    ],
-    "path_provider_foundation": [
-
-    ],
-    "shared_preferences_foundation": [
-
-    ],
-    "sqflite_darwin": [
-
-    ]
+    "Flutter": [],
+    "flutter_boost": [],
+    "path_provider_foundation": [],
+    "shared_preferences_foundation": [],
+    "sqflite_darwin": []
   }
 }

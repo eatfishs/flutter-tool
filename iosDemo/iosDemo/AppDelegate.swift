@@ -25,7 +25,7 @@ class AppDelegate: FlutterAppDelegate { // More on the FlutterAppDelegate.
 
         // 往方法通道注册方法调用处理回调
         methodChannel?.setMethodCallHandler { call, result in
-            ifcall.method == "post_data" {
+            if call.method == "post_data" {
                 // 打印flutter传来的值
                 print("=====打印flutter传来的值=======")
                 print(call.arguments ?? {})

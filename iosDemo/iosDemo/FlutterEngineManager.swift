@@ -5,122 +5,93 @@
 //  Created by jiangjunhui on 2025/2/25.
 //
 
-import UIKit
 import Flutter
+import FlutterPluginRegistrant
+import UIKit
 
-class FlutterEnginePool {
-    // MARK: - 单例
+final class FlutterEnginePool {
+    // MARK: - Singleton
     static let shared = FlutterEnginePool()
-    private init() {}
-    
-    // MARK: - 核心属性
-    private let engineGroup = FlutterEngineGroup(name: "flutter_engine_pool", project: nil)
-    private var activeEngines: [String: FlutterEngine] = [:]  // 使用中的引擎 [路由标识: 引擎]
-    private var idleEngines: [String: FlutterEngine] = [:]    // 闲置引擎池
-    private let queue = DispatchQueue(label: "com.flutter.engine.pool.lock")  // 线程安全队列
-    
-    // MARK: - 配置参数
-    private let maxIdleCount = 3           // 最大闲置引擎数
-    private let maxIdleTime: TimeInterval = 300  // 闲置超时时间（秒）
-    private var timer: Timer?              // 闲置检测定时器
-    
-    // MARK: - 公开方法
-    /// 获取引擎（按路由标识）
-    func getEngine(for route: String) -> FlutterEngine {
-        return queue.sync {
-            // 1. 查找可用闲置引擎
-            if let engine = idleEngines.removeValue(forKey: route) {
-                activeEngines[route] = engine
-                return engine
-            }
-            
-            // 2. 创建新引擎
-            let engine = engineGroup.makeEngine(
-                withEntrypoint: "main",
-                libraryURI: nil,
-                initialRoute: route
-            )
-            GeneratedPluginRegistrant.register(with: engine)
-            activeEngines[route] = engine
-            
-            // 3. 启动闲置检测
-            startIdleCheckTimer()
-            
-            return engine
-        }
+    private init() {
+        setupMemoryWarningObserver()
     }
     
-    /// 归还引擎到池中
-    func recycleEngine(for route: String) {
-        queue.async {
-            guard let engine = self.activeEngines.removeValue(forKey: route) else { return }
-            
-            // 1. 超过最大闲置数时销毁最旧的引擎
-            if self.idleEngines.count >= self.maxIdleCount, let firstKey = self.idleEngines.keys.first {
-                self.idleEngines.removeValue(forKey: firstKey)?.destroyContext()
-            }
-            
-            // 2. 记录闲置时间戳（用于LRU回收）
-            let metadata = ["recycleTime": Date()]
-            engine.setMetadata(metadata)
-            
-            // 3. 存入闲置池
-            self.idleEngines[route] = engine
-        }
-    }
+    // MARK: - Properties
+    private var cachedEngines: [String: [FlutterEngine]] = [:]
+    private let syncQueue = DispatchQueue(label: "com.flutter.engine.pool.queue")
+    private let maxCacheCount = 3 // 每个业务场景最大缓存数
     
-    /// 强制销毁所有引擎（用于内存警告）
-    func purgeAllEngines() {
-        queue.async {
-            self.activeEngines.values.forEach { $0.destroyContext() }
-            self.idleEngines.values.forEach { $0.destroyContext() }
-            self.activeEngines.removeAll()
-            self.idleEngines.removeAll()
-        }
-    }
-    
-    // MARK: - 私有方法
-    private func startIdleCheckTimer() {
-        guard timer == nil else { return }
-        
-        timer = Timer.scheduledTimer(withTimeInterval: 60, repeats: true) { [weak self] _ in
-            self?.checkIdleEngines()
-        }
-    }
-    
-    private func checkIdleEngines() {
-        queue.async {
-            let now = Date()
-            
-            // 清理超时引擎
-            self.idleEngines = self.idleEngines.filter { route, engine in
-                guard let metadata = engine.metadata as? [String: Any],
-                      let recycleTime = metadata["recycleTime"] as? Date else {
-                    return false
-                }
-                
-                if now.timeIntervalSince(recycleTime) > self.maxIdleTime {
-                    engine.destroyContext()
-                    return false
-                }
-                return true
-            }
-        }
-    }
-}
+    // MARK: - 获取引擎
 
-// MARK: - 内存警告扩展
-extension FlutterEnginePool {
-    func setupMemoryWarningObserver() {
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(handleMemoryWarning),
-            name: UIApplication.didReceiveMemoryWarningNotification,
-            object: nil
-        )
+    func getEngine(identifier: String) -> FlutterEngine {
+        var engine: FlutterEngine!
+        
+        syncQueue.sync {
+            if var engines = cachedEngines[identifier], !engines.isEmpty {
+                engine = engines.removeLast()
+            } else {
+                engine = createNewEngine(identifier: identifier)
+            }
+        }
+        
+        return engine
     }
     
-    @objc private func handleMemoryWarning() {
-        purgeAllEngines()
+    // MARK: - 回收引擎
+    func recycleEngine(_ engine: FlutterEngine, identifier: String) {
+        syncQueue.async { [weak self] in
+            guard let self = self else { return }
+            
+            self.resetEngineState(engine)
+            
+            if self.cachedEngines[identifier] == nil {
+                self.cachedEngines[identifier] = []
+            }
+            
+            if var engines = self.cachedEngines[identifier] {
+                if engines.count >= self.maxCacheCount {
+                    engines.removeFirst() // LRU 淘汰
+                }
+                engines.append(engine)
+                self.cachedEngines[identifier] = engines
+            }
+        }
+    }
+    
+    // MARK: - 创建新引擎
+    private func createNewEngine(identifier: String) -> FlutterEngine {
+        let engine = FlutterEngine(name: identifier, project: nil, allowHeadlessExecution: true)
+        engine.run(withEntrypoint: nil)
+        return engine
+    }
+    
+    // MARK: - 重置引擎状态
+
+    private func resetEngineState(_ engine: FlutterEngine) {
+        // 通过 MethodChannel 通知 Flutter 端重置状态
+        // 示例：清理路由栈 (Navigator.of(context).popUntil((route) => route.isFirst))
+        // 或者重启引擎（根据业务需求选择）
+        engine.destroyContext()
+        engine.run(withEntrypoint: nil)
+    }
+    
+    // MARK: - 清理所有缓存
+
+    func clearAll() {
+        syncQueue.async { [weak self] in
+            self?.cachedEngines.removeAll()
+        }
+    }
+    
+    // MARK: - 内存警告处理
+
+    private func setupMemoryWarningObserver() {
+        NotificationCenter.default.addObserver(
+            forName: UIApplication.didReceiveMemoryWarningNotification,
+            object: nil,
+            queue: .main
+        ) { [weak self] _ in
+            self?.clearAll()
+        }
     }
 }
