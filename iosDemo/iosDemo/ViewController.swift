@@ -31,9 +31,7 @@ class ViewController: UIViewController {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return
         }
-        // 模拟发送消息给Flutter
-        appDelegate.methodChannel?.invokeMethod("Router_Page_Method", arguments: ["code": "0", "message": "向flutter传递值-home", "data": ["page": "home"]])
-
+       
         let flutterEngine = appDelegate.flutterEngine
         let flutterViewController =
             FlutterViewController(engine: flutterEngine, nibName: nil, bundle: nil)

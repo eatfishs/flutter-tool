@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7207675900659D6B604F6F66 /* Pods_iosDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D41250043FC2B25A257922A3 /* Pods_iosDemo.framework */; };
+		95995D8868EEF5EBE517B15B /* Pods_iosDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 855A3E9EF58708C0C07D3387 /* Pods_iosDemo.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,9 +25,9 @@
 
 /* Begin PBXFileReference section */
 		346231262CFB090F006FDEE2 /* iosDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iosDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		9C3EF0B007B59B7DD940001E /* Pods-iosDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosDemo.debug.xcconfig"; path = "Target Support Files/Pods-iosDemo/Pods-iosDemo.debug.xcconfig"; sourceTree = "<group>"; };
-		BB33C957CAA74D464A91E38F /* Pods-iosDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosDemo.release.xcconfig"; path = "Target Support Files/Pods-iosDemo/Pods-iosDemo.release.xcconfig"; sourceTree = "<group>"; };
-		D41250043FC2B25A257922A3 /* Pods_iosDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iosDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		715FF1AEE1AB3C90C301D16F /* Pods-iosDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosDemo.release.xcconfig"; path = "Target Support Files/Pods-iosDemo/Pods-iosDemo.release.xcconfig"; sourceTree = "<group>"; };
+		855A3E9EF58708C0C07D3387 /* Pods_iosDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iosDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A7FE94B307FADA9630C19F3C /* Pods-iosDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosDemo.debug.xcconfig"; path = "Target Support Files/Pods-iosDemo/Pods-iosDemo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -56,7 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7207675900659D6B604F6F66 /* Pods_iosDemo.framework in Frameworks */,
+				95995D8868EEF5EBE517B15B /* Pods_iosDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -69,7 +69,7 @@
 				346231282CFB090F006FDEE2 /* iosDemo */,
 				346231272CFB090F006FDEE2 /* Products */,
 				A4F0F0DA9A7486011F12EDD6 /* Pods */,
-				4868B4BF470A2DDDF7AC61FA /* Frameworks */,
+				A19326DDB121578E1D7D3BDC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -81,10 +81,10 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		4868B4BF470A2DDDF7AC61FA /* Frameworks */ = {
+		A19326DDB121578E1D7D3BDC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D41250043FC2B25A257922A3 /* Pods_iosDemo.framework */,
+				855A3E9EF58708C0C07D3387 /* Pods_iosDemo.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -92,8 +92,8 @@
 		A4F0F0DA9A7486011F12EDD6 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				9C3EF0B007B59B7DD940001E /* Pods-iosDemo.debug.xcconfig */,
-				BB33C957CAA74D464A91E38F /* Pods-iosDemo.release.xcconfig */,
+				A7FE94B307FADA9630C19F3C /* Pods-iosDemo.debug.xcconfig */,
+				715FF1AEE1AB3C90C301D16F /* Pods-iosDemo.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -105,14 +105,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 346231392CFB0911006FDEE2 /* Build configuration list for PBXNativeTarget "iosDemo" */;
 			buildPhases = (
-				A6D7A1E46F1DF5F1F2EBFAA5 /* [CP] Check Pods Manifest.lock */,
-				4983708602EAF665F6FCDB66 /* [CP-User] Run Flutter Build flutter_module Script */,
+				30A53E70A57A539F1E9344D2 /* [CP] Check Pods Manifest.lock */,
+				E548A14178EF34F854BAA76A /* [CP-User] Run Flutter Build flutter_module Script */,
 				346231222CFB090F006FDEE2 /* Sources */,
 				346231232CFB090F006FDEE2 /* Frameworks */,
 				346231242CFB090F006FDEE2 /* Resources */,
 				340F02B82CFB0E4400AF90B2 /* Embed Frameworks */,
-				4E12FD5F3D87EBDF6E3567A8 /* [CP] Embed Pods Frameworks */,
-				116EF47E6F773D01CB3597DE /* [CP-User] Embed Flutter Build flutter_module Script */,
+				1660DEC13BF087817F86EA11 /* [CP] Embed Pods Frameworks */,
+				D27012D4A8997E7E0FEE39C8 /* [CP-User] Embed Flutter Build flutter_module Script */,
 			);
 			buildRules = (
 			);
@@ -171,27 +171,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		116EF47E6F773D01CB3597DE /* [CP-User] Embed Flutter Build flutter_module Script */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			name = "[CP-User] Embed Flutter Build flutter_module Script";
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "set -e\nset -u\nsource \"${SRCROOT}/../flutter_module/.ios/Flutter/flutter_export_environment.sh\"\nexport VERBOSE_SCRIPT_LOGGING=1 && \"$FLUTTER_ROOT\"/packages/flutter_tools/bin/xcode_backend.sh embed_and_thin";
-		};
-		4983708602EAF665F6FCDB66 /* [CP-User] Run Flutter Build flutter_module Script */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			name = "[CP-User] Run Flutter Build flutter_module Script";
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "set -e\nset -u\nsource \"${SRCROOT}/../flutter_module/.ios/Flutter/flutter_export_environment.sh\"\nexport VERBOSE_SCRIPT_LOGGING=1 && \"$FLUTTER_ROOT\"/packages/flutter_tools/bin/xcode_backend.sh build";
-		};
-		4E12FD5F3D87EBDF6E3567A8 /* [CP] Embed Pods Frameworks */ = {
+		1660DEC13BF087817F86EA11 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -206,7 +186,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-iosDemo/Pods-iosDemo-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A6D7A1E46F1DF5F1F2EBFAA5 /* [CP] Check Pods Manifest.lock */ = {
+		30A53E70A57A539F1E9344D2 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -228,6 +208,26 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		D27012D4A8997E7E0FEE39C8 /* [CP-User] Embed Flutter Build flutter_module Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "[CP-User] Embed Flutter Build flutter_module Script";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\nset -u\nsource \"${SRCROOT}/../flutter_module/.ios/Flutter/flutter_export_environment.sh\"\nexport VERBOSE_SCRIPT_LOGGING=1 && \"$FLUTTER_ROOT\"/packages/flutter_tools/bin/xcode_backend.sh embed_and_thin";
+		};
+		E548A14178EF34F854BAA76A /* [CP-User] Run Flutter Build flutter_module Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "[CP-User] Run Flutter Build flutter_module Script";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\nset -u\nsource \"${SRCROOT}/../flutter_module/.ios/Flutter/flutter_export_environment.sh\"\nexport VERBOSE_SCRIPT_LOGGING=1 && \"$FLUTTER_ROOT\"/packages/flutter_tools/bin/xcode_backend.sh build";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -243,10 +243,11 @@
 /* Begin XCBuildConfiguration section */
 		3462313A2CFB0911006FDEE2 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9C3EF0B007B59B7DD940001E /* Pods-iosDemo.debug.xcconfig */;
+			baseConfigurationReference = A7FE94B307FADA9630C19F3C /* Pods-iosDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8YR627Z7UA;
@@ -264,8 +265,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = test.iosDemo.jvuwebfnjv;
+				PRODUCT_BUNDLE_IDENTIFIER = test.iosDemo.jvuwe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -274,10 +276,11 @@
 		};
 		3462313B2CFB0911006FDEE2 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BB33C957CAA74D464A91E38F /* Pods-iosDemo.release.xcconfig */;
+			baseConfigurationReference = 715FF1AEE1AB3C90C301D16F /* Pods-iosDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8YR627Z7UA;
@@ -295,8 +298,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = test.iosDemo.jvuwebfnjv;
+				PRODUCT_BUNDLE_IDENTIFIER = test.iosDemo.jvuwe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
