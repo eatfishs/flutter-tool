@@ -1,7 +1,6 @@
-/**
- * @author: jiangjunhui
- * @date: 2025/1/23
- */
+/// @author: jiangjunhui
+/// @date: 2025/1/23
+library;
 import 'dart:io';
 import 'package:flutter/services.dart';
 import 'package:flutter_module/core/log/log.dart';
@@ -105,8 +104,8 @@ class FileUtils {
       String fullPath;
       Directory dir;
       if (moduleName != null) {
-        fullPath = '$path/$Custom_Cached_File_Key/${moduleName}/$fileName';
-        dir = Directory('$path/$Custom_Cached_File_Key/${moduleName}');
+        fullPath = '$path/$Custom_Cached_File_Key/$moduleName/$fileName';
+        dir = Directory('$path/$Custom_Cached_File_Key/$moduleName');
       } else {
         fullPath = '$path/$Custom_Cached_File_Key/$fileName';
         dir = Directory('$path/$Custom_Cached_File_Key');

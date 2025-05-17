@@ -1,8 +1,6 @@
-/**
- * @author: jiangjunhui
- * @date: 2025/2/20
- */
-import 'package:flutter/material.dart';
+/// @author: jiangjunhui
+/// @date: 2025/2/20
+library;
 
 typedef ThrottleFunction = void Function();
 /*

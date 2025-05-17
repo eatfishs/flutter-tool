@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_module/core/utils/extension_color.dart';
 import 'package:flutter_module/core/widgets/custom_appBar_widget.dart';
 class ColorPage extends StatelessWidget {
+  const ColorPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -9,11 +11,11 @@ class ColorPage extends StatelessWidget {
         title: '颜色',
         actions: [
           IconButton(
-            icon: Icon(Icons.settings),
+            icon: const Icon(Icons.settings),
             onPressed: () {
               // Handle settings button press
               ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text('Settings pressed')),
+                const SnackBar(content: Text('Settings pressed')),
               );
             },
           ),

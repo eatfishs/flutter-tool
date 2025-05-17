@@ -1,7 +1,6 @@
-/**
- * @author: jiangjunhui
- * @date: 2025/1/22
- */
+/// @author: jiangjunhui
+/// @date: 2025/1/22
+library;
 import 'package:dio/dio.dart';
 import 'dart:async';
 
@@ -46,7 +45,7 @@ class RefreshTokenInterceptor extends QueuedInterceptorsWrapper {
         options.headers['Token'] = _token;
         handler.next(options);
       } catch (e) {
-        handler.reject(DioError(requestOptions: options, error: e));
+        handler.reject(DioException(requestOptions: options, error: e));
       }
     } else {
       options.headers['Token'] = _token;
@@ -62,7 +61,7 @@ class RefreshTokenInterceptor extends QueuedInterceptorsWrapper {
   }
 
   @override
-  void onError(DioError error, ErrorInterceptorHandler handler) {
+  void onError(DioException error, ErrorInterceptorHandler handler) {
     handler.next(error);
   }
 }

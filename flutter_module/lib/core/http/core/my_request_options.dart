@@ -23,13 +23,13 @@ class MyRequestOptions {
   String urlPath = "";
 
   /// 参数
-  Map<String, dynamic> params = Map<String, dynamic>();
+  Map<String, dynamic> params = <String, dynamic>{};
 
   /// HTTP 请求头。
-  Map<String, dynamic> headers = Map<String, dynamic>();
+  Map<String, dynamic> headers = <String, dynamic>{};
 
   /// 连接服务器超时时间.
-  Duration connectTimeout = Duration(seconds: 10);
+  Duration connectTimeout = const Duration(seconds: 10);
 
   /// 接收数据的超时设置。
   ///
@@ -41,7 +41,7 @@ class MyRequestOptions {
   /// [DioException]。
   ///
   /// `null` 或 `Duration.zero` 即不设置超时。
-  Duration receiveTimeout = Duration(seconds: 10);
+  Duration receiveTimeout = const Duration(seconds: 10);
 
   MyRequestOptions({required String url, Map<String, dynamic>? paramsMap}) {
     urlPath = url;

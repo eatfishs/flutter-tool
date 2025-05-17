@@ -1,7 +1,6 @@
-/**
- * @author: jiangjunhui
- * @date: 2024/12/5
- */
+/// @author: jiangjunhui
+/// @date: 2024/12/5
+library;
 import 'dart:convert';
 import 'package:crypto/crypto.dart';
 /// 文本工具类

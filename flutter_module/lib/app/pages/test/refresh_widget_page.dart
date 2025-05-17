@@ -1,7 +1,6 @@
-/**
- * @author: jiangjunhui
- * @date: 2025/2/6
- */
+/// @author: jiangjunhui
+/// @date: 2025/2/6
+library;
 import 'package:flutter/material.dart';
 import 'package:flutter_module/core/refresh/custom_refresh_widget.dart';
 import 'package:pull_to_refresh_flutter3/pull_to_refresh_flutter3.dart';
@@ -57,7 +56,7 @@ class _RefreshWidgetPageState extends State<RefreshWidgetPage> {
     return Scaffold(
       appBar: CustomAppBar(
         title: '刷新',
-        actions: [],
+        actions: const [],
         onBackPressed: () {
           // Handle back button press, if needed
           Navigator.pop(context);

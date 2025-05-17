@@ -1,4 +1,3 @@
-import 'dart:ffi';
 
 import 'package:flutter/widgets.dart';
 import 'package:flutter_module/core/log/log.dart';
@@ -16,7 +15,7 @@ class MyRouter {
       Map<String, dynamic>? param,
       MyRouterEnum routerType = MyRouterEnum.push}) {
     final name = routerURL.name;
-    Map<String, dynamic> queryParameters = param ?? Map<String, dynamic>();
+    Map<String, dynamic> queryParameters = param ?? <String, dynamic>{};
     if (routerType == MyRouterEnum.push) {
       return context.pushNamed(name, queryParameters: queryParameters);
     } else {

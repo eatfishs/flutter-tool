@@ -34,7 +34,7 @@ class APPChannelModel {
 }
 
 class MyAppMethodChannelHandler {
-  static Map<String, dynamic> _data = {
+  static final Map<String, dynamic> _data = {
     "code": "-1",
     "message": "解析失败",
     "data": {}
@@ -77,10 +77,10 @@ class MyAppMethodChannelHandler {
           Map<String, dynamic> resultMap =
           parseArguments(callback.arguments);
           try {
-            APPChannelModel _model = APPChannelModel.fromJson(resultMap);
-            await handler(_model, callback.method);
+            APPChannelModel model = APPChannelModel.fromJson(resultMap);
+            await handler(model, callback.method);
           } catch (e) {
-            print("json转model失败:${e}");
+            print("json转model失败:$e");
           }
         }
       }
@@ -94,8 +94,8 @@ class MyAppMethodChannelHandler {
       dynamic arguments = await platform.invokeMapMethod(method, model.toJson());
       Map<String, dynamic> resultMap = parseArguments(arguments);
       // 生成返回结果model
-      APPChannelModel _model = APPChannelModel.fromJson(resultMap);
-      return _model;
+      APPChannelModel model0 = APPChannelModel.fromJson(resultMap);
+      return model0;
     } on PlatformException catch (e) {
       // 处理平台异常
       print("Failed to call native method '$method': ${e.message}");

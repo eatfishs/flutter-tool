@@ -1,7 +1,6 @@
-/**
- * @author: jiangjunhui
- * @date: 2025/1/23
- */
+/// @author: jiangjunhui
+/// @date: 2025/1/23
+library;
 import 'package:dio/dio.dart';
 import '../../toast/toast_util.dart';
 
@@ -20,7 +19,7 @@ class LoadingInterceptor extends Interceptor {
   }
 
   @override
-  void onError(DioError err, ErrorInterceptorHandler handler) {
+  void onError(DioException err, ErrorInterceptorHandler handler) {
     // 在请求出错时隐藏加载提示
     if (isShowLoading) {
       _hideLoading();

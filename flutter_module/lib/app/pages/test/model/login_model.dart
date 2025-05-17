@@ -1,7 +1,6 @@
-/**
- * @author: jiangjunhui
- * @date: 2025/2/10
- */
+/// @author: jiangjunhui
+/// @date: 2025/2/10
+library;
 import 'package:json_annotation/json_annotation.dart';
 
 part 'login_model.g.dart';

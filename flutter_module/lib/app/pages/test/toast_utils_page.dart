@@ -1,7 +1,6 @@
-/**
- * @author: jiangjunhui
- * @date: 2025/2/8
- */
+/// @author: jiangjunhui
+/// @date: 2025/2/8
+library;
 import 'package:flutter/material.dart';
 
 import '../../../core/dialog/dialog_queue.dart';
@@ -69,7 +68,7 @@ class _ToastUtilsPageState extends State<ToastUtilsPage> {
     DialogQueue().add(
         context: context,
         type: DialogType.bottom,
-        builder: (_) => CustomBottomSheetContent(),
+        builder: (_) => const CustomBottomSheetContent(),
         backgroundColor: Colors.grey[100],
         shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.vertical(top: Radius.circular(30))));
@@ -91,7 +90,7 @@ class _ToastUtilsPageState extends State<ToastUtilsPage> {
     return Scaffold(
       appBar: CustomAppBar(
         title: 'Toast',
-        actions: [],
+        actions: const [],
         onBackPressed: () {
           // Handle back button press, if needed
           Navigator.pop(context);

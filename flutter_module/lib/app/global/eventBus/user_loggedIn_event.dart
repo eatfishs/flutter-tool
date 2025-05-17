@@ -1,8 +1,6 @@
-/**
- * @author: jiangjunhui
- * @date: 2025/2/7
- */
-import 'package:flutter/material.dart';
+/// @author: jiangjunhui
+/// @date: 2025/2/7
+library;
 // 定义事件类
 class UserLoggedInEvent {
   final String username;

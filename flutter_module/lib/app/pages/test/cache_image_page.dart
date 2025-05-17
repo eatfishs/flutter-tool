@@ -1,7 +1,6 @@
-/**
- * @author: jiangjunhui
- * @date: 2025/1/7
- */
+/// @author: jiangjunhui
+/// @date: 2025/1/7
+library;
 import 'package:flutter/material.dart';
 import '../../../core/cacheImage/cache_image.dart';
 import '../../../core/cacheImage/cache_image_manager.dart';
@@ -18,14 +17,14 @@ class CacheImagePage extends StatefulWidget {
 }
 
 class _CacheImagePageState extends State<CacheImagePage> {
-  String _imageUrl = _iconUrl4;
+  final String _imageUrl = _iconUrl4;
   String _cacheSize = "图片缓存大小：";
 
   void _getCacheSize() async {
     MyCacheImageManager.getFilePath(_imageUrl);
-    String _size = await MyCacheImageManager.getCacheSize();
+    String size = await MyCacheImageManager.getCacheSize();
     setState(() {
-      _cacheSize = "图片缓存大小：${_size}";
+      _cacheSize = "图片缓存大小：$size";
     });
   }
 
@@ -39,7 +38,7 @@ class _CacheImagePageState extends State<CacheImagePage> {
     return Scaffold(
       appBar: CustomAppBar(
         title: '图片测试',
-        actions: [],
+        actions: const [],
         onBackPressed: () {
           // Handle back button press, if needed
           Navigator.pop(context);
@@ -50,18 +49,18 @@ class _CacheImagePageState extends State<CacheImagePage> {
         child: Column(
           children: [
             CachedImageWidget(imageUrl: _imageUrl, onSuccess: (image,iconUrl){
-              print("图片下载成功：${image},=====${iconUrl}");
+              print("图片下载成功：$image,=====$iconUrl");
             },onError: (error,iconUrl){
-              print("图片下载失败：${error},=====${iconUrl}");
+              print("图片下载失败：$error,=====$iconUrl");
             }),
-            SizedBox(height: 50,),
+            const SizedBox(height: 50,),
             Container(
                 height: 50,
                 width: 200,
                 color: Colors.red,
                 child:
-                TextButton(onPressed: _getCacheSize, child: Text("获取缓存大小"))),
-            Container(
+                TextButton(onPressed: _getCacheSize, child: const Text("获取缓存大小"))),
+            SizedBox(
               height: 50,
               child: Text(_cacheSize),
             ),
@@ -70,7 +69,7 @@ class _CacheImagePageState extends State<CacheImagePage> {
                 width: 200,
                 color: Colors.red,
                 child:
-                TextButton(onPressed: _clearAll, child: Text("清空所有图片缓存"))),
+                TextButton(onPressed: _clearAll, child: const Text("清空所有图片缓存"))),
 
           ],
         ),

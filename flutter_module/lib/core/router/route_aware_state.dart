@@ -1,7 +1,6 @@
-/**
- * @author: jiangjunhui
- * @date: 2025/3/7
- */
+/// @author: jiangjunhui
+/// @date: 2025/3/7
+library;
 
 import 'package:flutter/material.dart';
 import 'package:flutter_module/core/router/router_observer.dart';

@@ -1,7 +1,6 @@
-/**
- * @author: jiangjunhui
- * @date: 2025/3/3
- */
+/// @author: jiangjunhui
+/// @date: 2025/3/3
+library;
 import 'package:flutter/material.dart';
 
 class CustomBottomSheetContent extends StatelessWidget {

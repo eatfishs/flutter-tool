@@ -1,8 +1,6 @@
-/**
- * @author: jiangjunhui
- * @date: 2024/12/25
- */
-import 'package:go_router/go_router.dart';
+/// @author: jiangjunhui
+/// @date: 2024/12/25
+library;
 
 /// 路由映射url
 class RouterURL {

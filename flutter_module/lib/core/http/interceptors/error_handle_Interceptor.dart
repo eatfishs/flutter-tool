@@ -1,8 +1,6 @@
-/**
- * @author: jiangjunhui
- * @date: 2025/1/22
- */
-import 'dart:convert';
+/// @author: jiangjunhui
+/// @date: 2025/1/22
+library;
 
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
@@ -40,7 +38,7 @@ class ErrorHandleInterceptor extends Interceptor {
       {required this.isShowHttpErrorMsg, required this.isShowDataErrorMsg});
 
   @override
-  void onError(DioError error, ErrorInterceptorHandler handler) {
+  void onError(DioException error, ErrorInterceptorHandler handler) {
     // 自定义错误处理逻辑
     if (isShowHttpErrorMsg) {
       _handleHttpError(error);
@@ -57,7 +55,7 @@ class ErrorHandleInterceptor extends Interceptor {
   }
 
   /// 网络异常
-  void _handleHttpError(DioError error) {
+  void _handleHttpError(DioException error) {
     String errorMsg = "网络异常";
     switch (error.type) {
       case DioExceptionType.connectionTimeout:
@@ -94,16 +92,16 @@ class ErrorHandleInterceptor extends Interceptor {
 
   /// 网络异常
   void _handleDataError(Response response) {
-    Map<String, dynamic> _data = {};
+    Map<String, dynamic> data = {};
     if (response.data is Map) {
-      _data = response.data as Map<String, dynamic>;
+      data = response.data as Map<String, dynamic>;
     } else if (response.data is String) {
-      _data = response.data.toMap();
+      data = response.data.toMap();
     }
-    final num? code = JsonTypeAdapter.safeParseNumber(_data['code']);
+    final num? code = JsonTypeAdapter.safeParseNumber(data['code']);
     // 检查 code 是否为 0
     if (code != null && code.toInt() != 0) {
-      final String message = _data['message'] as String? ?? '未知错误';
+      final String message = data['message'] as String? ?? '未知错误';
       ToastUtil.showToast(msg: message);
     }
   }

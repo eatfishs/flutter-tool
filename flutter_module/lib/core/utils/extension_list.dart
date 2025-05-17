@@ -1,7 +1,6 @@
-/**
- * @author: jiangjunhui
- * @date: 2024/12/5
- */
+/// @author: jiangjunhui
+/// @date: 2024/12/5
+library;
 import 'dart:convert';
 import 'object_utils.dart';
 
@@ -19,7 +18,7 @@ extension ExtensionList<E> on List<E> {
 
   /// 将list转化为json字符串，换行
   String getJsonPretty() {
-    return JsonEncoder.withIndent('\t').convert(this);
+    return const JsonEncoder.withIndent('\t').convert(this);
   }
 
   /// Checks if data is null.

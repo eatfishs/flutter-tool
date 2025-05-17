@@ -1,7 +1,6 @@
-/**
- * @author: jiangjunhui
- * @date: 2024/12/30
- */
+/// @author: jiangjunhui
+/// @date: 2024/12/30
+library;
 import 'package:flutter/material.dart';
 import 'package:flutter_module/core/router/my_router.dart';
 import 'package:go_router/go_router.dart';
@@ -25,7 +24,7 @@ class _kkTestRouterPageState extends State<kkTestRouterPage> {
         routerURL: PagesURL.testRouterUrl1,
         context: context,
         param: {"one": "1", "two": "2"}).then((value) => {
-      this.setState(() {
+      setState(() {
         if (value is String) {
           _msg = value;
         }
@@ -65,7 +64,7 @@ class _kkTestRouterPageState extends State<kkTestRouterPage> {
     return Scaffold(
       appBar: CustomAppBar(
         title: '测试路由',
-        actions: [],
+        actions: const [],
         onBackPressed: () {
           // Handle back button press, if needed
           Navigator.pop(context);
@@ -75,40 +74,40 @@ class _kkTestRouterPageState extends State<kkTestRouterPage> {
         alignment: Alignment.center,
         child: Column(
           children: [
-            SizedBox(height: 50),
+            const SizedBox(height: 50),
             Container(
                 height: 50,
                 width: 200,
                 color: Colors.red,
                 child:
-                    TextButton(onPressed: _pushToValue, child: Text("pusht跳转"))),
-            SizedBox(height: 50),
+                    TextButton(onPressed: _pushToValue, child: const Text("pusht跳转"))),
+            const SizedBox(height: 50),
             Container(
-                margin: EdgeInsets.all(10),
+                margin: const EdgeInsets.all(10),
                 height: 50,
                 color: Colors.red,
                 child:Text(_msg)),
-            SizedBox(height: 50),
+            const SizedBox(height: 50),
             Container(
                 height: 50,
                 width: 200,
                 color: Colors.red,
                 child:
-                TextButton(onPressed: _goToValue, child: Text("go跳转"))),
-            SizedBox(height: 50),
+                TextButton(onPressed: _goToValue, child: const Text("go跳转"))),
+            const SizedBox(height: 50),
             Container(
                 height: 50,
                 width: 200,
                 color: Colors.red,
                 child:
-                TextButton(onPressed: _pushCustomTransitionPageToValue, child: Text("pusht动画跳转"))),
-            SizedBox(height: 50),
+                TextButton(onPressed: _pushCustomTransitionPageToValue, child: const Text("pusht动画跳转"))),
+            const SizedBox(height: 50),
             Container(
                 height: 50,
                 width: 200,
                 color: Colors.red,
                 child:
-                TextButton(onPressed: _redirectUrl, child: Text("测试重定向"))),
+                TextButton(onPressed: _redirectUrl, child: const Text("测试重定向"))),
 
 
 

@@ -1,7 +1,6 @@
-/**
- * @author: jiangjunhui
- * @date: 2025/1/22
- */
+/// @author: jiangjunhui
+/// @date: 2025/1/22
+library;
 import 'package:dio/dio.dart';
 import 'package:flutter_module/core/log/log.dart';
 
@@ -26,7 +25,7 @@ class CustomLogInterceptor extends Interceptor {
   }
 
   @override
-  void onError(DioError error, ErrorInterceptorHandler handler) {
+  void onError(DioException error, ErrorInterceptorHandler handler) {
     // 记录错误日志
     _logError(error);
     handler.next(error);
@@ -39,7 +38,7 @@ class CustomLogInterceptor extends Interceptor {
     // 当前时间戳
     int entTime = MyDateTimeUtil.getTimeStamp();
     // 从 extra 中读取耗时指标
-    final timings = response.requestOptions.extra as Map<String, dynamic>;
+    final timings = response.requestOptions.extra;
     final options = response.requestOptions;
     Log.error('''
  
@@ -58,7 +57,7 @@ class CustomLogInterceptor extends Interceptor {
   }
 
   // 记录错误日志
-  void _logError(DioError error) {
+  void _logError(DioException error) {
     // 获取请求开始时间
     int startTime = requestStartTimeMap[error.requestOptions] ?? 0;
     // 当前时间戳

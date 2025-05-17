@@ -1,7 +1,6 @@
-/**
- * @author: jiangjunhui
- * @date: 2025/1/23
- */
+/// @author: jiangjunhui
+/// @date: 2025/1/23
+library;
 import 'package:flutter/material.dart';
 import '../../../core/http/core/my_request_options.dart';
 import '../../../core/http/core/network_service.dart';
@@ -67,7 +66,7 @@ class _NetworkServicePageState extends State<NetworkServicePage> {
     return Scaffold(
       appBar: CustomAppBar(
         title: '测试网络请求',
-        actions: [],
+        actions: const [],
         onBackPressed: () {
           // Handle back button press, if needed
           Navigator.pop(context);
@@ -77,25 +76,25 @@ class _NetworkServicePageState extends State<NetworkServicePage> {
         alignment: Alignment.center,
         child: Column(
           children: <Widget>[
-            SizedBox(height: 50),
+            const SizedBox(height: 50),
             Container(
                 height: 50,
                 width: 200,
                 color: Colors.red,
-                child: TextButton(onPressed: _get, child: Text("get请求"))),
-            SizedBox(height: 30),
-            SizedBox(height: 50),
+                child: TextButton(onPressed: _get, child: const Text("get请求"))),
+            const SizedBox(height: 30),
+            const SizedBox(height: 50),
             Container(
                 height: 50,
                 width: 200,
                 color: Colors.red,
-                child: TextButton(onPressed: _post, child: Text("post请求"))),
-            SizedBox(height: 50),
+                child: TextButton(onPressed: _post, child: const Text("post请求"))),
+            const SizedBox(height: 50),
             Container(
                 height: 50,
                 width: 200,
                 color: Colors.red,
-                child: TextButton(onPressed: _refreshToken, child: Text("token续租"))),
+                child: TextButton(onPressed: _refreshToken, child: const Text("token续租"))),
           ],
         ),
       ),

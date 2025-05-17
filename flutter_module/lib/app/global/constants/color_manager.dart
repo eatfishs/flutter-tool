@@ -1,7 +1,6 @@
-/**
- * @author: jiangjunhui
- * @date: 2025/2/28
- */
+/// @author: jiangjunhui
+/// @date: 2025/2/28
+library;
 import 'package:flutter/material.dart';
 import 'dart:ui';
 

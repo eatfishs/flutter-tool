@@ -1,7 +1,6 @@
-/**
- * @author: jiangjunhui
- * @date: 2025/2/20
- */
+/// @author: jiangjunhui
+/// @date: 2025/2/20
+library;
 import 'dart:async';
 
 import 'package:flutter/material.dart';
@@ -21,12 +20,12 @@ class DebounceTextField extends StatefulWidget {
   final InputDecoration? decoration;
 
   const DebounceTextField({
-    Key? key,
+    super.key,
     this.delay = const Duration(milliseconds: 500),
     required this.onDebounced,
     this.controller,
     this.decoration,
-  }) : super(key: key);
+  });
 
   @override
   _DebounceTextFieldState createState() => _DebounceTextFieldState();

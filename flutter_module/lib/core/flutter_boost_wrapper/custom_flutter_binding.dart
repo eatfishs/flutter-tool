@@ -1,7 +1,6 @@
-/**
- * @author: jiangjunhui
- * @date: 2025/4/14
- */
+/// @author: jiangjunhui
+/// @date: 2025/4/14
+library;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_boost/flutter_boost.dart';

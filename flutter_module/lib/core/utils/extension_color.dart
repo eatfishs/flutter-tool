@@ -1,11 +1,9 @@
-/**
- * @author: jiangjunhui
- * @date: 2025/1/24
- */
+/// @author: jiangjunhui
+/// @date: 2025/1/24
+library;
 import 'package:flutter/material.dart';
 
 import 'dart:math';
-import 'package:flutter/material.dart';
 
 /// 扩展 Color 类
 extension ColorExtension on Color {

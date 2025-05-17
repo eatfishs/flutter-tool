@@ -1,7 +1,6 @@
-/**
- * @author: jiangjunhui
- * @date: 2024/12/25
- */
+/// @author: jiangjunhui
+/// @date: 2024/12/25
+library;
 import 'package:flutter/material.dart';
 import 'package:flutter_module/core/log/log.dart';
 

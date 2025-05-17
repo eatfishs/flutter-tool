@@ -1,8 +1,5 @@
-import '../core/route_mapper.dart';
 
 import 'dart:async';
-import 'package:flutter/widgets.dart';
-import '../params/global_context.dart';
 
 typedef RouteInterceptorHandler = Future<bool> Function(String routeName, dynamic params);
 

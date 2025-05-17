@@ -1,10 +1,8 @@
-/**
- * @author: jiangjunhui
- * @date: 2025/2/20
- */
+/// @author: jiangjunhui
+/// @date: 2025/2/20
+library;
 import 'dart:async';
 
-import 'package:flutter/material.dart';
 
 typedef DebounceFunction = void Function();
 /*

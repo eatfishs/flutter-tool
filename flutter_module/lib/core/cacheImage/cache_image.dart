@@ -1,7 +1,6 @@
-/**
- * @author: jiangjunhui
- * @date: 2025/1/6
- */
+/// @author: jiangjunhui
+/// @date: 2025/1/6
+library;
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'cache_image_manager.dart';
@@ -21,7 +20,7 @@ class CachedImageWidget extends StatelessWidget {
 
 
   const CachedImageWidget({
-    Key? key,
+    super.key,
     required this.imageUrl,
     this.placeholder,
     this.errorWidget,
@@ -31,7 +30,7 @@ class CachedImageWidget extends StatelessWidget {
     this.imageProvider,
     this.onSuccess,
     this.onError,
-  }) : super(key: key);
+  });
 
 
 
@@ -45,7 +44,7 @@ class CachedImageWidget extends StatelessWidget {
       placeholder: (context, url) =>
           placeholder ?? Container(color: Colors.grey[300]),
       errorWidget: (context, url, error) {
-        return  errorWidget ?? Icon(Icons.error);
+        return  errorWidget ?? const Icon(Icons.error);
       },
       width: width,
       height: height,

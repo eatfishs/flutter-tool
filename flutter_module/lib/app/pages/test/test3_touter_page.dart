@@ -1,7 +1,6 @@
-/**
- * @author: jiangjunhui
- * @date: 2024/12/31
- */
+/// @author: jiangjunhui
+/// @date: 2024/12/31
+library;
 import 'package:flutter/material.dart';
 
 import '../../../core/widgets/custom_appBar_widget.dart';
@@ -14,7 +13,7 @@ class Test3TouterPagePage extends StatelessWidget {
     return Scaffold(
           appBar: CustomAppBar(
             title: '测试3',
-            actions: [
+            actions: const [
             ],
             onBackPressed: () {
               // Handle back button press, if needed
@@ -24,6 +23,6 @@ class Test3TouterPagePage extends StatelessWidget {
           body: Container(
 
           ),
-        );;
+        );
   }
 }

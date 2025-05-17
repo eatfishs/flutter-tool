@@ -1,11 +1,8 @@
-/**
- * @author: jiangjunhui
- * @date: 2025/3/11
- */
-import 'package:flutter/material.dart';
+/// @author: jiangjunhui
+/// @date: 2025/3/11
+library;
 
 import 'dart:async';
-import 'dart:isolate';
 import 'package:synchronized/synchronized.dart';
 
 class UserInfoManager {

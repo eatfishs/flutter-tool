@@ -1,7 +1,6 @@
-/**
- * @author: jiangjunhui
- * @date: 2025/3/5
- */
+/// @author: jiangjunhui
+/// @date: 2025/3/5
+library;
 
 import 'package:rxdart/rxdart.dart';
 

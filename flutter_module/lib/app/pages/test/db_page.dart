@@ -1,7 +1,6 @@
-/**
- * @author: jiangjunhui
- * @date: 2024/12/6
- */
+/// @author: jiangjunhui
+/// @date: 2024/12/6
+library;
 import 'package:flutter/material.dart';
 import '../../../core/data/db/database_helper.dart';
 import '../../../core/data/file/file_utils.dart';
@@ -85,30 +84,30 @@ class _dbPageState extends State<dbPage> {
         alignment: Alignment.center,
         child: Column(
           children: <Widget>[
-            SizedBox(height: 50),
+            const SizedBox(height: 50),
             Container(
                 height: 50,
                 width: 200,
                 color: Colors.red,
-                child: TextButton(onPressed: _setString, child: Text("存储"))),
-            SizedBox(height: 30),
-            Container(
+                child: TextButton(onPressed: _setString, child: const Text("存储"))),
+            const SizedBox(height: 30),
+            SizedBox(
                 height: 50,
                 width: 375,
                 child: TextButton(
-                    onPressed: _getString, child: Text(this._string))),
-            SizedBox(height: 30),
+                    onPressed: _getString, child: Text(_string))),
+            const SizedBox(height: 30),
             Container(
                 height: 50,
                 width: 200,
                 color: Colors.red,
-                child: TextButton(onPressed: _writeFile, child: Text("写入文件"))),
-            SizedBox(height: 30),
+                child: TextButton(onPressed: _writeFile, child: const Text("写入文件"))),
+            const SizedBox(height: 30),
             Container(
                 height: 50,
                 width: 200,
                 color: Colors.red,
-                child: TextButton(onPressed: _db, child: Text("数据库操作"))),
+                child: TextButton(onPressed: _db, child: const Text("数据库操作"))),
           ],
         ),
       ),

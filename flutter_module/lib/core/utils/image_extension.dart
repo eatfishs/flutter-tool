@@ -1,7 +1,6 @@
-/**
- * @author: jiangjunhui
- * @date: 2025/1/24
- */
+/// @author: jiangjunhui
+/// @date: 2025/1/24
+library;
 import 'package:flutter/material.dart';
 
 extension ImageExtension on Image {
@@ -22,7 +21,7 @@ extension ImageExtension on Image {
   ///  图片灰度
   Widget toGrayscale() {
     return ColorFiltered(
-      colorFilter: ColorFilter.matrix([
+      colorFilter: const ColorFilter.matrix([
         0.2126, 0.7152, 0.0722, 0, 0,
         0.2126, 0.7152, 0.0722, 0, 0,
         0.2126, 0.7152, 0.0722, 0, 0,

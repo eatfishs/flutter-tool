@@ -16,10 +16,10 @@ import '../model/my_response_model.dart';
 import 'my_request_options.dart';
 
 class NetworkService<T> {
-  late Dio _dio = Dio();
+  late final Dio _dio = Dio();
   late MyRequestOptions _options;
   List<Interceptor>? _interceptors;
-  List<String> _cancelTokenKey = [];
+  final List<String> _cancelTokenKey = [];
 
   NetworkService({List<Interceptor>? interceptors})
       : _interceptors = interceptors {
@@ -92,8 +92,8 @@ class NetworkService<T> {
         );
       } catch (e, stackTrace) {
         Log.error('json转model失败 Stack trace:'
-            ' $stackTrace, e:${e}');
-        throw e;
+            ' $stackTrace, e:$e');
+        rethrow;
       }
     } else {
       throw _handleError(resopnse: response);
@@ -117,8 +117,8 @@ class NetworkService<T> {
         );
       } catch (e, stackTrace) {
         Log.error('json转model失败 Stack trace:'
-            ' $stackTrace, e:${e}');
-        throw e;
+            ' $stackTrace, e:$e');
+        rethrow;
       }
     } else {
       throw _handleError(resopnse: response);
@@ -143,8 +143,8 @@ class NetworkService<T> {
         );
       } catch (e, stackTrace) {
         Log.error('json转model失败 Stack trace:'
-            ' $stackTrace, e:${e}');
-        throw e;
+            ' $stackTrace, e:$e');
+        rethrow;
       }
     } else {
       throw _handleError(resopnse: response);
@@ -169,8 +169,8 @@ class NetworkService<T> {
         );
       } catch (e, stackTrace) {
         Log.error('json转model失败 Stack trace:'
-            ' $stackTrace, e:${e}');
-        throw e;
+            ' $stackTrace, e:$e');
+        rethrow;
       }
     } else {
       throw _handleError(resopnse: response);
@@ -210,7 +210,7 @@ class NetworkService<T> {
         return resopnseModel;
       }
       throw Exception('没有定义的请求方式');
-    } on DioError catch (e, stackTrace) {
+    } on DioException catch (e, stackTrace) {
       // 请求过程出错
       Log.error('''
       请求过程出错 
@@ -233,7 +233,7 @@ class NetworkService<T> {
   }
 
   /// 请求过程出错
-  String _handleError({MyResopnseModel? resopnse, DioError? e}) {
+  String _handleError({MyResopnseModel? resopnse, DioException? e}) {
     return '''
     
       请求错误

@@ -1,7 +1,6 @@
-/**
- * @author: jiangjunhui
- * @date: 2025/4/15
- */
+/// @author: jiangjunhui
+/// @date: 2025/4/15
+library;
 import 'package:flutter/widgets.dart';
 
 

@@ -1,8 +1,6 @@
-/**
- * @author: jiangjunhui
- * @date: 2025/1/24
- */
-import 'package:flutter/material.dart';
+/// @author: jiangjunhui
+/// @date: 2025/1/24
+library;
 
 /*
 import '../../../app/pages/test/model/login_model.dart';

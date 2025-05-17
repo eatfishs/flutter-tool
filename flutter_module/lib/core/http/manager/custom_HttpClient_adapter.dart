@@ -5,7 +5,7 @@ import 'package:dio/dio.dart';
 import 'package:dio/io.dart';
 
 class CustomHttpClientAdapter implements HttpClientAdapter {
-  final HttpClientAdapter _defaultAdapter = DefaultHttpClientAdapter();
+  final HttpClientAdapter _defaultAdapter = IOHttpClientAdapter();
 
   @override
   Future<ResponseBody> fetch(

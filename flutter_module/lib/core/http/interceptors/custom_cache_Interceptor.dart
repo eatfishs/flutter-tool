@@ -1,7 +1,6 @@
-/**
- * @author: jiangjunhui
- * @date: 2025/1/23
- */
+/// @author: jiangjunhui
+/// @date: 2025/1/23
+library;
 import 'dart:convert';
 
 import 'package:dio/dio.dart';

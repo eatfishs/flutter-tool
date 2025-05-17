@@ -1,7 +1,6 @@
-/**
- * @author: jiangjunhui
- * @date: 2025/1/24
- */
+/// @author: jiangjunhui
+/// @date: 2025/1/24
+library;
 import 'dart:math';
 
 

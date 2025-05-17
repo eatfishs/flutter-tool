@@ -1,7 +1,6 @@
-/**
- * @author: jiangjunhui
- * @date: 2025/2/6
- */
+/// @author: jiangjunhui
+/// @date: 2025/2/6
+library;
 import 'package:flutter/material.dart';
 import 'package:pull_to_refresh_flutter3/pull_to_refresh_flutter3.dart';
 
@@ -14,13 +13,13 @@ class CustomRefreshWidget<T> extends StatelessWidget {
   final Widget Function(BuildContext context, int index) itemBuilder;
 
   const CustomRefreshWidget({
-    Key? key,
+    super.key,
     required this.controller,
     required this.onRefresh,
     this.onLoading,
     required this.dataList,
     required this.itemBuilder,
-  }) : super(key: key);
+  });
 
   Widget headerBuilder(BuildContext context, RefreshStatus? mode) {
     Widget body;

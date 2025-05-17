@@ -1,8 +1,6 @@
-/**
- * @author: jiangjunhui
- * @date: 2025/2/18
- */
-import 'package:flutter/material.dart';
+/// @author: jiangjunhui
+/// @date: 2025/2/18
+library;
 
 class JsonTypeAdapter {
   // 安全转换数字（处理int/double/字符串数字混合场景）

@@ -1,7 +1,6 @@
-/**
- * @author: jiangjunhui
- * @date: 2025/2/7
- */
+/// @author: jiangjunhui
+/// @date: 2025/2/7
+library;
 import 'package:flutter/material.dart';
 import '../../../core/eventBus/event_bus_util.dart';
 import '../../../core/widgets/custom_appBar_widget.dart';
@@ -42,7 +41,7 @@ class _EventBusPageState extends State<EventBusPage> with EventBusMixin {
     return Scaffold(
           appBar: CustomAppBar(
             title: 'EventBus',
-            actions: [
+            actions: const [
             ],
             onBackPressed: () {
               // Handle back button press, if needed
@@ -53,7 +52,7 @@ class _EventBusPageState extends State<EventBusPage> with EventBusMixin {
             alignment: Alignment.center,
             child: Column(
               children: [
-                SizedBox(height: 50),
+                const SizedBox(height: 50),
                 Container(
                     height: 50,
                     width: 200,
@@ -62,8 +61,8 @@ class _EventBusPageState extends State<EventBusPage> with EventBusMixin {
                     TextButton(onPressed: () {
                       // 发送事件
                       AppEventBus.sendEvent(UserLoggedInEvent('Alice'));
-                    }, child: Text("用户昵称按钮"))),
-                SizedBox(height: 50),
+                    }, child: const Text("用户昵称按钮"))),
+                const SizedBox(height: 50),
                 Container(
                     height: 50,
                     width: 200,
@@ -72,7 +71,7 @@ class _EventBusPageState extends State<EventBusPage> with EventBusMixin {
                     TextButton(onPressed: () {
                       // 发送事件
                       AppEventBus.sendEvent(DataUpdatedEvent("kkkkk"));
-                    }, child: Text("普通更新按钮"))),
+                    }, child: const Text("普通更新按钮"))),
               ],
             ),
           ),

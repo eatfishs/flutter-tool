@@ -1,7 +1,6 @@
-/**
- * @author: jiangjunhui
- * @date: 2024/12/5
- */
+/// @author: jiangjunhui
+/// @date: 2024/12/5
+library;
 import 'package:date_format/date_format.dart';
 
 const YMD = [yyyy, '-', mm, '-', dd];

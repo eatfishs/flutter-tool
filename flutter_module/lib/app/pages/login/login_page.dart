@@ -1,7 +1,6 @@
-/**
- * @author: jiangjunhui
- * @date: 2024/12/25
- */
+/// @author: jiangjunhui
+/// @date: 2024/12/25
+library;
 import 'package:flutter/material.dart';
 
 import '../../../core/widgets/custom_appBar_widget.dart';
@@ -13,7 +12,7 @@ class LoginPage extends StatelessWidget {
     return Scaffold(
           appBar: CustomAppBar(
             title: '登陆',
-            actions: [
+            actions: const [
             ],
             onBackPressed: () {
               // Handle back button press, if needed
@@ -23,7 +22,7 @@ class LoginPage extends StatelessWidget {
           body: Container(
 
           ),
-        );;
+        );
   }
 }
 

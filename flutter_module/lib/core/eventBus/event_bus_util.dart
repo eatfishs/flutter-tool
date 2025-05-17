@@ -1,7 +1,6 @@
-/**
- * @author: jiangjunhui
- * @date: 2025/2/7
- */
+/// @author: jiangjunhui
+/// @date: 2025/2/7
+library;
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:event_bus/event_bus.dart';

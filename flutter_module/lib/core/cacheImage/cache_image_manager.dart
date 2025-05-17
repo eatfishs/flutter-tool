@@ -1,7 +1,6 @@
-/**
- * @author: jiangjunhui
- * @date: 2025/1/7
- */
+/// @author: jiangjunhui
+/// @date: 2025/1/7
+library;
 import 'dart:async';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 

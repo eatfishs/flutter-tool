@@ -1,7 +1,6 @@
-/**
- * @author: jiangjunhui
- * @date: 2024/12/6
- */
+/// @author: jiangjunhui
+/// @date: 2024/12/6
+library;
 import 'package:shared_preferences/shared_preferences.dart';
 
 class PreferencesHelper {

@@ -1,7 +1,6 @@
-/**
- * @author: jiangjunhui
- * @date: 2025/4/18
- */
+/// @author: jiangjunhui
+/// @date: 2025/4/18
+library;
 import 'package:flutter/material.dart';
 
 import '../../../core/widgets/custom_appBar_widget.dart';
@@ -14,7 +13,7 @@ class FlutterG extends StatelessWidget {
     return Scaffold(
       appBar: CustomAppBar(
         title: 'FlutterG',
-        actions: [
+        actions: const [
         ],
         onBackPressed: () {
           // Handle back button press, if needed
@@ -24,7 +23,7 @@ class FlutterG extends StatelessWidget {
       body: Container(
 
       ),
-    );;
+    );
   }
 }
 

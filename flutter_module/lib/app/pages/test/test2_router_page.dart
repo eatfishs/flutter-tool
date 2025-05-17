@@ -1,13 +1,11 @@
-/**
- * @author: jiangjunhui
- * @date: 2024/12/30
- */
+/// @author: jiangjunhui
+/// @date: 2024/12/30
+library;
 import 'package:flutter/material.dart';
 import '../../../core/widgets/custom_appBar_widget.dart';
 class kkTest2RouterPage extends StatefulWidget {
   final Map<String, dynamic>? queryParam;
-  const kkTest2RouterPage({Key? key, required this.queryParam})
-      : super(key: key);
+  const kkTest2RouterPage({super.key, required this.queryParam});
   @override
   State<kkTest2RouterPage> createState() => _kkTest2RouterPageState();
 }
@@ -16,7 +14,7 @@ class _kkTest2RouterPageState extends State<kkTest2RouterPage> {
   String _queryParam = "";
   void getParam() {
     String text = widget.queryParam.toString();
-    this.setState(() {
+    setState(() {
       _queryParam =
       "上级界面传入参数：$text";
     });
@@ -35,15 +33,15 @@ class _kkTest2RouterPageState extends State<kkTest2RouterPage> {
     return Scaffold(
       appBar: CustomAppBar(
         title: '第二个页面',
-        actions: [],
+        actions: const [],
         onBackPressed: () {
           // Handle back button press, if needed
           Navigator.pop(context,"我是第二个页面返回的字符串");
         },
       ),
-      body: Container(
+      body: SizedBox(
         height: 400,
-        child: Text('$_queryParam'),
+        child: Text(_queryParam),
       ),
     );
   }

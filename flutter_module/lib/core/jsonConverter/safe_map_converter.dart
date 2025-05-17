@@ -1,7 +1,6 @@
-/**
- * @author: jiangjunhui
- * @date: 2025/2/18
- */
+/// @author: jiangjunhui
+/// @date: 2025/2/18
+library;
 import 'dart:convert';
 import 'package:json_annotation/json_annotation.dart';
 

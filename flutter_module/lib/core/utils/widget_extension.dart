@@ -1,11 +1,7 @@
-/**
- * @author: jiangjunhui
- * @date: 2025/1/24
- */
-import 'dart:async';
-import 'dart:ui' as ui;
+/// @author: jiangjunhui
+/// @date: 2025/1/24
+library;
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 
 extension WidgetExtension on Widget {
   /// 切圆角

@@ -1,7 +1,6 @@
-/**
- * @author: jiangjunhui
- * @date: 2025/2/25
- */
+/// @author: jiangjunhui
+/// @date: 2025/2/25
+library;
 import 'package:flutter/material.dart';
 
 import 'dart:async' show Completer;

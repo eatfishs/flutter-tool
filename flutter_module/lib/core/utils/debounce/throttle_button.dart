@@ -1,7 +1,6 @@
-/**
- * @author: jiangjunhui
- * @date: 2025/2/20
- */
+/// @author: jiangjunhui
+/// @date: 2025/2/20
+library;
 import 'package:flutter/material.dart';
 /*
 ThrottleButton(
@@ -18,11 +17,11 @@ class ThrottleButton extends StatefulWidget {
   final Widget child;
 
   const ThrottleButton({
-    Key? key,
+    super.key,
     required this.onPressed,
     this.duration = const Duration(seconds: 1),
     required this.child,
-  }) : super(key: key);
+  });
 
   @override
   _ThrottleButtonState createState() => _ThrottleButtonState();

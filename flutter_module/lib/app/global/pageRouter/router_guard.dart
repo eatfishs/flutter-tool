@@ -1,7 +1,6 @@
-/**
- * @author: jiangjunhui
- * @date: 2025/2/17
- */
+/// @author: jiangjunhui
+/// @date: 2025/2/17
+library;
 
 import 'dart:async';
 import 'package:flutter/material.dart';
@@ -16,7 +15,7 @@ class RouteGuard {
       GoRouterState state,
       ) {
     debugPrint('loginRedirect :${state.name}');
-    final String userId = "";
+    const String userId = "";
     if (userId.isEmpty) {
       return state.namedLocation(PagesURL.loginUrl.name);
     }

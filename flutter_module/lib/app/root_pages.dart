@@ -1,7 +1,6 @@
-/**
- * @author: jiangjunhui
- * @date: 2024/12/25
- */
+/// @author: jiangjunhui
+/// @date: 2024/12/25
+library;
 import 'package:flutter/material.dart';
 import 'package:flutter_module/app/global/pageRouter/router_path.dart';
 import '../core/router/router_url.dart';
@@ -20,9 +19,9 @@ class _RootPagesState extends State<RootPages> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Flutter"),),
+      appBar: AppBar(title: const Text("Flutter"),),
       body: Container(
-         child: BaseWidget()
+         child: const BaseWidget()
       ),
     );
   }
@@ -32,12 +31,14 @@ class _RootPagesState extends State<RootPages> {
  
 
 class BaseWidget extends StatefulWidget {
+  const BaseWidget({super.key});
+
   @override
   _BaseWidgetState createState() => _BaseWidgetState();
 }
 
 class _BaseWidgetState extends State<BaseWidget> {
-  List<RouterURL> _pathList = [
+  final List<RouterURL> _pathList = [
     PagesURL.colorUrl,
     PagesURL.daterUrl,
     PagesURL.dbUrl,
@@ -51,7 +52,7 @@ class _BaseWidgetState extends State<BaseWidget> {
   ];
 
   List<String> getData() {
-    List<String> _data = [
+    List<String> data = [
       "颜色",
       "日期",
       "数据库",
@@ -63,7 +64,7 @@ class _BaseWidgetState extends State<BaseWidget> {
       "EventBus",
       "ToastUtil"
     ];
-    return _data;
+    return data;
   }
   Widget _itemBuilder(BuildContext context, int index) {
     return GestureDetector(
@@ -76,7 +77,7 @@ class _BaseWidgetState extends State<BaseWidget> {
           color: Colors.white,
           child: Center(
             child: Text(getData()[index],
-                style: TextStyle(color: Colors.black, fontSize: 18)),
+                style: const TextStyle(color: Colors.black, fontSize: 18)),
           ),
         ),
       ),

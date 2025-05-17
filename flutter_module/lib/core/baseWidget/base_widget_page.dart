@@ -1,7 +1,6 @@
-/**
- * @author: jiangjunhui
- * @date: 2025/2/24
- */
+/// @author: jiangjunhui
+/// @date: 2025/2/24
+library;
 import 'package:flutter/material.dart';
 
 import '../router/route_aware_state.dart';
@@ -52,10 +51,6 @@ abstract class BaseWidgetPageState<T extends BaseWidgetPage>
     onPageInit();
   }
 
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-  }
 
   @override
   void dispose() {

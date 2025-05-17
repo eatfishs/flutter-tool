@@ -1,7 +1,6 @@
-/**
- * @author: jiangjunhui
- * @date: 2025/3/3
- */
+/// @author: jiangjunhui
+/// @date: 2025/3/3
+library;
 import 'package:flutter/material.dart';
 import 'dart:collection';
 
@@ -48,7 +47,7 @@ class DialogQueue {
   // 显示弹窗核心逻辑
   void _checkNext() async {
 
-    Log.error("_queue.length:${_queue.isEmpty}-->_isDialogShowing:${_isDialogShowing}");
+    Log.error("_queue.length:${_queue.isEmpty}-->_isDialogShowing:$_isDialogShowing");
     if (_queue.isEmpty || _isDialogShowing) return;
 
     _isDialogShowing = true;

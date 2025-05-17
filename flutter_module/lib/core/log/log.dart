@@ -1,7 +1,6 @@
-/**
- * @author: jiangjunhui
- * @date: 2025/2/11
- */
+/// @author: jiangjunhui
+/// @date: 2025/2/11
+library;
 import 'package:logger/logger.dart';
 
 class Log {
