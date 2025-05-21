@@ -3,8 +3,8 @@
  * @date: 2025/5/21
  */
 import 'package:flutter/material.dart';
-import 'package:my_flutter_demo/provider_demo/model/auth_model.dart';
-import 'package:my_flutter_demo/provider_demo/model/counter_model.dart';
+import 'package:my_flutter_demo/provider_demo/page/goods_collection_page.dart';
+import 'package:my_flutter_demo/provider_demo/viewmodels/auth_model.dart';
 import 'package:my_flutter_demo/provider_demo/page/first_provider_page.dart';
 import 'package:provider/provider.dart';
 
@@ -27,6 +27,7 @@ class MyApp extends StatelessWidget {
   List<String> getData() {
     List<String> data = [
       "测试一级界面",
+      "列表实现"
     ];
     return data;
   }
@@ -36,7 +37,13 @@ class MyApp extends StatelessWidget {
       context,
       MaterialPageRoute(builder: (context) => const FirstProviderPage()),
     );
+  }
 
+  void _navigateToPage2(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => GoodsCollectionPage()),
+    );
   }
 
   Widget _itemBuilder(BuildContext context, int index) {
@@ -44,6 +51,8 @@ class MyApp extends StatelessWidget {
       onTap: () async {
         if(index == 0) {
           _navigateToPage1(context);
+        } else if (index == 1) {
+          _navigateToPage2(context);
         }
       },
       child: Container(

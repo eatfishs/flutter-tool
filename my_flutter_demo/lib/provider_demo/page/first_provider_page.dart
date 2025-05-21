@@ -5,7 +5,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_flutter_demo/provider_demo/page/second_provider_page.dart';
 import 'package:provider/provider.dart';
-import '../model/counter_model.dart';
+import '../viewmodels/counter_model.dart';
 
 class FirstProviderPage extends StatelessWidget {
   const FirstProviderPage({super.key});

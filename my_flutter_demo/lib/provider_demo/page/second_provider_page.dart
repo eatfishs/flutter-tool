@@ -4,8 +4,7 @@
  */
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import '../model/counter_model.dart';
+import '../viewmodels/counter_model.dart';
  class SecondProviderPage extends StatefulWidget {
    const SecondProviderPage({super.key});
 
