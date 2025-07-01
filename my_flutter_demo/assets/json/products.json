@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "name": "智能手机",
+    "description": "高性能智能手机，搭载最新处理器",
+    "price": 4999.00,
+    "imageUrl": "https://picsum.photos/id/1/300/300"
+  },
+  {
+    "id": 2,
+    "name": "笔记本电脑",
+    "description": "轻薄便携笔记本，超长续航",
+    "price": 7999.00,
+    "imageUrl": "https://picsum.photos/id/2/300/300"
+  },
+  {
+    "id": 3,
+    "name": "无线耳机",
+    "description": "主动降噪无线耳机，音质出色",
+    "price": 1299.00,
+    "imageUrl": "https://picsum.photos/id/3/300/300"
+  },
+  {
+    "id": 4,
+    "name": "智能手表",
+    "description": "多功能智能手表，健康监测",
+    "price": 1999.00,
+    "imageUrl": "https://picsum.photos/id/4/300/300"
+  },
+  {
+    "id": 5,
+    "name": "平板电脑",
+    "description": "大屏幕平板电脑，适合娱乐办公",
+    "price": 3499.00,
+    "imageUrl": "https://picsum.photos/id/5/300/300"
+  },
+  {
+    "id": 6,
+    "name": "蓝牙音箱",
+    "description": "高品质蓝牙音箱，震撼低音",
+    "price": 899.00,
+    "imageUrl": "https://picsum.photos/id/6/300/300"
+  }
+]

@@ -6,14 +6,29 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../bloc/counter/counter_bloc.dart';
 
-class FirstBlocPage extends StatefulWidget {
-  const FirstBlocPage({super.key});
+class CounterFirstBlocPagePage extends StatelessWidget {
+  const CounterFirstBlocPagePage({Key? key}) : super(key: key);
 
   @override
-  State<FirstBlocPage> createState() => _FirstBlocPageState();
+  Widget build(BuildContext context) {
+    // BlocProvider 只在 CounterPage 及其子 Widget 中可用
+    return BlocProvider(
+      create: (context) => CounterBloc(),
+      child: const CounterFirstBlocView(),
+    );
+  }
 }
 
-class _FirstBlocPageState extends State<FirstBlocPage> {
+
+
+class CounterFirstBlocView extends StatefulWidget {
+  const CounterFirstBlocView({super.key});
+
+  @override
+  State<CounterFirstBlocView> createState() => _CounterFirstBlocViewState();
+}
+
+class _CounterFirstBlocViewState extends State<CounterFirstBlocView> {
   @override
   void initState() {
     super.initState();
@@ -41,7 +56,6 @@ class _FirstBlocPageState extends State<FirstBlocPage> {
   @override
   Widget build(BuildContext context) {
     final counterBloc = BlocProvider.of<CounterBloc>(context);
-
     return Scaffold(
       appBar: AppBar(title: const Text('Flutter Bloc Counter')),
       body: Center(

@@ -3,7 +3,9 @@
  * @date: 2025/5/29
  */
 import 'package:flutter/material.dart';
-import 'package:my_flutter_demo/bloc_demo/pages/first_bloc_page.dart';
+import 'package:my_flutter_demo/bloc_demo/pages/counter_first_bloc_page.dart';
+
+import 'bloc_demo/pages/product_list_page.dart';
 
 
 void main() {
@@ -16,7 +18,7 @@ class MyApp extends StatelessWidget {
   List<String> getData() {
     List<String> data = [
       "Bloc_计算器demo",
-      "Bloc_"
+      "Bloc_商品列表"
     ];
     return data;
   }
@@ -24,11 +26,15 @@ class MyApp extends StatelessWidget {
   void _navigateToPage1(BuildContext context) {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => const FirstBlocPage()),
+      MaterialPageRoute(builder: (context) => const CounterFirstBlocPagePage()),
     );
   }
 
   void _navigateToPage2(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const ProductListBlocPage()),
+    );
 
   }
 
