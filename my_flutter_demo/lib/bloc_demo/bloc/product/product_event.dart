@@ -21,12 +21,3 @@ class ToggleFavorite extends ProductEvent {
   List<Object> get props => [product];
 }
 
-// 删除商品事件
-class DeleteProduct extends ProductEvent {
-  final ProductModel product;
-
-  const DeleteProduct(this.product);
-
-  @override
-  List<Object> get props => [product];
-}

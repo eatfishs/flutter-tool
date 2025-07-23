@@ -2,23 +2,22 @@
  * @author: jiangjunhui 
  * @date: 2025/6/12
  */
- import 'package:flutter/material.dart';
 import 'package:my_flutter_demo/bloc_demo/models/product_model.dart';
 import 'dart:async';
 
-// 商品仓库接口
-abstract class ProductRepository {
-  Future<List<ProductModel>> getProducts();
-  Future<void> toggleFavorite(ProductModel product);
-  Future<void> deleteProduct(ProductModel product);
-}
-
-// 模拟实现的商品仓库
-class MockProductRepository implements ProductRepository {
+class ProductRepository  {
   final List<ProductModel> _products = [
     ProductModel(
       id: 1,
       name: 'iPhone 14',
+      price: 5999.0,
+      description: '最新款苹果手机',
+      isFavorite: false,
+      imageUrl: 'https://picsum.photos/seed/iphone14/300/200',
+    ),
+    ProductModel(
+      id: 11,
+      name: 'iPhone 15',
       price: 5999.0,
       description: '最新款苹果手机',
       isFavorite: false,
@@ -56,16 +55,32 @@ class MockProductRepository implements ProductRepository {
       isFavorite: false,
       imageUrl: 'https://picsum.photos/seed/airpods/300/200',
     ),
+    ProductModel(
+      id: 6,
+      name: 'AirPods Pro air',
+      price: 2999.0,
+      description: '主动降噪耳机',
+      isFavorite: false,
+      imageUrl: 'https://picsum.photos/seed/airpods/300/200',
+    ),
+    ProductModel(
+      id: 7,
+      name: 'iPad Air',
+      price: 9799.0,
+      description: '轻薄便携平板电脑',
+      isFavorite: false,
+      imageUrl: 'https://picsum.photos/seed/ipadair/300/200',
+    ),
+
   ];
 
-  @override
   Future<List<ProductModel>> getProducts() async {
     // 模拟网络延迟
     await Future.delayed(const Duration(milliseconds: 500));
     return _products;
   }
 
-  @override
+
   Future<void> toggleFavorite(ProductModel product) async {
     final index = _products.indexWhere((p) => p.id == product.id);
     if (index != -1) {
@@ -76,9 +91,4 @@ class MockProductRepository implements ProductRepository {
     await Future.delayed(const Duration(milliseconds: 300));
   }
 
-  @override
-  Future<void> deleteProduct(ProductModel product) async {
-    _products.removeWhere((p) => p.id == product.id);
-    await Future.delayed(const Duration(milliseconds: 300));
-  }
 }

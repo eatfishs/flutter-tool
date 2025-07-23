@@ -13,7 +13,6 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
   ProductBloc(this._repository) : super(ProductInitial()) {
     on<LoadProducts>(_onLoadProducts);
     on<ToggleFavorite>(_onToggleFavorite);
-    on<DeleteProduct>(_onDeleteProduct);
   }
 
   // 处理加载商品事件
@@ -54,25 +53,4 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
     }
   }
 
-  // 处理删除商品事件
-  Future<void> _onDeleteProduct(
-      DeleteProduct event,
-      Emitter<ProductState> emit,
-      ) async {
-    if (state is ProductLoaded) {
-      try {
-        final currentState = state as ProductLoaded;
-        final updatedProducts = currentState.products
-            .where((product) => product.id != event.product.id)
-            .toList();
-
-        emit(ProductLoaded(updatedProducts));
-        await _repository.deleteProduct(event.product);
-      } catch (e) {
-        emit(ProductError(e.toString()));
-        // 发生错误时恢复状态
-        add(LoadProducts());
-      }
-    }
-  }
 }
